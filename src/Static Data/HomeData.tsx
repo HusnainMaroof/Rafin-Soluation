@@ -92,10 +92,6 @@ export const ADVISORY_CARDS = [
     desc: "Assist Fintech clients with services, including KYC/AML verification tools, monitoring, and visa/master card membership.",
   },
   {
-    title: "E-Money Licensing",
-    desc: "Increase License application chances by considering our professional advice regarding documents preparation.",
-  },
-  {
     title: "AML/CFT Training",
     desc: "Extensive AML/CFT training programs that encompass a broad spectrum of AML regulations.",
   },
@@ -107,11 +103,7 @@ export const CONSULTING_SERVICES = [
     title: "Total Compliance",
     desc: "Comprehensive compliance tailored for financial services.",
   },
-  {
-    icon: <CreditCard />,
-    title: "e-Money License",
-    desc: "Increase application authorisation chances with advice.",
-  },
+
   {
     icon: <Calculator />,
     title: "AML Audit",
@@ -152,11 +144,6 @@ export const FINTECH_POINTS = [
   "Automated transaction monitoring.",
 ];
 
-export const EMONEY_POINTS = [
-  "End-to-end Application assistance.",
-  "FCA Accounting & Reporting.",
-  "Compliance Outsourcing.",
-];
 
 export const FOOTER_LINKS = {
   quickLinks: [

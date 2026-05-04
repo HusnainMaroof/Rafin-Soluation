@@ -8,7 +8,9 @@ import { ConsultingServicesSection } from "../components/ServiceSection";
 import { ExperienceSection } from "../components/ExperienceSection";
 import { TotalComplianceSection } from "../components/TotalComlianceSection";
 import { AMLTrainingSection } from "../components/AMLTrainingSection";
-import { FinTechAndEMoneySection } from "../components/FinTechAndEMoneySection";
+import {
+  FinTechAndAMLSection,
+} from "../components/FinTechAndAMLSection";
 import { Footer } from "../components/Footer";
 
 const page = () => {
@@ -40,8 +42,7 @@ const page = () => {
 
         {/* === Normal Scroll Sections === */}
         <div className="relative z-[50] bg-[#050505] shadow-[0_-20px_50px_rgba(0,0,0,0.8)] border-t border-white/5 rounded-t-[2rem] lg:rounded-none overflow-hidden">
-          <AMLTrainingSection />
-          <FinTechAndEMoneySection />
+          <FinTechAndAMLSection />
           <Footer />
         </div>
       </div>
