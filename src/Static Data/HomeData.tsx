@@ -24,6 +24,8 @@ import {
   Box,
   Triangle,
   CloudLightning,
+  Palette,
+  Smartphone,
 } from "lucide-react";
 export const NAV_ITEMS = [
   { label: 'Home', href: '/' },
@@ -39,7 +41,6 @@ export const NAV_ITEMS = [
     dropdown: [
       { label: 'Compliance Solutions', href: '/services' },
       { label: 'Consumer Credit', href: '/services' },
-      { label: 'E-Money Service', href: '/services' },
       { label: 'UK Currency Exchange Law', href: '/services' },
       { label: 'Money Laundering Regulations', href: '/services' },
       { label: 'Training and Competence', href: '/services' },
@@ -124,6 +125,17 @@ export const CONSULTING_SERVICES = [
     title: "Fin-Tech Services",
     desc: "KYC/AML tools, and SWIFT/SEPA access.",
   },
+  {
+    icon: <Palette />,
+    title: "Branding & Design",
+    desc: "Create modern and memorable brand identities that make your business stand out.",
+  },
+  {
+    icon: <Smartphone />,
+    title: "Mobile App Development",
+    desc: "Build fast, smooth, and user-friendly mobile apps for Android and iOS.",
+  },
+
 ];
 
 export const COMPLIANCE_POINTS = [
