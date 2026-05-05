@@ -636,7 +636,7 @@ const IndustryBentoSection = ({ industry }: { industry: IndustryItem }) => {
   );
 };
 
-const SectionHeading = ({
+export const SectionHeading = ({
   title,
   subtitle,
   yellow = false,
