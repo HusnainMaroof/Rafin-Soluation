@@ -1,49 +1,58 @@
 import React from "react";
-import { globalStyles } from "../Static Data/HomeData";
+import {
+  ADVISORY_CARDS,
+  CONSULTING_SERVICES,
+  globalStyles,
+} from "../Static Data/HomeData";
 import { HeroSection } from "../components/HeroSection";
 import { Navbar } from "../components/Navbar";
-import { KeyAdvisorySection } from "../components/AdvisorySection";
-import { StickySection } from "../components/HelperComponent";
-import { ConsultingServicesSection } from "../components/ServiceSection";
+
 import { ExperienceSection } from "../components/ExperienceSection";
-import { TotalComplianceSection } from "../components/TotalComlianceSection";
-import { AMLTrainingSection } from "../components/AMLTrainingSection";
-import {
-  FinTechAndAMLSection,
-} from "../components/FinTechAndAMLSection";
+import { ComplianceOverviewSection } from "../components/ComlianceSection";
+
 import { Footer } from "../components/Footer";
+import {
+  renderAdvisoryCard,
+  renderServiceCard,
+  StickySplitSection,
+} from "../components/HelperComponent";
+import { AMLTrainingSection } from "../components/AMLTrainingSection";
+import { FinTechServicesSection } from "../components/FinTechSection";
+import { SpecializedServicesSection } from "../components/SpecializedServicesSection";
+import { NewsEventsSection } from "../components/NewsEventsSection";
 
 const page = () => {
   return (
     <>
       <style>{globalStyles}</style>
-      <div className="min-h-screen font-sans bg-[#050505] text-slate-200 selection:bg-yellow-400 selection:text-black overflow-clip">
-        <Navbar />
+      <div className="min-h-screen font-sans selection:bg-yellow-400 selection:text-slate-900 overflow-clip">
+     
         <HeroSection />
 
-        {/* === Stacked / Pinned Sections Group === */}
-        <div className="relative w-full z-10">
-          <StickySection zIndex={10} bgClass="bg-[#050505]">
-            <KeyAdvisorySection />
-          </StickySection>
+        <StickySplitSection
+          title="Key Professional Advisory"
+          subtitle="We are experienced and specialised in the key services below, ensuring your business stays compliant and competitive."
+          items={ADVISORY_CARDS}
+          renderCard={renderAdvisoryCard}
+        />
 
-          <StickySection zIndex={20} bgClass="bg-[#0a0a0a]">
-            <ConsultingServicesSection />
-          </StickySection>
-
-          <StickySection zIndex={30} bgClass="bg-[#050505]">
-            <ExperienceSection />
-          </StickySection>
-
-          <StickySection zIndex={40} bgClass="bg-[#0a0a0a]">
-            <TotalComplianceSection />
-          </StickySection>
-        </div>
+        {/* Split Section 2: Services */}
+        <StickySplitSection
+          title="Consulting Services"
+          subtitle="Innovative strategies designed to propel your business forward in the financial sector. Browse our full suite of professional services."
+          items={CONSULTING_SERVICES}
+          renderCard={renderServiceCard}
+        />
 
         {/* === Normal Scroll Sections === */}
-        <div className="relative z-[50] bg-[#050505] shadow-[0_-20px_50px_rgba(0,0,0,0.8)] border-t border-white/5 rounded-t-[2rem] lg:rounded-none overflow-hidden">
-          <FinTechAndAMLSection />
-          <Footer />
+        <div className="relative z-50">
+          <ExperienceSection />
+          <ComplianceOverviewSection />
+          <AMLTrainingSection />
+          <FinTechServicesSection />
+          <SpecializedServicesSection />
+          <NewsEventsSection />
+       
         </div>
       </div>
     </>

@@ -1,10 +1,11 @@
 "use client";
+
 import React, { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronDown, Menu, Network, X } from "lucide-react";
+import { ArrowRight, ChevronDown, Menu, Network, X } from "lucide-react";
+import Link from "next/link"; // ✅ FIXED
 import { NAV_ITEMS } from "../Static Data/HomeData";
 import { Button } from "./HelperComponent";
-import Image from "next/image";
 
 export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -18,53 +19,93 @@ export const Navbar = () => {
   }, []);
 
   return (
-    <div
-      className={`fixed top-0 w-full z-[100] transition-all duration-500 px-4 pt-4 ${scrolled ? "py-2" : "py-6"}`}
+    <motion.div
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+      className={`fixed top-0 w-full z-50 transition-all duration-500 px-4 pt-4 ${
+        scrolled ? "py-2" : "py-6"
+      }`}
     >
       <div
-        className={`mx-auto max-w-[90rem] px-6 lg:px-8 flex items-center justify-between transition-all duration-500 rounded-full
-        ${scrolled ? "bg-[#121212]/95 backdrop-blur-xl border border-white/10 shadow-2xl py-3" : "bg-transparent border-transparent py-2"}`}
+        className={`mx-auto max-w-360 px-6 lg:px-8 flex items-center justify-between transition-all duration-500 rounded-full
+        ${
+          scrolled
+            ? " border border-transparent"
+            : "bg-white/90 backdrop-blur-md border border-slate-200 py-3 shadow-sm"
+        }`}
       >
         {/* Brand */}
         <div className="flex items-center gap-2 cursor-pointer group z-50">
-          <Image
-            src="/Logo/logo.png"
-            alt="Rafin Solutions Logo"
-            width={100}
-            height={100}
-            className="w-full h-auto object-contain group-hover:scale-110 transition-transform duration-300"
-          />
+          <Network className="w-8 h-8 text-yellow-500 group-hover:rotate-12 transition-transform duration-300" />
+          <span
+            className={`font-bold text-xl tracking-tight transition-colors bg-yellow-500 p-1.5 rounded-xl duration-500 ${
+              scrolled ? "text-white" : "text-slate-900"
+            }`}
+          >
+            Rafin
+            <span
+              className={`font-normal transition-colors duration-500 ${
+                scrolled ? "text-slate-400" : "text-slate-500"
+              }`}
+            >
+              Solutions
+            </span>
+          </span>
         </div>
 
         {/* Desktop Nav */}
-        <div className="hidden xl:flex items-center gap-1 bg-white/5 px-4 py-2 rounded-full border border-white/5">
+        <div
+          className={`hidden xl:flex items-center gap-1 px-4 py-2 rounded-full border transition-colors duration-500 ${
+            scrolled
+              ? "bg-black border-black"
+              : "bg-slate-50/80 border-slate-200/50"
+          }`}
+        >
           {NAV_ITEMS.map((item) => (
             <div key={item.label} className="relative group px-3 py-2">
-              <a
-                href={item.href}
-                className="flex items-center gap-1 text-sm font-medium text-slate-300 hover:text-yellow-400 transition-colors"
-              >
-                {item.label}
-                {item.dropdown && (
-                  <ChevronDown className="w-4 h-4 transition-transform duration-300 group-hover:rotate-180" />
-                )}
-              </a>
+              {/* Parent Link */}
+              {item.href ? (
+                <Link
+                  href={item.href}
+                  className={`flex items-center gap-1 text-sm font-medium transition-colors duration-300 ${
+                    scrolled
+                      ? "text-white hover:text-white"
+                      : "text-slate-600 hover:text-slate-900"
+                  }`}
+                >
+                  {item.label}
+                  {item.dropdown && (
+                    <ChevronDown className="w-4 h-4 transition-transform duration-300 group-hover:rotate-180" />
+                  )}
+                </Link>
+              ) : (
+                <span
+                  className={`flex items-center gap-1 text-sm font-medium ${
+                    scrolled ? "text-white" : "text-slate-600"
+                  }`}
+                >
+                  {item.label}
+                  {item.dropdown && (
+                    <ChevronDown className="w-4 h-4 transition-transform duration-300 group-hover:rotate-180" />
+                  )}
+                </span>
+              )}
 
               {/* Desktop Dropdown */}
               {item.dropdown && (
                 <div className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-4 group-hover:translate-y-0">
-                  {/* Invisible hover bridge */}
                   <div className="absolute -top-6 left-0 w-full h-6 bg-transparent" />
-                  <div className="bg-[#121212]/95 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl overflow-hidden py-3">
+                  <div className="bg-white border border-slate-100 rounded-2xl shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1)] overflow-hidden py-3">
                     {item.dropdown.map((dropItem) => (
-                      <a
+                      <Link
                         key={dropItem.label}
                         href={dropItem.href}
-                        className="flex items-center gap-2 px-5 py-3 text-sm text-slate-400 hover:text-yellow-400 hover:bg-white/5 transition-colors relative overflow-hidden group/item"
+                        className="flex items-center gap-2 px-5 py-3 text-sm text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors relative overflow-hidden group/item"
                       >
-                        <span className="absolute left-0 top-0 bottom-0 w-1 bg-yellow-400 transform -translate-x-full group-hover/item:translate-x-0 transition-transform duration-300" />
+                        <span className="absolute left-0 top-0 bottom-0 w-1 bg-slate-900 transform -translate-x-full group-hover/item:translate-x-0 transition-transform duration-300" />
                         {dropItem.label}
-                      </a>
+                      </Link>
                     ))}
                   </div>
                 </div>
@@ -75,27 +116,28 @@ export const Navbar = () => {
 
         {/* CTA */}
         <div className="hidden xl:block z-50">
-          <Button
-            primary
-            className="px-6 py-2.5 bg-yellow-400 text-black hover:bg-yellow-300 shadow-none"
-          >
-            Let's Talk
+          <Button primary={!scrolled} className="px-6 py-2.5">
+            Let's Talk{" "}
+            <ArrowRight className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" />
           </Button>
         </div>
 
+        {/* Mobile Button */}
         <button
-          className="xl:hidden p-2 text-white z-50"
+          className={`xl:hidden p-2 z-50 transition-colors duration-500 ${
+            scrolled ? "text-white" : "text-slate-900"
+          }`}
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
           {mobileMenuOpen ? (
-            <X className="w-6 h-6 text-yellow-400" />
+            <X className="w-6 h-6" />
           ) : (
             <Menu className="w-6 h-6" />
           )}
         </button>
       </div>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
@@ -103,13 +145,13 @@ export const Navbar = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -20, scale: 0.95 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
-            className="absolute top-full left-4 right-4 mt-2 bg-[#121212]/95 backdrop-blur-xl border border-white/10 rounded-3xl shadow-[0_20px_60px_rgba(0,0,0,0.8)] overflow-hidden flex flex-col xl:hidden"
+            className="absolute top-full left-4 right-4 mt-2 bg-white border border-slate-100 rounded-3xl shadow-[0_20px_60px_rgba(0,0,0,0.1)] overflow-hidden flex flex-col xl:hidden"
           >
             <div className="max-h-[70vh] overflow-y-auto p-4 flex flex-col gap-1">
               {NAV_ITEMS.map((item) => (
                 <div key={item.label} className="flex flex-col">
                   <div
-                    className="flex items-center justify-between p-4 rounded-xl text-white font-medium hover:bg-white/5 transition-colors cursor-pointer"
+                    className="flex items-center justify-between p-4 rounded-xl text-slate-900 font-medium hover:bg-slate-50 transition-colors cursor-pointer"
                     onClick={() => {
                       if (item.dropdown) {
                         setActiveDropdown(
@@ -118,20 +160,29 @@ export const Navbar = () => {
                       }
                     }}
                   >
-                    <a
-                      href={item.dropdown ? "#" : item.href}
-                      className="flex-1"
-                    >
-                      {item.label}
-                    </a>
+                    {item.href ? (
+                      <Link
+                        href={item.href}
+                        className="flex-1"
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        {item.label}
+                      </Link>
+                    ) : (
+                      <span className="flex-1">{item.label}</span>
+                    )}
+
                     {item.dropdown && (
                       <ChevronDown
-                        className={`w-5 h-5 transition-transform duration-300 ${activeDropdown === item.label ? "rotate-180 text-yellow-400" : "text-slate-500"}`}
+                        className={`w-5 h-5 transition-transform duration-300 ${
+                          activeDropdown === item.label
+                            ? "rotate-180 text-slate-900"
+                            : "text-slate-400"
+                        }`}
                       />
                     )}
                   </div>
 
-                  {/* Mobile Dropdown Expand */}
                   <AnimatePresence>
                     {item.dropdown && activeDropdown === item.label && (
                       <motion.div
@@ -140,16 +191,16 @@ export const Navbar = () => {
                         exit={{ height: 0, opacity: 0 }}
                         className="overflow-hidden"
                       >
-                        <div className="flex flex-col gap-1 pl-4 pb-3 border-l-2 border-white/5 ml-6 mt-1">
+                        <div className="flex flex-col gap-1 pl-4 pb-3 border-l-2 border-slate-100 ml-6 mt-1">
                           {item.dropdown.map((dropItem) => (
-                            <a
+                            <Link
                               key={dropItem.label}
                               href={dropItem.href}
-                              className="py-3 px-4 text-sm text-slate-400 hover:text-yellow-400 transition-colors rounded-lg hover:bg-white/5"
+                              className="py-3 px-4 text-sm text-slate-500 hover:text-slate-900 transition-colors rounded-lg hover:bg-slate-50"
                               onClick={() => setMobileMenuOpen(false)}
                             >
                               {dropItem.label}
-                            </a>
+                            </Link>
                           ))}
                         </div>
                       </motion.div>
@@ -157,7 +208,8 @@ export const Navbar = () => {
                   </AnimatePresence>
                 </div>
               ))}
-              <div className="p-4 mt-2 border-t border-white/5">
+
+              <div className="p-4 mt-2 border-t border-slate-100">
                 <Button primary className="w-full justify-center">
                   Let's Talk
                 </Button>
@@ -166,6 +218,6 @@ export const Navbar = () => {
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
+    </motion.div>
   );
 };
