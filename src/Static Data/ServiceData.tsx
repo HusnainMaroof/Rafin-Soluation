@@ -1,5 +1,3 @@
-
-
 import React from "react";
 import {
   Search,
@@ -49,7 +47,9 @@ export const SERVICES_DATA = [
     ],
     bentoBoxes: [
       {
-        icon: <Coins className="w-12 h-12 text-yellow-500 mb-8 group-hover:scale-110 group-hover:-rotate-6 transition-transform duration-500" />,
+        icon: (
+          <Coins className="w-12 h-12 text-yellow-500 mb-8 group-hover:scale-110 group-hover:-rotate-6 transition-transform duration-500" />
+        ),
         title: "Flexible Pricing",
         desc: "Our prices are very flexible and could be tailored to suit whatever service(s) you require. We provide a suitable price to meet your needs.",
         points: [
@@ -58,7 +58,9 @@ export const SERVICES_DATA = [
         ],
       },
       {
-        icon: <Target className="w-12 h-12 text-yellow-500 mb-8 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500" />,
+        icon: (
+          <Target className="w-12 h-12 text-yellow-500 mb-8 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500" />
+        ),
         title: "Tailored & Suitable Service",
         desc: "For each client, we seek to develop and maintain a detailed understanding of the business environment and model, so as to enable us provide a well-tailored and suitable service.",
         points: [
@@ -68,10 +70,54 @@ export const SERVICES_DATA = [
       },
     ],
   },
-
+  {
+    slug: "aml-training",
+    icon: (
+      <Users className="w-12 h-12 text-yellow-500 mb-8 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500" />
+    ),
+    title: "AML Training & Competence",
+    desc: "Professional AML training programs to keep your team compliant and informed.",
+    overviewText:
+      "Ensure your staff are fully equipped to handle Anti-Money Laundering responsibilities with our comprehensive training programs. We provide practical, up-to-date training tailored to your business model and regulatory environment.",
+    image:
+      "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&q=80&w=800",
+    features: [
+      {
+        title: "Staff Training Programs",
+        desc: "Role-based AML training for employees at all levels.",
+      },
+      {
+        title: "Regulatory Awareness",
+        desc: "Keeping your team updated with the latest AML laws and obligations.",
+      },
+    ],
+    bentoBoxes: [
+      {
+        icon: (
+          <BookOpen className="w-12 h-12 text-yellow-500 mb-8 group-hover:scale-110 transition-transform duration-500" />
+        ),
+        title: "Structured Learning",
+        desc: "Well-designed AML courses that combine theory with real-world case studies.",
+        points: [
+          "Interactive sessions and assessments",
+          "Certification upon completion",
+        ],
+      },
+      {
+        icon: (
+          <Users className="w-12 h-12 text-yellow-500 mb-8 group-hover:scale-110 transition-transform duration-500" />
+        ),
+        title: "Team Competence",
+        desc: "We ensure your entire team meets regulatory expectations and performs confidently during audits.",
+        points: ["Ongoing refresher training", "Audit-ready staff preparation"],
+      },
+    ],
+  },
   {
     slug: "money-laundering",
-    icon: <BookOpen className="w-12 h-12 text-yellow-500 mb-8 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500" />,
+    icon: (
+      <BookOpen className="w-12 h-12 text-yellow-500 mb-8 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500" />
+    ),
     title: "Money Laundering",
     desc: "Ensure business compliance with regulations.",
     overviewText:
@@ -90,7 +136,9 @@ export const SERVICES_DATA = [
     ],
     bentoBoxes: [
       {
-        icon: <Scale className="w-12 h-12 text-yellow-500 mb-8 group-hover:scale-110 transition-transform duration-500" />,
+        icon: (
+          <Scale className="w-12 h-12 text-yellow-500 mb-8 group-hover:scale-110 transition-transform duration-500" />
+        ),
         title: "Legislative Alignment",
         desc: "Stay ahead of regulatory changes with our continuous legislative monitoring and alignment services.",
         points: [
@@ -99,17 +147,21 @@ export const SERVICES_DATA = [
         ],
       },
       {
-        icon: <Clock className="w-12 h-12 text-yellow-500 mb-8 group-hover:scale-110 transition-transform duration-500" />,
+        icon: (
+          <Clock className="w-12 h-12 text-yellow-500 mb-8 group-hover:scale-110 transition-transform duration-500" />
+        ),
         title: "Ongoing Monitoring",
         desc: "Compliance is not a one-time task. We provide continuous support to ensure your safeguards remain effective over time.",
         points: ["Periodic risk reviews", "Real-time regulatory updates"],
       },
     ],
   },
- 
+
   {
     slug: "fin-tech-services",
-    icon: <MonitorSmartphone className="w-12 h-12 text-yellow-500 mb-8 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500" />,
+    icon: (
+      <MonitorSmartphone className="w-12 h-12 text-yellow-500 mb-8 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500" />
+    ),
     title: "Fin-Tech Services",
     desc: "KYC/AML tools, and SWIFT/SEPA access.",
     overviewText:
@@ -128,7 +180,9 @@ export const SERVICES_DATA = [
     ],
     bentoBoxes: [
       {
-        icon: <MonitorSmartphone className="w-12 h-12 text-yellow-500 mb-8 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500" />,
+        icon: (
+          <MonitorSmartphone className="w-12 h-12 text-yellow-500 mb-8 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500" />
+        ),
         title: "Automated Solutions",
         desc: "We help you select, integrate, and optimize the best automated KYC, KYB, and transaction monitoring tools available.",
         points: [
@@ -137,7 +191,9 @@ export const SERVICES_DATA = [
         ],
       },
       {
-        icon: <Network className="w-12 h-12 text-yellow-500 mb-8 group-hover:scale-110 group-hover:rotate-6  transition-transform duration-500" />,
+        icon: (
+          <Network className="w-12 h-12 text-yellow-500 mb-8 group-hover:scale-110 group-hover:rotate-6  transition-transform duration-500" />
+        ),
         title: "Network Access",
         desc: "Unlock global payment capabilities with our expert guidance on securing necessary memberships and network access.",
         points: [
@@ -149,7 +205,9 @@ export const SERVICES_DATA = [
   },
   {
     slug: "branding-design",
-    icon: <Palette className="w-12 h-12 text-yellow-500 mb-8 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500" />,
+    icon: (
+      <Palette className="w-12 h-12 text-yellow-500 mb-8 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500" />
+    ),
     title: "Branding & Design",
     desc: "Create modern and memorable brand identities that make your business stand out.",
     overviewText:
@@ -168,7 +226,9 @@ export const SERVICES_DATA = [
     ],
     bentoBoxes: [
       {
-        icon: <Palette className="w-12 h-12 text-yellow-500 mb-8 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500" />,
+        icon: (
+          <Palette className="w-12 h-12 text-yellow-500 mb-8 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500" />
+        ),
         title: "Visual Excellence",
         desc: "We bridge the gap between strict financial professionalism and modern, engaging design aesthetics.",
         points: [
@@ -177,7 +237,9 @@ export const SERVICES_DATA = [
         ],
       },
       {
-        icon: <Smartphone className="w-12 h-12 text-yellow-500 mb-8 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500" />,
+        icon: (
+          <Smartphone className="w-12 h-12 text-yellow-500 mb-8 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500" />
+        ),
         title: "Digital Experience",
         desc: "Your digital presence is your storefront. We ensure every user interaction is seamless, beautiful, and conversion-focused.",
         points: ["High-fidelity prototyping", "User journey mapping"],
@@ -186,7 +248,9 @@ export const SERVICES_DATA = [
   },
   {
     slug: "mobile-app-development",
-    icon: <Smartphone className="w-12 h-12 text-yellow-500 mb-8 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500" />,
+    icon: (
+      <Smartphone className="w-12 h-12 text-yellow-500 mb-8 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500" />
+    ),
     title: "Mobile App Development",
     desc: "Build fast, smooth, and user-friendly mobile apps for Android and iOS.",
     overviewText:
@@ -205,7 +269,9 @@ export const SERVICES_DATA = [
     ],
     bentoBoxes: [
       {
-        icon: <Smartphone className="w-12 h-12 text-yellow-500 mb-8 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500" />,
+        icon: (
+          <Smartphone className="w-12 h-12 text-yellow-500 mb-8 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500" />
+        ),
         title: "End-to-End Development",
         desc: "From initial wireframes and architecture planning to app store deployment and post-launch maintenance.",
         points: [
@@ -214,7 +280,9 @@ export const SERVICES_DATA = [
         ],
       },
       {
-        icon: <ShieldCheck className="w-12 h-12 text-yellow-500 mb-8 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500" />,
+        icon: (
+          <ShieldCheck className="w-12 h-12 text-yellow-500 mb-8 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500" />
+        ),
         title: "Secure & Scalable",
         desc: "Built with the financial sector in mind, ensuring your application can handle growth while protecting sensitive user data.",
         points: [
@@ -226,7 +294,9 @@ export const SERVICES_DATA = [
   },
   {
     slug: "consumer-credit",
-    icon: <Landmark className="w-12 h-12 text-yellow-500 mb-8 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500" />,
+    icon: (
+      <Landmark className="w-12 h-12 text-yellow-500 mb-8 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500" />
+    ),
     title: "Consumer Credit",
     desc: "Navigate the complex landscape of consumer credit regulation.",
     overviewText:
@@ -245,7 +315,9 @@ export const SERVICES_DATA = [
     ],
     bentoBoxes: [
       {
-        icon: <Briefcase className="w-12 h-12 text-yellow-500 mb-8 group-hover:scale-110 transition-transform duration-500" />,
+        icon: (
+          <Briefcase className="w-12 h-12 text-yellow-500 mb-8 group-hover:scale-110 transition-transform duration-500" />
+        ),
         title: "Licensing Support",
         desc: "Whether you need limited or full permission, we guide you through the intricate FCA application process.",
         points: [
@@ -254,7 +326,9 @@ export const SERVICES_DATA = [
         ],
       },
       {
-        icon: <FileText className="w-12 h-12 text-yellow-500 mb-8 group-hover:scale-110 transition-transform duration-500" />,
+        icon: (
+          <FileText className="w-12 h-12 text-yellow-500 mb-8 group-hover:scale-110 transition-transform duration-500" />
+        ),
         title: "Ongoing Compliance",
         desc: "Maintaining compliance in a sector subject to intense regulatory scrutiny and constant updates.",
         points: [
@@ -266,7 +340,9 @@ export const SERVICES_DATA = [
   },
   {
     slug: "uk-currency-exchange",
-    icon: <RefreshCw className="w-12 h-12 text-yellow-500 mb-8 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500" />,
+    icon: (
+      <RefreshCw className="w-12 h-12 text-yellow-500 mb-8 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500" />
+    ),
     title: "UK Currency Exchange Law",
     desc: "Compliance solutions for Foreign Exchange and MSBs.",
     overviewText:
@@ -285,13 +361,17 @@ export const SERVICES_DATA = [
     ],
     bentoBoxes: [
       {
-        icon: <RefreshCw className="w-12 h-12 text-yellow-500 mb-8 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500" />,
+        icon: (
+          <RefreshCw className="w-12 h-12 text-yellow-500 mb-8 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500" />
+        ),
         title: "MSB Compliance",
         desc: "Tailored policies and procedures specifically designed for the unique risks associated with currency exchange.",
         points: ["Risk assessment frameworks", "Cash handling protocols"],
       },
       {
-        icon: <Search className="w-12 h-12 text-yellow-500 mb-8 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500" />,
+        icon: (
+          <Search className="w-12 h-12 text-yellow-500 mb-8 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500" />
+        ),
         title: "Audit & Review",
         desc: "Independent reviews of your exchange operations to ensure ongoing compliance with HMRC and FCA standards.",
         points: ["Record-keeping assessments", "Staff awareness evaluations"],
