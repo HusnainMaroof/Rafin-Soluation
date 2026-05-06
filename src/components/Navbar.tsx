@@ -158,9 +158,15 @@ export const Navbar = () => {
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
           {mobileMenuOpen ? (
-            <X className="w-6 h-6" />
+            <div className={`${scrolled ? "bg-black p-2" : null}  rounded-xl`}>
+              {" "}
+              <X className="w-6 h-6" />
+            </div>
           ) : (
-            <Menu className="w-6 h-6" />
+            <div className={`${scrolled ? "bg-black p-2" : null}  rounded-xl`}>
+              {" "}
+              <Menu className="w-6 h-6" />
+            </div>
           )}
         </button>
       </div>
