@@ -18,6 +18,7 @@ import { SERVICES_DATA } from "../Static Data/ServiceData";
 import { globalStyles } from "../Static Data/HomeData";
 import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
+import Link from "next/link";
 
 export const ServicesHero = ({ service }: { service: any }) => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -84,14 +85,14 @@ export const ServiceOverview = ({ service }: { service: any }) => (
   <section className="bg-white py-24 border-t border-slate-200">
     <div className="container mx-auto px-6 lg:px-16 w-full">
       <div className="flex flex-col lg:flex-row items-center gap-16">
-        <FadeIn scale className="lg:w-1/2 w-full">
-          <div className="relative w-full aspect-square max-w-md mx-auto rounded-4xl overflow-hidden shadow-[0_20px_60px_-15px_rgba(0,0,0,0.2)] group transition-transform duration-700 hover:scale-[1.02]">
+        <FadeIn scale className="lg:w-1/2 w-full relative">
+          <div className="absolute -inset-4 md:-inset-8 bg-blue-100/60 rounded-[3rem] rotate-3 transform z-0 transition-transform duration-700 hover:rotate-6"></div>
+          <div className="relative z-10 rounded-4xl overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.1)] group">
             <img
               src={service.image}
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
               alt={service.title}
-            />
-            <div className="absolute inset-0 border-20 border-white rounded-4xl pointer-events-none transition-all duration-700 group-hover:border-10"></div>
+            />{" "}
           </div>
         </FadeIn>
 
@@ -189,32 +190,39 @@ export const CTASection = () => (
       <FadeIn scale>
         {/* Replicated CTA Design exactly from uploaded image */}
         <div className="bg-[#0f1423] rounded-[3rem] p-12 md:p-24 flex flex-col items-center text-center relative overflow-hidden shadow-2xl border border-slate-800">
-          
           {/* Subtle Corner Glows */}
           <div className="absolute -top-32 -left-32 w-[60%] h-[60%] bg-yellow-400/10 blur-[120px] rounded-full pointer-events-none"></div>
           <div className="absolute -bottom-32 -right-32 w-[60%] h-[60%] bg-blue-500/10 blur-[120px] rounded-full pointer-events-none"></div>
-          
+
           <div className="relative z-10 w-full flex flex-col items-center">
             {/* Phone Icon */}
             <div className="mb-8">
               <PhoneCall className="w-12 h-12 text-yellow-400 stroke-2 animate-pulse" />
             </div>
-            
+
             {/* Heading */}
             <h2 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white mb-6 tracking-tight leading-[1.1]">
               Ready to secure your <br />
-              <span className="text-yellow-400 font-tronica">compliance</span> future?
+              <span className="text-yellow-400 font-tronica">
+                compliance
+              </span>{" "}
+              future?
             </h2>
-            
+
             {/* Subtext */}
             <p className="text-slate-300 text-lg md:text-xl mb-12 max-w-2xl mx-auto font-medium leading-relaxed">
-              Get in touch with our expert consultants today to secure your business and streamline your regulatory framework.
+              Get in touch with our expert consultants today to secure your
+              business and streamline your regulatory framework.
             </p>
-            
+
             {/* Action Button */}
-            <button className="group cursor-pointer inline-flex items-center justify-center gap-3 px-10 py-4 rounded-full text-base font-bold transition-all duration-300 bg-yellow-400 text-slate-900 shadow-[0_0_20px_rgba(250,204,21,0.5)] hover:shadow-[0_0_30px_rgba(250,204,21,0.7)] hover:bg-yellow-300 hover:-translate-y-1">
-              Contact Us <ArrowRight className="w-5 h-5 ml-1 transition-transform group-hover:translate-x-1" />
-            </button>
+            <Link href={"/contect-us"}>
+              {" "}
+              <button className="group cursor-pointer inline-flex items-center justify-center gap-3 px-10 py-4 rounded-full text-base font-bold transition-all duration-300 bg-yellow-400 text-slate-900 shadow-[0_0_20px_rgba(250,204,21,0.5)] hover:shadow-[0_0_30px_rgba(250,204,21,0.7)] hover:bg-yellow-300 hover:-translate-y-1">
+                Contact Us{" "}
+                <ArrowRight className="w-5 h-5 ml-1 transition-transform group-hover:translate-x-1" />
+              </button>
+            </Link>
           </div>
         </div>
       </FadeIn>
@@ -222,10 +230,7 @@ export const CTASection = () => (
   </section>
 );
 
-
-
-
-export const  Services = ({ service }: { service: any }) => {
+export const Services = ({ service }: { service: any }) => {
   return (
     <>
       <style>{globalStyles}</style>
@@ -238,4 +243,4 @@ export const  Services = ({ service }: { service: any }) => {
       </div>
     </>
   );
-}
+};

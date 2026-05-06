@@ -122,7 +122,7 @@ export const NAV_ITEMS = [
     ],
   },
   { label: "News & Event", href: "/news-events" },
-  { label: "Contact", href: "/contact" },
+  { label: "Contact", href: "/contect-us" },
 ];
 
 export const CLIENT_LOGOS = [
@@ -210,11 +210,11 @@ export const FINTECH_POINTS = [
 
 export const FOOTER_LINKS = {
   quickLinks: [
-    "About Us",
-    "Specialized Services",
-    "AML Training",
-    "Careers",
-    "Contact Us",
+    {title : "About Us", href: "/about-us"},
+    {title : "Total Compliance", href: "/service/total-compliance"},
+    {title : "AML Training", href: "/training/aml-cft-training"},
+    {title : "Careers", href: "/careers"},
+    {title : "Contact Us", href: "/contact-us"},
   ],
   legal: ["Privacy Policy", "Terms & Conditions", "Cookie Policy"],
 };

@@ -11,7 +11,7 @@ export const SpecializedServicesSection = () => (
       <div className="flex flex-col lg:flex-row items-center gap-16">
         <div className="lg:w-1/2 w-full z-10">
           <FadeIn>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight text-cyan-400">Our Specialized Services</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight text-yellow-500">Our Specialized Services</h2>
             <p className="text-slate-300 mb-10 leading-relaxed text-lg">Rafin Solutions specialised services assist the financial service providers not only successfully secure the licence but also ensure the compliance during the operations and complying with their ongoing regulatory requirements. Rafin Solutions also assists the FINTECH companies to expand its operation through payment and card schemes.</p>
             <ul className="space-y-4">
               {[
@@ -22,7 +22,7 @@ export const SpecializedServicesSection = () => (
                 "Principal and associate membership of Visa and MasterCard schemes."
               ].map((item, i) => (
                  <li key={i} className="flex items-start gap-4">
-                   <div className="mt-1 w-6 h-6 rounded-full bg-cyan-500 text-white flex items-center justify-center shrink-0 shadow-sm">
+                   <div className="mt-1 w-6 h-6 rounded-full bg-yellow-500 text-white flex items-center justify-center shrink-0 shadow-sm">
                      <Check className="w-3.5 h-3.5 stroke-3" />
                    </div>
                    <span className="text-white font-medium">{item}</span>

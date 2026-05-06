@@ -12,7 +12,7 @@ export const ExperienceSection = () => (
 
           <div className="lg:w-1/2 w-full relative z-10">
             <h2 className="font-tech text-6xl md:text-8xl font-bold text-transparent bg-clip-text bg-linear-to-r from-yellow-500 to-yellow-300 mb-6 tracking-tighter drop-shadow-sm">
-              15+
+              7+
             </h2>
             <h3 className="text-3xl font-bold text-slate-900 mb-6">
               Years of Excellence.
@@ -28,13 +28,16 @@ export const ExperienceSection = () => (
             </div>
           </div>
 
-          <div className="lg:w-1/2 w-full h-100 relative rounded-4xl overflow-hidden border border-slate-200 z-10 shadow-[0_4px_20px_rgba(0,0,0,0.1)]">
-            <img
-              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=800"
-              alt="15 Years of Experiences"
-              className="w-full h-full object-cover group-hover/wrap:scale-[1.05] transition-transform duration-700 ease-out"
-            />
-          </div>
+          <FadeIn scale className="lg:w-1/2 w-full relative">
+            <div className="absolute -inset-4 md:-inset-8 bg-blue-100/60 rounded-[3rem] rotate-3 transform z-0 transition-transform duration-700 hover:rotate-6"></div>
+            <div className="relative z-10 rounded-4xl overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.1)] group">
+              <img
+                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=800"
+                alt="15 Years of Experiences"
+                className="w-full h-full object-cover group-hover/wrap:scale-[1.05] transition-transform duration-700 ease-out"
+              />
+            </div>
+          </FadeIn>
         </div>
       </FadeIn>
     </div>

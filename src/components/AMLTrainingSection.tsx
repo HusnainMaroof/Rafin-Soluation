@@ -29,8 +29,8 @@ export const AMLTrainingSection = () => (
                 "Scenario based real life training examples."
               ].map((item, i) => (
                  <li key={i} className="flex items-start gap-4">
-                   <div className="mt-1 w-6 h-6 rounded-full bg-blue-500 text-white flex items-center justify-center shrink-0 shadow-sm">
-                     <Check className="w-3.5 h-3.5 stroke-3" />
+                   <div className="mt-1 w-6 h-6 rounded-full bg-amber-500 text-white flex items-center justify-center shrink-0 shadow-sm">
+                     <Check className="w-3.5 h-3.5 stroke-3 text-white" />
                    </div>
                    <span className="text-slate-700 font-medium">{item}</span>
                  </li>

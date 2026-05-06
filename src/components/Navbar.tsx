@@ -6,6 +6,7 @@ import { ArrowRight, ChevronDown, Menu, Network, X } from "lucide-react";
 import Link from "next/link"; // ✅ FIXED
 import { NAV_ITEMS } from "../Static Data/HomeData";
 import { Button } from "./HelperComponent";
+import Image from "next/image";
 
 export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -13,7 +14,10 @@ export const Navbar = () => {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 60);
+    };
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -23,7 +27,7 @@ export const Navbar = () => {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-      className={`fixed top-0 w-full z-50 transition-all duration-500 px-4 pt-4 ${
+      className={`fixed top-0 w-full z-999 transition-all duration-500 px-4 pt-4 ${
         scrolled ? "py-2" : "py-6"
       }`}
     >
@@ -31,27 +35,44 @@ export const Navbar = () => {
         className={`mx-auto max-w-360 px-6 lg:px-8 flex items-center justify-between transition-all duration-500 rounded-full
         ${
           scrolled
-            ? " border border-transparent"
+            ? "   border border-transparent"
             : "bg-white/90 backdrop-blur-md border border-slate-200 py-3 shadow-sm"
         }`}
       >
         {/* Brand */}
-        <div className="flex items-center gap-2 cursor-pointer group z-50">
-          <Network className="w-8 h-8 text-yellow-500 group-hover:rotate-12 transition-transform duration-300" />
-          <span
-            className={`font-bold text-xl tracking-tight transition-colors bg-yellow-500 p-1.5 rounded-xl duration-500 ${
-              scrolled ? "text-white" : "text-slate-900"
-            }`}
-          >
-            Rafin
-            <span
-              className={`font-normal transition-colors duration-500 ${
-                scrolled ? "text-slate-400" : "text-slate-500"
-              }`}
-            >
-              Solutions
-            </span>
-          </span>
+
+        <div
+          className={`flex items-center gap-2 cursor-pointer group z-50 h-full bg-white p-2 rounded-full transition-colors duration-500 ${
+            scrolled ? "bg-transparent" : "bg-white/80"
+          }`}
+        >
+          {scrolled ? (
+            <>
+              <Image
+                src="/Logo/Logo_FULL_Black.png"
+                alt="Logo"
+                width={140}
+                height={140}
+              />
+            </>
+          ) : (
+            <>
+              <Image
+                src="/Logo/Logo_Orange_Black.png"
+                alt="Logo"
+                width={140}
+                height={140}
+              />
+            </>
+          )}
+
+          {/* <Image
+            src="/Logo/Logo_Full_White.png"
+            alt="Logo"
+            width={140}
+            height={140}
+            className="bg-black"
+          /> */}
         </div>
 
         {/* Desktop Nav */}
@@ -116,10 +137,17 @@ export const Navbar = () => {
 
         {/* CTA */}
         <div className="hidden xl:block z-50">
-          <Button primary={!scrolled} className="px-6 py-2.5">
-            Let's Talk{" "}
-            <ArrowRight className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" />
-          </Button>
+          <Link
+            href={"contect-us"}
+            className="group"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            {" "}
+            <Button primary={!scrolled} className="px-6 py-2.5">
+              Let's Talk{" "}
+              <ArrowRight className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" />
+            </Button>
+          </Link>
         </div>
 
         {/* Mobile Button */}
@@ -210,9 +238,15 @@ export const Navbar = () => {
               ))}
 
               <div className="p-4 mt-2 border-t border-slate-100">
-                <Button primary className="w-full justify-center">
-                  Let's Talk
-                </Button>
+                <Link
+                  href="/contect-us"
+                  className="block text-center"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <Button primary className="w-full justify-center">
+                    Let's Talk
+                  </Button>
+                </Link>
               </div>
             </div>
           </motion.div>

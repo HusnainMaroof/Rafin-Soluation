@@ -26,6 +26,7 @@ import {
 } from "./HelperComponent";
 import { globalStyles } from "../Static Data/HomeData";
 import { complianceData } from "../Static Data/AboutUsData";
+import Link from "next/link";
 
 export const AboutHero = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -69,7 +70,7 @@ export const AboutHero = () => {
             <h1 className="text-5xl md:text-7xl font-extrabold text-slate-900 mb-6 leading-[1.1] tracking-tight">
               <StaggerItem>Welcome to</StaggerItem>
               <StaggerItem>
-                <span className="font-tech text-transparent bg-clip-text bg-linear-to-r from-yellow-500 to-yellow-400">
+                <span className="font-tronica text-transparent bg-clip-text bg-linear-to-r from-yellow-500 to-yellow-400">
                   Rafin Solutions
                 </span>
               </StaggerItem>
@@ -85,8 +86,12 @@ export const AboutHero = () => {
 
             <StaggerItem>
               <div className="flex flex-wrap gap-4">
-                <Button primary>Meet Our Team</Button>
-                <Button primary={false}>Our Services</Button>
+                <Link href="/our-team">
+                  <Button primary>Meet Our Team</Button>
+                </Link>
+                <Link href="/service/total-compliance">
+                  <Button primary={false}>Our Services</Button>
+                </Link>
               </div>
             </StaggerItem>
           </StaggerContainer>

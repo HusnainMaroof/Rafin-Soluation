@@ -4,6 +4,8 @@ import React from "react";
 import { ArrowUp, Mail, MapPin, Network, Phone } from "lucide-react";
 import { FadeIn } from "./HelperComponent";
 import { FOOTER_LINKS } from "../Static Data/HomeData";
+import Image from "next/image";
+import Link from "next/link";
 
 export const Footer = () => {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
@@ -17,11 +19,7 @@ export const Footer = () => {
         <div className="pr-4">
           <FadeIn>
             <div className="flex items-center gap-2 mb-6 group cursor-pointer">
-              <Network className="w-8 h-8 text-yellow-400" />
-              <span className="font-bold text-2xl tracking-tight text-white">
-                Rafin
-                <span className="font-normal text-slate-400">Solutions</span>
-              </span>
+              <Image src="/Logo/logo.png" alt="Logo" width={140} height={140} />
             </div>
             <p className="text-sm text-slate-400 leading-relaxed mb-6">
               A specialist consultancy firm providing a wide range of financial
@@ -66,13 +64,12 @@ export const Footer = () => {
             </h4>
             <ul className="space-y-3 text-sm text-slate-300">
               {FOOTER_LINKS.quickLinks.map((link) => (
-                <li key={link}>
-                  <a
-                    href="#"
-                    className="hover:text-yellow-400 hover:translate-x-1 transition-transform inline-block py-1"
-                  >
-                    {link}
-                  </a>
+                <li>
+                  <Link href={link.href} key={link.title}>
+                    <span className="hover:text-yellow-400 hover:translate-x-1 transition-transform inline-block py-1">
+                      {link.title}
+                    </span>
+                  </Link>
                 </li>
               ))}
             </ul>

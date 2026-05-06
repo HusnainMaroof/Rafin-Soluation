@@ -31,6 +31,9 @@ export const metadata: Metadata = {
   title: "Rafin Solutions ",
   description:
     "Rafin Solutions is a leading provider of compliance and fintech services, dedicated to helping businesses navigate the complex regulatory landscape with confidence and ease.",
+      icons: {
+    icon: "/icon.png",
+  },
 };
 
 export default function RootLayout({

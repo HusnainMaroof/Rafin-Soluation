@@ -101,7 +101,7 @@ export const Button = ({
     whileHover={{ scale: 1.02 }}
     whileTap={{ scale: 0.98 }}
     className={`
-      group inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full text-sm font-semibold transition-all duration-300
+      group inline-flex cursor-pointer items-center justify-center gap-2 px-8 py-3.5 rounded-full text-sm font-semibold transition-all duration-300
       ${
         primary
           ? "bg-slate-900 text-white shadow-[0_4px_14px_0_rgba(0,0,0,0.15)] hover:shadow-[0_8px_25px_rgba(0,0,0,0.25)] hover:bg-black hover:-translate-y-1"
@@ -164,12 +164,12 @@ export const StickySplitSection = ({
           <p className="text-base md:text-lg leading-relaxed text-slate-600 mb-8 max-w-sm">
             {subtitle}
           </p>
-          <div className="hidden lg:block">
+          {/* <div className="hidden lg:block">
             <Button primary={false} className="group">
               Explore all{" "}
               <ArrowRight className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" />
             </Button>
-          </div>
+          </div> */}
         </div>
       </div>
 
@@ -180,11 +180,11 @@ export const StickySplitSection = ({
             {renderCard(item, idx)}
           </FadeIn>
         ))}
-        <div className="lg:hidden mt-8">
+        {/* <div className="lg:hidden mt-8">
           <Button primary={false} className="w-full">
             Explore all <ArrowRight className="w-4 h-4 ml-1" />
           </Button>
-        </div>
+        </div> */}
       </div>
     </div>
   );

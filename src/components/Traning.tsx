@@ -15,179 +15,10 @@ import {
   BookMarked,
   Play,
 } from "lucide-react";
-
-// ==========================================
-// 1. GLOBAL STYLES (Light Theme)
-// ==========================================
-const globalStyles = `
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap');
-  
-  :root {
-    --brand-yellow: #facc15;
-    --brand-white: #ffffff;
-    --brand-light: #f8fafc;
-    --brand-dark: #0f172a;
-    --brand-blue: #0ea5e9;
-  }
-  
-  .font-tech {
-    font-family: 'Tronica Mono', 'Space Mono', monospace;
-  }
-
-  .bg-dot-pattern {
-    background-image: radial-gradient(rgba(15, 23, 42, 0.05) 2px, transparent 2px);
-    background-size: 30px 30px;
-  }
-  
-  html {
-    scroll-behavior: smooth;
-  }
-`;
-
-// ==========================================
-// 2. DATA (Updated with Images for Layout)
-// ==========================================
-export const trainingPages = [
-  {
-    slug: "aml-cft-training",
-    title: "AML/CFT Training",
-    image:
-      "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=800",
-    description:
-      "Provides extensive AML/CFT training programs that encompass a broad spectrum of regulations, offering both online and in-person training sessions. Training is designed by the professionals working in the industry by considering the recent trends and regulatory requirements.",
-    listTitle: "Why Choose our Professional Training?",
-    list: [
-      "AML / CFT business tailored online training programmes.",
-      "Design annual comprehensive training programs for FINTECH companies.",
-      "Assessment tests after the completion of the training programmes.",
-      "AML & CFT Regulations.",
-      "Scenario based real life training examples.",
-    ],
-    theme: "blue",
-  },
-  {
-    slug: "consumer-training",
-    title: "Consumer Credit Training",
-    image:
-      "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=800",
-    description:
-      "The role and practice of the FCA as regulator of more than 50,000 firms providing Consumer Credit. The course will provide an overview and understanding of the FCA and Consumer Credit Act (CCA) regime and will explain how it differs from regulation under the OFT.",
-    listTitle: "The course will cover:",
-    list: [
-      "Consumer Credit Act regulated activities.",
-      "Exempt activities and alternatives to Authorisation.",
-      "Applying for Authorisation effectively.",
-      "The Financial Ombudsman Service & Consumer Credit Sourcebook.",
-      "Interaction with the new second charge regime and CCA legislation.",
-    ],
-    theme: "slate",
-  },
-  {
-    slug: "approved-persons-training",
-    title: "Approved Person(s) Training",
-    image:
-      "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80&w=800",
-    description:
-      "An approved person is someone who is approved to perform a 'controlled function' for an authorised firm or an appointed representative firm. Ensuring these individuals are properly trained is critical to firm-wide compliance.",
-    listTitle: "Key Learning Outcomes:",
-    list: [
-      "Understanding Fit and Proper requirements and expectations.",
-      "The Statements of Principle and Code of Practice for Approved Persons (APER).",
-      "Senior Managers and Certification Regime (SM&CR) integration.",
-      "Personal liability and enforcement protection strategies.",
-    ],
-    theme: "cyan",
-  },
-];
-
-// ==========================================
-// 3. SHARED UI & ANIMATION COMPONENTS
-// ==========================================
-const FadeIn = ({
-  children,
-  delay = 0,
-  className = "",
-  scale = false,
-  direction = "up",
-}: {
-  children: React.ReactNode;
-  delay?: number;
-  className?: string;
-  scale?: boolean;
-  direction?: "up" | "left" | "right" | "none";
-}) => {
-  const directions = {
-    up: { y: 40, x: 0 },
-    left: { x: 40, y: 0 },
-    right: { x: -40, y: 0 },
-    none: { x: 0, y: 0 },
-  };
-
-  return (
-    <motion.div
-      initial={{
-        opacity: 0,
-        filter: "blur(12px)",
-        scale: scale ? 0.95 : 1,
-        ...directions[direction],
-      }}
-      whileInView={{ opacity: 1, filter: "blur(0px)", scale: 1, x: 0, y: 0 }}
-      viewport={{ once: true, margin: "-10%" }}
-      transition={{ duration: 0.8, delay, ease: [0.22, 1, 0.36, 1] }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
-};
-
-const StaggerContainer = ({
-  children,
-  className = "",
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) => (
-  <motion.div
-    initial="hidden"
-    whileInView="visible"
-    viewport={{ once: true, margin: "-10%" }}
-    variants={{
-      visible: { transition: { staggerChildren: 0.15, delayChildren: 0.1 } },
-    }}
-    className={className}
-  >
-    {children}
-  </motion.div>
-);
-
-const StaggerItem = ({
-  children,
-  className = "",
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) => (
-  <motion.div
-    variants={{
-      hidden: { opacity: 0, y: 30, filter: "blur(8px)", scale: 0.95 },
-      visible: {
-        opacity: 1,
-        y: 0,
-        filter: "blur(0px)",
-        scale: 1,
-        transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
-      },
-    }}
-    className={className}
-  >
-    {children}
-  </motion.div>
-);
-
-// ==========================================
-// 4. PAGE SECTIONS
-// ==========================================
+import { FadeIn, StaggerContainer, StaggerItem } from "./HelperComponent";
+import { trainingPages } from "../Static Data/traningData";
+import { globalStyles } from "../Static Data/HomeData";
+import Link from "next/link";
 
 const TrainingHero = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -231,7 +62,7 @@ const TrainingHero = () => {
             <h1 className="text-5xl md:text-6xl lg:text-[5.5rem] font-extrabold text-slate-900 mb-6 leading-[1.05] tracking-tight">
               <StaggerItem>Professional</StaggerItem>
               <StaggerItem>
-                <span className="font-tech text-transparent bg-clip-text bg-linear-to-r from-yellow-500 to-yellow-600 drop-shadow-sm">
+                <span className="font-tronica text-transparent bg-clip-text bg-linear-to-r from-yellow-500 to-yellow-600 drop-shadow-sm">
                   Compliance Training
                 </span>
               </StaggerItem>
@@ -244,13 +75,6 @@ const TrainingHero = () => {
                 effectively and compliantly.
               </p>
             </StaggerItem>
-
-            <StaggerItem>
-              <button className="group inline-flex items-center justify-center gap-3 px-10 py-4 rounded-full text-base font-bold transition-all duration-300 bg-slate-900 text-white shadow-[0_4px_20px_rgba(0,0,0,0.15),inset_0_-3px_0_0_rgba(0,0,0,1)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.25),inset_0_-4px_0_0_rgba(0,0,0,1)] hover:bg-black hover:-translate-y-1">
-                Explore Courses{" "}
-                <ArrowRight className="w-5 h-5 ml-1 transition-transform group-hover:translate-x-1" />
-              </button>
-            </StaggerItem>
           </StaggerContainer>
         </div>
       </div>
@@ -258,40 +82,40 @@ const TrainingHero = () => {
   );
 };
 
-const GeneralOverview = () => {
-  return (
-    <section className="py-24 bg-slate-50 border-y border-slate-200 relative z-20">
-      <div className="container mx-auto px-6 lg:px-16 text-center max-w-4xl">
-        <FadeIn>
-          <div className="w-20 h-20 bg-white border border-slate-200 rounded-2xl flex items-center justify-center shadow-[0_8px_30px_rgba(0,0,0,0.05),inset_0_-4px_0_0_rgb(226,232,240,1)] mx-auto mb-8 text-yellow-500">
-            <BookMarked className="w-10 h-10" />
-          </div>
-          <h2 className="text-3xl md:text-5xl font-extrabold text-slate-900 mb-8 tracking-tight">
-            Adding Value with <br className="hidden md:block" /> Training and
-            Competence
-          </h2>
-        </FadeIn>
+// const GeneralOverview = () => {
+//   return (
+//     <section className="py-24 bg-slate-50 border-y border-slate-200 relative z-20">
+//       <div className="container mx-auto px-6 lg:px-16 text-center max-w-4xl">
+//         <FadeIn>
+//           <div className="w-20 h-20 bg-white border border-slate-200 rounded-2xl flex items-center justify-center shadow-[0_8px_30px_rgba(0,0,0,0.05),inset_0_-4px_0_0_rgb(226,232,240,1)] mx-auto mb-8 text-yellow-500">
+//             <BookMarked className="w-10 h-10" />
+//           </div>
+//           <h2 className="text-3xl md:text-5xl font-extrabold text-slate-900 mb-8 tracking-tight">
+//             Adding Value with <br className="hidden md:block" /> Training and
+//             Competence
+//           </h2>
+//         </FadeIn>
 
-        <FadeIn delay={0.1}>
-          <p className="text-lg md:text-xl text-slate-600 leading-relaxed mb-6 font-medium">
-            Our training and e-training programs and expertise team can help you
-            out by modulating programs as per your needs and ensure your team
-            receives the training they need. Our team is made up of specialised
-            skilled professionals who are well experienced in creating and
-            delivering training programmes for financial services firms just
-            like yours.
-          </p>
-          <p className="text-lg md:text-xl text-slate-600 leading-relaxed font-medium">
-            This is most beneficial to your organisation as it means you will
-            concentrate on running your business whilst we ensure your staff
-            have the necessary skills and knowledge to perform their roles
-            correctly and effectively.
-          </p>
-        </FadeIn>
-      </div>
-    </section>
-  );
-};
+//         <FadeIn delay={0.1}>
+//           <p className="text-lg md:text-xl text-slate-600 leading-relaxed mb-6 font-medium">
+//             Our training and e-training programs and expertise team can help you
+//             out by modulating programs as per your needs and ensure your team
+//             receives the training they need. Our team is made up of specialised
+//             skilled professionals who are well experienced in creating and
+//             delivering training programmes for financial services firms just
+//             like yours.
+//           </p>
+//           <p className="text-lg md:text-xl text-slate-600 leading-relaxed font-medium">
+//             This is most beneficial to your organisation as it means you will
+//             concentrate on running your business whilst we ensure your staff
+//             have the necessary skills and knowledge to perform their roles
+//             correctly and effectively.
+//           </p>
+//         </FadeIn>
+//       </div>
+//     </section>
+//   );
+// };
 
 // Exact replica of the uploaded image layout (Offset shape + Solid blue checks)
 const TrainingModule = ({
@@ -363,7 +187,7 @@ const TrainingModule = ({
                   <li key={iIdx} className="flex items-start gap-4 group/item">
                     {/* Solid Circular Checkmark as requested */}
                     <div
-                      className={`mt-1 w-6 h-6 rounded-full ${checkBg} text-white flex items-center justify-center shrink-0 shadow-md group-hover/item:scale-110 transition-transform duration-300`}
+                      className={`mt-1 w-6 h-6 rounded-full bg-amber-500 text-white flex items-center justify-center shrink-0 shadow-md group-hover/item:scale-110 transition-transform duration-300`}
                     >
                       <Check className="w-3.5 h-3.5 stroke-3" />
                     </div>
@@ -397,7 +221,7 @@ export const CTASection = () => (
 
             <h2 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white mb-6 tracking-tight leading-[1.1]">
               Ready to secure your <br />
-              <span className="text-yellow-400">compliance</span> future?
+              <span className="text-yellow-400 font-tronica">compliance</span> future?
             </h2>
 
             <p className="text-slate-300 text-lg md:text-xl mb-12 max-w-2xl mx-auto font-medium leading-relaxed">
@@ -405,10 +229,13 @@ export const CTASection = () => (
               business and streamline your regulatory framework.
             </p>
 
-            <button className="group inline-flex items-center justify-center gap-3 px-10 py-4 rounded-full text-base font-bold transition-all duration-300 bg-yellow-400 text-slate-900 shadow-[0_0_20px_rgba(250,204,21,0.5)] hover:shadow-[0_0_30px_rgba(250,204,21,0.7)] hover:bg-yellow-300 hover:-translate-y-1">
-              Contact Us{" "}
-              <ArrowRight className="w-5 h-5 ml-1 transition-transform group-hover:translate-x-1" />
-            </button>
+             <Link href={"/contect-us"}>
+              {" "}
+              <button className="group cursor-pointer inline-flex items-center justify-center gap-3 px-10 py-4 rounded-full text-base font-bold transition-all duration-300 bg-yellow-400 text-slate-900 shadow-[0_0_20px_rgba(250,204,21,0.5)] hover:shadow-[0_0_30px_rgba(250,204,21,0.7)] hover:bg-yellow-300 hover:-translate-y-1">
+                Contact Us{" "}
+                <ArrowRight className="w-5 h-5 ml-1 transition-transform group-hover:translate-x-1" />
+              </button>
+            </Link>
           </div>
         </div>
       </FadeIn>
@@ -482,7 +309,7 @@ export default function TrainingPage({ slug, params }: any) {
       <style>{globalStyles}</style>
       <div className="min-h-screen font-sans selection:bg-yellow-400 selection:text-slate-900 overflow-x-hidden bg-white">
         <TrainingHero />
-        <GeneralOverview />
+        {/* <GeneralOverview /> */}
 
         {/* Render Each Training Module using the requested Image/Text layout */}
         {trainingPages.map((module, index) => (

@@ -52,7 +52,7 @@ export const TeamHero = () => {
           <h1 className="text-5xl md:text-7xl font-extrabold text-slate-900 mb-6 leading-[1.1] tracking-tight flex flex-col md:flex-row flex-wrap justify-center gap-x-4">
             <StaggerItem>The Minds Behind</StaggerItem>
             <StaggerItem>
-              <span className="font-tech text-transparent bg-clip-text bg-linear-to-r from-yellow-500 to-yellow-400">
+              <span className="font-tronica  text-transparent bg-clip-text bg-linear-to-r from-yellow-500 to-yellow-400">
                 Rafin Solutions
               </span>
             </StaggerItem>
@@ -86,7 +86,7 @@ export const TeamGrid = () => {
                     src={member.image}
                     alt={member.name}
                     loading="lazy"
-                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700 ease-out"
+                    className="w-full h-full object-cover  group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700 ease-out"
                   />
 
                   {/* Social Overlay on Hover */}
@@ -96,7 +96,7 @@ export const TeamGrid = () => {
                       href="#"
                       className="w-8 h-8 rounded-full bg-white/90 backdrop-blur-md border border-slate-200 flex items-center justify-center text-slate-600 hover:bg-slate-900 hover:text-yellow-400 hover:border-slate-900 transition-colors shadow-sm"
                     >
-                      <Link className="w-4 h-4" /> Linkden
+                      <Link className="w-4 h-4" /> 
                     </a>
                     <a
                       href="#"

@@ -14,7 +14,7 @@ export const trainingPages = [
       "AML & CFT Regulations.",
       "Scenario based real life training examples.",
     ],
-    theme: "blue",
+    theme: "ywellow",
   },
   {
     slug: "consumer-training",
@@ -47,6 +47,6 @@ export const trainingPages = [
       "Senior Managers and Certification Regime (SM&CR) integration.",
       "Personal liability and enforcement protection strategies.",
     ],
-    theme: "cyan",
+    theme: "yellow",
   },
 ];

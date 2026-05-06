@@ -5,15 +5,37 @@ import { Button, FadeIn } from "./HelperComponent";
 import { motion, AnimatePresence } from "framer-motion";
 import { NEWS_DATA } from "../Static Data/HomeData";
 import { ArrowRight } from "lucide-react";
+import { redirect, usePathname } from "next/navigation";
 
-export const NewsEventsSection = () => {
+export const NewsEventsSection = ({ params }: { params: any }): any => {
   const [visibleCount, setVisibleCount] = useState(4);
 
+  const pathname = usePathname();
+  let isNewsPage = pathname === "/news-events";
+
+  const handleShowMore = () => {
+    if (isNewsPage) {
+      setVisibleCount((prev) => prev + 4);
+    } else {
+      redirect("/news-events");
+    }
+  };
+
+  const handleShowLess = () => {
+    setVisibleCount((prev) => Math.max(4, prev - 4));
+  };
+
   return (
-    <section className="bg-slate-50 py-24 border-t border-slate-200">
-      <div className="container mx-auto px-6 lg:px-16 w-full">
+    <section
+      className={`bg-slate-50  border-t border-slate-200 overflow-hidden ${isNewsPage ? "pt-24" : "py-24"}`}
+    >
+      <div
+        className={`container mx-auto px-6 lg:px-16 w-full  ${isNewsPage ? "py-24 " : ""}`}
+      >
         <FadeIn>
-          <h2 className="text-4xl md:text-5xl font-bold mb-16 text-slate-900">
+          <h2
+            className={`text-4xl md:text-5xl font-bold mb-6 tracking-tight leading-tight text-slate-900 `}
+          >
             News & Events
           </h2>
         </FadeIn>
@@ -59,12 +81,27 @@ export const NewsEventsSection = () => {
           </AnimatePresence>
         </div>
 
-        {visibleCount < NEWS_DATA.length && (
+        {visibleCount < NEWS_DATA.length ? (
           <FadeIn delay={0.2} className="flex justify-center mt-16">
-            <Button primary className="px-10">
+            <button
+              onClick={handleShowMore}
+              className="  group inline-flex items-center cursor-pointer justify-center gap-2 px-8 py-3.5 rounded-full text-sm font-semibold transition-all duration-300
+        bg-slate-900 text-white shadow-[0_4px_14px_0_rgba(0,0,0,0.15)] hover:shadow-[0_8px_25px_rgba(0,0,0,0.25)] hover:bg-black hover:-translate-y-1"
+            >
               Show more news{" "}
               <ArrowRight className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" />
-            </Button>
+            </button>
+          </FadeIn>
+        ) : (
+          <FadeIn delay={0.2} className="flex justify-center mt-16">
+            <button
+              onClick={handleShowLess}
+              className="  group inline-flex items-center cursor-pointer justify-center gap-2 px-8 py-3.5 rounded-full text-sm font-semibold transition-all duration-300
+        bg-slate-900 text-white shadow-[0_4px_14px_0_rgba(0,0,0,0.15)] hover:shadow-[0_8px_25px_rgba(0,0,0,0.25)] hover:bg-black hover:-translate-y-1"
+            >
+              Show less news{" "}
+              <ArrowRight className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" />
+            </button>
           </FadeIn>
         )}
       </div>

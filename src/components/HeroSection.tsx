@@ -76,7 +76,7 @@ export const HeroSection = () => {
           <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] font-extrabold text-slate-900 mb-6 leading-[1.05] tracking-tight flex flex-col md:flex-row flex-wrap justify-center gap-x-4">
             <StaggerItem>Redefining</StaggerItem>
             <StaggerItem>
-              <span className="font-tech text-transparent bg-clip-text bg-linear-to-r from-yellow-500 to-yellow-400">
+              <span className="font-tronica text-transparent bg-clip-text bg-linear-to-r from-yellow-500 to-yellow-400">
                 Financial
               </span>
             </StaggerItem>

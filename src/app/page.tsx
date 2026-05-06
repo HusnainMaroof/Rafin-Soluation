@@ -51,7 +51,7 @@ const page = () => {
           <AMLTrainingSection />
           <FinTechServicesSection />
           <SpecializedServicesSection />
-          <NewsEventsSection />
+          <NewsEventsSection params={""} />
        
         </div>
       </div>

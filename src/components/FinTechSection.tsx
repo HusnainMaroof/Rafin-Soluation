@@ -22,7 +22,7 @@ export const FinTechServicesSection = () => (
                 "Automated transaction monitoring tools (Partnering ship with Comply Advantage and SUMSUB)."
               ].map((item, i) => (
                  <li key={i} className="flex items-start gap-4">
-                   <div className="mt-1 w-6 h-6 rounded-full bg-blue-500 text-white flex items-center justify-center shrink-0 shadow-sm">
+                   <div className="mt-1 w-6 h-6 rounded-full bg-yellow-500 text-white flex items-center justify-center shrink-0 shadow-sm">
                      <Check className="w-3.5 h-3.5 stroke-3" />
                    </div>
                    <span className="text-slate-700 font-medium">{item}</span>
