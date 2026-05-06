@@ -91,12 +91,12 @@ export const HeroSection = () => {
             </p>
           </StaggerItem>
 
-          <StaggerItem>
+          {/* <StaggerItem>
             <Button primary className="group text-base px-8 py-4">
               Book my free consultation{" "}
               <ArrowRight className="w-5 h-5 ml-1 transition-transform group-hover:translate-x-1" />
             </Button>
-          </StaggerItem>
+          </StaggerItem> */}
         </StaggerContainer>
       </div>
 
