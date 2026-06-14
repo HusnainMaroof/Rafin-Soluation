@@ -1,25 +1,9 @@
-import React from "react";
-import {
-  Search,
-  Target,
-  ShieldCheck,
-  Settings,
-  BookOpen,
-  Users,
-  MonitorSmartphone,
-  Palette,
-  Network,
-  Smartphone,
-  Briefcase,
-  FileText,
-  Coins,
-  Landmark,
-} from "lucide-react";
+// data/services.ts  — NO React import needed, this is pure data
 
 export const SERVICES_DATA = [
   {
     slug: "total-compliance",
-    icon: <Settings />,
+    icon: "Settings",
     title: "Compliance Solutions",
     desc: "Comprehensive compliance tailored for financial services.",
     overviewText:
@@ -38,9 +22,7 @@ export const SERVICES_DATA = [
     ],
     bentoBoxes: [
       {
-        icon: (
-          <Coins className="w-12 h-12 text-yellow-500 mb-8 group-hover:scale-110 group-hover:-rotate-6 transition-transform duration-500" />
-        ),
+        icon: "Coins",
         title: "Flexible Pricing",
         desc: "Our prices are very flexible and could be tailored to suit whatever service(s) you require. We provide a suitable price to meet your needs.",
         points: [
@@ -49,9 +31,7 @@ export const SERVICES_DATA = [
         ],
       },
       {
-        icon: (
-          <Target className="w-12 h-12 text-yellow-500 mb-8 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500" />
-        ),
+        icon: "Target",
         title: "Tailored & Suitable Service",
         desc: "For each client, we seek to develop and maintain a detailed understanding of the business environment and model, so as to enable us provide a well-tailored and suitable service.",
         points: [
@@ -63,9 +43,7 @@ export const SERVICES_DATA = [
   },
   {
     slug: "fin-tech-services",
-    icon: (
-      <MonitorSmartphone className="w-12 h-12 text-yellow-500 mb-8 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500" />
-    ),
+    icon: "MonitorSmartphone",
     title: "Fintech Services",
     desc: "KYC/AML tools, and SWIFT/SEPA access.",
     overviewText:
@@ -84,9 +62,7 @@ export const SERVICES_DATA = [
     ],
     bentoBoxes: [
       {
-        icon: (
-          <MonitorSmartphone className="w-12 h-12 text-yellow-500 mb-8 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500" />
-        ),
+        icon: "MonitorSmartphone",
         title: "Automated Solutions",
         desc: "We help you select, integrate, and optimize the best automated KYC, KYB, and transaction monitoring tools available.",
         points: [
@@ -95,9 +71,7 @@ export const SERVICES_DATA = [
         ],
       },
       {
-        icon: (
-          <Network className="w-12 h-12 text-yellow-500 mb-8 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500" />
-        ),
+        icon: "Network",
         title: "Network Access",
         desc: "Unlock global payment capabilities with our expert guidance on securing necessary memberships and network access.",
         points: [
@@ -109,9 +83,7 @@ export const SERVICES_DATA = [
   },
   {
     slug: "aml-training",
-    icon: (
-      <Users className="w-12 h-12 text-yellow-500 mb-8 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500" />
-    ),
+    icon: "Users",
     title: "Trainings",
     desc: "Professional AML training programs to keep your team compliant and informed.",
     overviewText:
@@ -130,9 +102,7 @@ export const SERVICES_DATA = [
     ],
     bentoBoxes: [
       {
-        icon: (
-          <BookOpen className="w-12 h-12 text-yellow-500 mb-8 group-hover:scale-110 transition-transform duration-500" />
-        ),
+        icon: "BookOpen",
         title: "Structured Learning",
         desc: "Well-designed AML courses that combine theory with real-world case studies.",
         points: [
@@ -141,9 +111,7 @@ export const SERVICES_DATA = [
         ],
       },
       {
-        icon: (
-          <Users className="w-12 h-12 text-yellow-500 mb-8 group-hover:scale-110 transition-transform duration-500" />
-        ),
+        icon: "Users",
         title: "Team Competence",
         desc: "We ensure your entire team meets regulatory expectations and performs confidently during audits.",
         points: ["Ongoing refresher training", "Audit-ready staff preparation"],
@@ -152,9 +120,7 @@ export const SERVICES_DATA = [
   },
   {
     slug: "branding-design",
-    icon: (
-      <Palette className="w-12 h-12 text-yellow-500 mb-8 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500" />
-    ),
+    icon: "Palette",
     title: "Brand Building and Management",
     desc: "Create modern and memorable brand identities that make your business stand out.",
     overviewText:
@@ -173,9 +139,7 @@ export const SERVICES_DATA = [
     ],
     bentoBoxes: [
       {
-        icon: (
-          <Palette className="w-12 h-12 text-yellow-500 mb-8 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500" />
-        ),
+        icon: "Palette",
         title: "Visual Excellence",
         desc: "We bridge the gap between strict financial professionalism and modern, engaging design aesthetics.",
         points: [
@@ -184,9 +148,7 @@ export const SERVICES_DATA = [
         ],
       },
       {
-        icon: (
-          <Smartphone className="w-12 h-12 text-yellow-500 mb-8 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500" />
-        ),
+        icon: "Smartphone",
         title: "Digital Experience",
         desc: "Your digital presence is your storefront. We ensure every user interaction is seamless, beautiful, and conversion-focused.",
         points: ["High-fidelity prototyping", "User journey mapping"],
@@ -195,9 +157,7 @@ export const SERVICES_DATA = [
   },
   {
     slug: "consumer-credit",
-    icon: (
-      <Landmark className="w-12 h-12 text-yellow-500 mb-8 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500" />
-    ),
+    icon: "Landmark",
     title: "Licensing and Regulatory Support",
     desc: "Navigate the complex landscape of consumer credit regulation.",
     overviewText:
@@ -216,9 +176,7 @@ export const SERVICES_DATA = [
     ],
     bentoBoxes: [
       {
-        icon: (
-          <Briefcase className="w-12 h-12 text-yellow-500 mb-8 group-hover:scale-110 transition-transform duration-500" />
-        ),
+        icon: "Briefcase",
         title: "Licensing Support",
         desc: "Whether you need limited or full permission, we guide you through the intricate FCA application process.",
         points: [
@@ -227,9 +185,7 @@ export const SERVICES_DATA = [
         ],
       },
       {
-        icon: (
-          <FileText className="w-12 h-12 text-yellow-500 mb-8 group-hover:scale-110 transition-transform duration-500" />
-        ),
+        icon: "FileText",
         title: "Ongoing Compliance",
         desc: "Maintaining compliance in a sector subject to intense regulatory scrutiny and constant updates.",
         points: [
