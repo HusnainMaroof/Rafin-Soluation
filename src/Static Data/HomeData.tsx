@@ -118,7 +118,7 @@ export const NAV_ITEMS = [
     ],
   },
   { label: "News & Event", href: "/news-events" },
-  { label: "Contact", href: "/contect-us" },
+  { label: "Contact", href: "/contact-us" },
 ];
 
 // data.ts
