@@ -64,7 +64,7 @@ export const Footer = () => {
             </h4>
             <ul className="space-y-3 text-sm text-slate-300">
               {FOOTER_LINKS.quickLinks.map((link) => (
-                <li>
+                <li key={link.title}>
                   <Link href={link.href} key={link.title}>
                     <span className="hover:text-yellow-400 hover:translate-x-1 transition-transform inline-block py-1">
                       {link.title}

@@ -34,6 +34,7 @@ import {
   StaggerItem,
 } from "./HelperComponent";
 import { CLIENT_LOGOS } from "../Static Data/HomeData";
+import { LogoSlider } from "./LogoSlider";
 export const HeroSection = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
@@ -101,7 +102,7 @@ export const HeroSection = () => {
       </div>
 
       {/* Infinite Logo Slider Component */}
-      <FadeIn
+      {/* <FadeIn
         delay={0.6}
         direction="none"
         className="w-full relative z-20 mt-auto mb-12"
@@ -124,7 +125,8 @@ export const HeroSection = () => {
             ))}
           </div>
         </div>
-      </FadeIn>
+      </FadeIn> */}
+      <LogoSlider/>
     </section>
   );
 };

@@ -26,6 +26,7 @@ import {
   CloudLightning,
   Palette,
   Smartphone,
+  Landmark,
 } from "lucide-react";
 
 export const globalStyles = `
@@ -84,32 +85,34 @@ export const NAV_ITEMS = [
   {
     label: "Services",
     dropdown: [
-      
       { label: "Compliance Solutions", href: "/service/total-compliance" },
-      // { label: "Consumer Credit", href: "/service/consumer-credit" },
+      { label: "Fintech Services", href: "/service/fin-tech-services" },
+      { label: "Trainings", href: "/service/aml-training" },
       {
-        label: "UK Currency Exchange Law",
-        href: "/service/uk-currency-exchange",
+        label: "Brand Building and Management",
+        href: "/service/branding-design",
       },
       {
-        label: "Money Laundering Regulations",
-        href: "/service/money-laundering",
+        label: "Licensing and Regulatory Support",
+        href: "/service/consumer-credit",
       },
-      { label: "Training and Competence", href: "/service/aml-training" },
-      { label: "Fin-tech Services", href: "/service/fin-tech-services" },
-      { label: "Branding & Design", href: "/service/branding-design" },
-      { label: "Mobile App Development", href: "/service/mobile-app-development" },
     ],
   },
 
   {
     label: "Industry",
     dropdown: [
-      { label: "Banks and Financial Institutions", href: "/industry/banks-financial-institutions" },
+      {
+        label: "Banks and Financial Institutions",
+        href: "/industry/banks-financial-institutions",
+      },
       { label: "Credit Unions", href: "/industry/credit-unions" },
       { label: "MSBs", href: "/industry/msbs" },
       { label: "Payments", href: "/industry/payments" },
-      { label: "Corporate and Listed Firms", href: "/industry/corporate-listed-firms" },
+      {
+        label: "Corporate and Listed Firms",
+        href: "/industry/corporate-listed-firms",
+      },
       { label: "Fintech", href: "/industry/fintech" },
       // { label: "Crypto", href: "/industry/crypto" },
     ],
@@ -118,68 +121,62 @@ export const NAV_ITEMS = [
   { label: "Contact", href: "/contect-us" },
 ];
 
+// data.ts
 export const CLIENT_LOGOS = [
-  { icon: <Hexagon className="w-8 h-8" />, name: "VANGUARD" },
-  { icon: <Command className="w-8 h-8" />, name: "NEXUS" },
-  { icon: <Activity className="w-8 h-8" />, name: "PULSE" },
-  { icon: <Aperture className="w-8 h-8" />, name: "APERTURE" },
-  { icon: <Box className="w-8 h-8" />, name: "BLOCK" },
-  { icon: <Triangle className="w-8 h-8" />, name: "PRISM" },
-  { icon: <CloudLightning className="w-8 h-8" />, name: "AURA" },
-  { icon: <Network className="w-8 h-8" />, name: "SYNAPSE" },
+  { icon: "Building2", name: "BARCLAYS" },
+  { icon: "Landmark", name: "HSBC" },
+  { icon: "Briefcase", name: "DELOITTE" },
+  { icon: "Scale", name: "PWC" },
+  { icon: "ShieldCheck", name: "FCA REGULATED" },
+  { icon: "Globe", name: "SWIFT" },
+  { icon: "CreditCard", name: "MASTERCARD" },
+  { icon: "Network", name: "VISA" },
 ];
 
 export const ADVISORY_CARDS = [
   {
     title: "Compliance Solution",
-    img: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&q=80&w=600",
+    img: "https://images.unsplash.com/photo-1556740749-887f6717d7e4?auto=format&fit=crop&q=80&w=800",
     desc: "Comprehensive compliance solution tailored for the financial services including Authorisation, Ongoing monitoring, and health checks.",
+    url: "/service/total-compliance",
   },
   {
     title: "Fin-Tech Service",
     desc: "Assist Fintech clients with services, including KYC/AML verification tools, monitoring, and visa/master card membership.",
+    url: "/service/fin-tech-services",
   },
   {
     title: "AML/CFT Training",
     desc: "Extensive AML/CFT training programs that encompass a broad spectrum of AML regulations.",
+    url: "/service/aml-training",
   },
 ];
 
 export const CONSULTING_SERVICES = [
   {
     icon: <Settings />,
-    title: "Total Compliance",
+    title: "Compliance Solutions",
     desc: "Comprehensive compliance tailored for financial services.",
   },
   {
-    icon: <Calculator />,
-    title: "AML Audit",
-    desc: "Comprehensive Audit under FCA guidelines.",
-  },
-  {
-    icon: <BookOpen />,
-    title: "Money Laundering",
-    desc: "Ensure business compliance with regulations.",
-  },
-  {
-    icon: <Users />,
-    title: "AML Training",
-    desc: "Extensive AML/CFT training programs.",
-  },
-  {
     icon: <MonitorSmartphone />,
-    title: "Fin-Tech Services",
+    title: "Fintech Services",
     desc: "KYC/AML tools, and SWIFT/SEPA access.",
   },
   {
+    icon: <Users />,
+    title: "Trainings",
+    desc: "Extensive AML/CFT training programs.",
+  },
+  {
     icon: <Palette />,
-    title: "Branding & Design",
+    title: "Brand Building and Management",
     desc: "Create modern and memorable brand identities that make your business stand out.",
   },
   {
-    icon: <Smartphone />,
-    title: "Mobile App Development",
-    desc: "Build fast, smooth, and user-friendly mobile apps for Android and iOS.",
+    icon: <Landmark />,
+    title: "Licensing and Regulatory Support",
+    desc: "Expert FCA authorisation and consumer credit compliance services.",
   },
 ];
 
@@ -203,11 +200,10 @@ export const FINTECH_POINTS = [
 
 export const FOOTER_LINKS = {
   quickLinks: [
-    {title : "About Us", href: "/about-us"},
-    {title : "Total Compliance", href: "/service/total-compliance"},
-    {title : "AML Training", href: "/training/aml-cft-training"},
-    {title : "Careers", href: "/careers"},
-    {title : "Contact Us", href: "/contact-us"},
+    { title: "About Us", href: "/about-us" },
+    { title: "Total Compliance", href: "/service/total-compliance" },
+    { title: "Careers", href: "/careers" },
+    { title: "Contact Us", href: "/contact-us" },
   ],
   legal: ["Privacy Policy", "Terms & Conditions", "Cookie Policy"],
 };

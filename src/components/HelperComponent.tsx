@@ -29,6 +29,7 @@ import {
   CloudLightning,
 } from "lucide-react";
 import { CLIENT_LOGOS } from "../Static Data/HomeData";
+import { redirect } from "next/navigation";
 
 export const FadeIn = ({
   children,
@@ -195,10 +196,10 @@ export const renderAdvisoryCard = (card: any, idx: number) => {
   if (card.img) {
     // Featured card with image
     return (
-      <div className="group relative bg-white rounded-4xl p-8 md:p-12 min-h-100 border border-slate-200 overflow-hidden transition-all duration-500 hover:-translate-y-3 hover:scale-[1.02] shadow-[0_8px_30px_rgb(0,0,0,0.04),inset_0_-4px_0_0_rgb(226,232,240,1)] hover:shadow-[0_30px_60px_rgb(0,0,0,0.15),inset_0_-6px_0_0_rgb(15,23,42,1)] hover:border-slate-900 flex flex-col justify-end cursor-pointer">
+      <div className="group relative bg-white rounded-4xl p-8 md:p-12 min-h-100 border border-slate-200 overflow-hidden transition-all duration-500 hover:-translate-y-3 hover:scale-[1.02] shadow-[0_8px_30px_rgb(0,0,0,0.04),inset_0_-4px_0_0_rgb(226,232,240,1)] hover:shadow-[0_30px_60px_rgb(0,0,0,0.15),inset_0_-6px_0_0_rgb(15,23,42,1)] hover:border-slate-900 flex flex-col justify-end ">
         <img
           src={card.img}
-          className="absolute inset-0 w-full h-full object-cover opacity-10 group-hover:opacity-20 transition-all duration-700 ease-out"
+          className="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-60 transition-all duration-700 ease-out"
           alt=""
         />
         <div className="absolute inset-0 bg-linear-to-t from-white via-white/90 to-white/50"></div>
@@ -211,7 +212,10 @@ export const renderAdvisoryCard = (card: any, idx: number) => {
             {card.title}
           </h3>
           <p className="text-slate-600 text-lg max-w-md mb-8">{card.desc}</p>
-          <button className="text-slate-900 font-bold flex items-center gap-2 group-hover:gap-4 transition-all">
+          <button
+            onClick={() => redirect(card.url)}
+            className="text-slate-900 font-bold flex items-center gap-2 group-hover:gap-4 transition-all cursor-pointer"
+          >
             Learn more <ArrowRight className="w-5 h-5" />
           </button>
         </div>
@@ -220,7 +224,10 @@ export const renderAdvisoryCard = (card: any, idx: number) => {
   }
   // Regular card
   return (
-    <div className="bg-white rounded-4xl p-8 border border-slate-200 flex flex-col group relative overflow-hidden transition-all duration-500 hover:-translate-y-3 hover:scale-[1.02] shadow-[0_8px_30px_rgb(0,0,0,0.04),inset_0_-4px_0_0_rgb(226,232,240,1)] hover:shadow-[0_30px_60px_rgb(0,0,0,0.15),inset_0_-6px_0_0_rgb(15,23,42,1)] hover:border-slate-900 cursor-pointer">
+    <div
+      onClick={() => redirect(card.url)}
+      className="bg-white rounded-4xl p-8 border border-slate-200 flex flex-col group relative overflow-hidden transition-all duration-500 hover:-translate-y-3 hover:scale-[1.02] shadow-[0_8px_30px_rgb(0,0,0,0.04),inset_0_-4px_0_0_rgb(226,232,240,1)] hover:shadow-[0_30px_60px_rgb(0,0,0,0.15),inset_0_-6px_0_0_rgb(15,23,42,1)] hover:border-slate-900 cursor-pointer"
+    >
       <div className="absolute top-0 right-0 p-6 opacity-0 group-hover:opacity-100 transition-all translate-x-4 group-hover:translate-x-0 duration-500">
         <ArrowUpRight className="text-slate-900 w-6 h-6" />
       </div>

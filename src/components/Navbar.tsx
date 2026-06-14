@@ -7,6 +7,7 @@ import Link from "next/link"; // ✅ FIXED
 import { NAV_ITEMS } from "../Static Data/HomeData";
 import { Button } from "./HelperComponent";
 import Image from "next/image";
+import { redirect } from "next/navigation";
 
 export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -42,6 +43,7 @@ export const Navbar = () => {
         {/* Brand */}
 
         <div
+        onClick={()=>redirect("/")}
           className={`flex items-center gap-2 cursor-pointer group z-50 h-full bg-white p-2 rounded-full transition-colors duration-500 ${
             scrolled ? "bg-transparent" : "bg-white/80"
           }`}
@@ -138,7 +140,7 @@ export const Navbar = () => {
         {/* CTA */}
         <div className="hidden xl:block z-50">
           <Link
-            href={"contect-us"}
+            href={"contact-us"}
             className="group"
             onClick={() => setMobileMenuOpen(false)}
           >
@@ -245,7 +247,7 @@ export const Navbar = () => {
 
               <div className="p-4 mt-2 border-t border-slate-100">
                 <Link
-                  href="/contect-us"
+                  href="/contact-us"
                   className="block text-center"
                   onClick={() => setMobileMenuOpen(false)}
                 >
