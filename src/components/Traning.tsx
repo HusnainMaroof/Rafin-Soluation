@@ -229,7 +229,7 @@ export const CTASection = () => (
               business and streamline your regulatory framework.
             </p>
 
-             <Link href={"/contect-us"}>
+             <Link href={"/contact-us"}>
               {" "}
               <button className="group cursor-pointer inline-flex items-center justify-center gap-3 px-10 py-4 rounded-full text-base font-bold transition-all duration-300 bg-yellow-400 text-slate-900 shadow-[0_0_20px_rgba(250,204,21,0.5)] hover:shadow-[0_0_30px_rgba(250,204,21,0.7)] hover:bg-yellow-300 hover:-translate-y-1">
                 Contact Us{" "}
