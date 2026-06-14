@@ -78,7 +78,7 @@ export const NAV_ITEMS = [
     label: "About Us",
     dropdown: [
       { label: "Who We Are?", href: "/about-us" },
-      { label: "Our Team", href: "/our-team" },
+      // { label: "Our Team", href: "/our-team" },
     ],
   },
   {
@@ -86,7 +86,7 @@ export const NAV_ITEMS = [
     dropdown: [
       
       { label: "Compliance Solutions", href: "/service/total-compliance" },
-      { label: "Consumer Credit", href: "/service/consumer-credit" },
+      // { label: "Consumer Credit", href: "/service/consumer-credit" },
       {
         label: "UK Currency Exchange Law",
         href: "/service/uk-currency-exchange",
@@ -101,14 +101,7 @@ export const NAV_ITEMS = [
       { label: "Mobile App Development", href: "/service/mobile-app-development" },
     ],
   },
-  {
-    label: "Training",
-    dropdown: [
-      { label: "AML/CFT Training", href: "/training/aml-cft-training" },
-      { label: "Consumer Training", href: "/training/consumer-training" },
-      { label: "Approved Person's Training", href: "/training/approved-persons-training" },
-    ],
-  },
+
   {
     label: "Industry",
     dropdown: [
@@ -118,7 +111,7 @@ export const NAV_ITEMS = [
       { label: "Payments", href: "/industry/payments" },
       { label: "Corporate and Listed Firms", href: "/industry/corporate-listed-firms" },
       { label: "Fintech", href: "/industry/fintech" },
-      { label: "Crypto", href: "/industry/crypto" },
+      // { label: "Crypto", href: "/industry/crypto" },
     ],
   },
   { label: "News & Event", href: "/news-events" },

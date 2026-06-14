@@ -89,7 +89,7 @@ export const Navbar = () => {
               {item.href ? (
                 <Link
                   href={item.href}
-                  className={`flex items-center gap-1 text-sm font-medium transition-colors duration-300 ${
+                  className={`flex items-center gap-1 text-sm font-semibold transition-colors duration-300 ${
                     scrolled
                       ? "text-white hover:text-white"
                       : "text-slate-600 hover:text-slate-900"
@@ -102,7 +102,7 @@ export const Navbar = () => {
                 </Link>
               ) : (
                 <span
-                  className={`flex items-center gap-1 text-sm font-medium ${
+                  className={`flex items-center gap-1 text-sm font-semibold ${
                     scrolled ? "text-white" : "text-slate-600"
                   }`}
                 >

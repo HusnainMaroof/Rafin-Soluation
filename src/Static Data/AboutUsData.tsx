@@ -9,6 +9,6 @@ export const expertiseData = [
 export const complianceData = [
   { icon: <ShieldCheck />, title: "Authorisation", desc: "We guide businesses through the rigorous FCA authorization process, increasing approval chances significantly." },
   { icon: <Scale />, title: "Ongoing Monitoring", desc: "Continuous oversight to ensure your business remains compliant amidst evolving regulatory landscapes." },
-  { icon: <PieChart />, title: "FCA Accounting", desc: "Expert support for GABRIEL reporting, capital adequacy, and specialized financial returns." },
+  // { icon: <PieChart />, title: "FCA Accounting", desc: "Expert support for GABRIEL reporting, capital adequacy, and specialized financial returns." },
   { icon: <Users />, title: "Team Training", desc: "Equipping your staff with the latest knowledge in AML, CFT, and general compliance requirements." }
 ];

@@ -86,11 +86,11 @@ export const AboutHero = () => {
 
             <StaggerItem>
               <div className="flex flex-wrap gap-4">
-                <Link href="/our-team">
+                {/* <Link href="/our-team">
                   <Button primary>Meet Our Team</Button>
-                </Link>
+                </Link> */}
                 <Link href="/service/total-compliance">
-                  <Button primary={false}>Our Services</Button>
+                  <Button >Our Services</Button>
                 </Link>
               </div>
             </StaggerItem>
@@ -177,7 +177,7 @@ export const TailoredComplianceSection = () => {
           </FadeIn>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {complianceData.map((item, idx) => (
             <FadeIn scale key={idx} delay={idx * 0.1}>
               <div className="p-8 rounded-4xl bg-white border border-slate-200 transition-all duration-500 ease-out hover:-translate-y-3 hover:scale-[1.02] shadow-[0_8px_30px_rgb(0,0,0,0.04),inset_0_-4px_0_0_rgb(226,232,240,1)] hover:shadow-[0_30px_60px_rgb(0,0,0,0.12),inset_0_-6px_0_0_rgb(15,23,42,1)] hover:border-slate-900 cursor-pointer group h-full flex flex-col">
