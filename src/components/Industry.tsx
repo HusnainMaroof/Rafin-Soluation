@@ -40,7 +40,7 @@ export const IndustryHero = ({ industry }: { industry: IndustryItem }) => {
 
       <div className="container mx-auto px-6 lg:px-16 relative z-20 flex flex-col items-center text-center w-full">
         <StaggerContainer className="flex flex-col items-center">
-          <h1 className="text-5xl md:text-7xl font-extrabold text-slate-900 mb-6 leading-[1.1] tracking-tight flex flex-col md:flex-row flex-wrap justify-center gap-x-4">
+          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-slate-900 mb-6 leading-[1.1] tracking-tight flex flex-col md:flex-row flex-wrap justify-center gap-x-4">
             <StaggerItem>{firstWord}</StaggerItem>
             <StaggerItem>
               <span className="font-tronica block text-transparent bg-clip-text bg-linear-to-r from-yellow-500 to-yellow-400">
@@ -66,7 +66,7 @@ export const IndustryOverview = ({ industry }: { industry: IndustryItem }) => (
     <div className="container mx-auto px-6 lg:px-16 w-full">
       <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
         <FadeIn scale className="lg:w-1/2 w-full relative">
-          <div className="absolute -inset-4 md:-inset-8 bg-blue-100/60 rounded-[3rem] rotate-3 transform z-0 transition-transform duration-700 hover:rotate-6"></div>
+          <div className="absolute -inset-4 md:-inset-8 bg-yellow-100/70 rounded-[3rem] rotate-3 transform z-0 transition-transform duration-700 hover:rotate-6"></div>
 
           <div className="relative w-full aspect-square  mx-auto rounded-4xl overflow-hidden shadow-[0_20px_60px_-15px_rgba(0,0,0,0.15)] group transition-transform duration-700 hover:scale-[1.02]">
             <img
@@ -80,9 +80,12 @@ export const IndustryOverview = ({ industry }: { industry: IndustryItem }) => (
         <div className="lg:w-1/2 w-full">
           <div className="mb-12">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight leading-tight text-slate-900">
-              Sector Overview & Approach
+              {industry.title}
               <span className="text-yellow-500">.</span>
             </h2>
+            <p className="text-lg text-slate-500 leading-relaxed -mt-4">
+              Practical support for your industry.
+            </p>
           </div>
           <FadeIn delay={0.2}>
             <p className="text-slate-600 leading-relaxed mb-10 text-lg">
@@ -145,7 +148,7 @@ export const IndustryBentoSection = ({
         <div className="grid lg:grid-cols-2 gap-8">
           {industry.bentoBoxes.map((box, idx) => (
             <FadeIn scale delay={idx * 0.2} key={idx}>
-              <div className="bg-white border border-slate-200 rounded-[2.5rem] p-10 md:p-12 h-full flex flex-col transition-all duration-500 ease-out hover:-translate-y-3 hover:scale-[1.02] shadow-[0_8px_30px_rgb(0,0,0,0.04),inset_0_-4px_0_0_rgb(226,232,240,1)] hover:shadow-[0_30px_60px_rgb(0,0,0,0.12),inset_0_-6px_0_0_rgb(15,23,42,1)] hover:border-slate-900 group overflow-hidden relative cursor-pointer">
+              <div className="bg-white border border-slate-200 rounded-[2.5rem] p-10 md:p-12 h-full flex flex-col transition-all duration-500 ease-out hover:-translate-y-3 hover:scale-[1.02] shadow-[0_8px_30px_rgb(0,0,0,0.04),inset_0_-4px_0_0_rgb(226,232,240,1)] hover:shadow-[0_30px_60px_rgb(0,0,0,0.12),inset_0_-6px_0_0_rgb(226,232,240,1)] hover:border-yellow-400 group overflow-hidden relative cursor-pointer">
                 <div className="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center border border-slate-200 mb-8 group-hover:bg-slate-900 transition-colors duration-500 shadow-sm relative z-10">
                   {renderIcon(
                     box.icon,
@@ -183,25 +186,133 @@ export const IndustryBentoSection = ({
   );
 };
 
+export const IndustryDetailSections = ({
+  industry,
+}: {
+  industry: IndustryItem;
+}) => {
+  const challenges = industry?.challenges;
+
+  return (
+    <>
+      <section className="py-20 bg-white border-t border-slate-200">
+        <div className="container mx-auto px-6 lg:px-16 w-full">
+          <div className="text-center flex flex-col items-center mb-12">
+            <FadeIn>
+              <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-4 tracking-tight">
+                Industry Overview
+              </h2>
+            </FadeIn>
+            <FadeIn delay={0.1}>
+              <p className="text-slate-600 max-w-3xl leading-relaxed text-lg font-medium">
+                {industry?.overviewText}
+              </p>
+            </FadeIn>
+          </div>
+        </div>
+      </section>
+
+      {challenges && (
+        <>
+          <section className="py-20 bg-slate-50 border-t border-slate-200">
+            <div className="container mx-auto px-6 lg:px-16 w-full">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                <div>
+                  <FadeIn>
+                    <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-6 tracking-tight">
+                      Common Operational Challenges
+                    </h3>
+                  </FadeIn>
+                  <ul className="flex flex-col gap-3 list-none m-0 p-0">
+                    {challenges.operational.map((c) => (
+                      <li
+                        key={c}
+                        className="flex items-start gap-3 rounded-xl border border-slate-200 bg-white p-4 shadow-sm"
+                      >
+                        <Check className="w-5 h-5 text-yellow-500 shrink-0 mt-0.5" />
+                        <span className="text-slate-700 font-medium leading-relaxed">
+                          {c}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <FadeIn>
+                    <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-6 tracking-tight">
+                      Compliance Challenges
+                    </h3>
+                  </FadeIn>
+                  <ul className="flex flex-col gap-3 list-none m-0 p-0">
+                    {challenges.compliance.map((c) => (
+                      <li
+                        key={c}
+                        className="flex items-start gap-3 rounded-xl border border-slate-200 bg-white p-4 shadow-sm"
+                      >
+                        <Check className="w-5 h-5 text-yellow-500 shrink-0 mt-0.5" />
+                        <span className="text-slate-700 font-medium leading-relaxed">
+                          {c}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section className="py-20 bg-white border-t border-slate-200">
+            <div className="container mx-auto px-6 lg:px-16 w-full">
+              <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-8 lg:gap-16 items-start">
+                <div className="lg:sticky lg:top-28">
+                  <FadeIn>
+                    <h3 className="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight leading-tight mb-3">
+                      How Rafin Can Support
+                    </h3>
+                  </FadeIn>
+                </div>
+                <ul className="flex flex-col gap-3 list-none m-0 p-0">
+                  {(industry?.howWeSupport ?? []).map((s) => (
+                    <li
+                      key={s}
+                      className="flex items-start gap-3 rounded-xl border border-slate-200 bg-slate-50 p-4 shadow-sm"
+                    >
+                      <span className="mt-1 flex items-center justify-center w-5 h-5 rounded-full bg-yellow-400 text-slate-900 shrink-0">
+                        <Check className="w-3.5 h-3.5 stroke-3" />
+                      </span>
+                      <span className="text-slate-700 font-medium leading-relaxed">
+                        {s}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </section>
+        </>
+      )}
+    </>
+  );
+};
+
 export const CTASection = () => (
   <section className="py-24 bg-slate-50 relative border-t border-slate-200">
     <div className="container mx-auto px-6 lg:px-16 relative z-10">
       <FadeIn scale>
-        <div className="bg-[#0f1423] rounded-[3rem] p-12 md:p-24 flex flex-col items-center text-center relative overflow-hidden shadow-2xl border border-slate-800">
+        <div className="bg-slate-50 rounded-[3rem] p-8 sm:p-12 md:p-16 lg:p-24 flex flex-col items-center text-center relative overflow-hidden shadow-2xl border border-slate-200">
           <div className="absolute -top-32 -left-32 w-[60%] h-[60%] bg-yellow-400/10 blur-[120px] rounded-full pointer-events-none"></div>
-          <div className="absolute -bottom-32 -right-32 w-[60%] h-[60%] bg-blue-500/10 blur-[120px] rounded-full pointer-events-none"></div>
 
           <div className="relative z-10 w-full flex flex-col items-center">
             <div className="mb-8">
-              <PhoneCall className="w-12 h-12 text-yellow-400 stroke-2 animate-pulse" />
+              <PhoneCall className="w-12 h-12 text-yellow-500 stroke-2 animate-pulse" />
             </div>
 
-            <h2 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white mb-6 tracking-tight leading-[1.1]">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 mb-6 tracking-tight leading-[1.1]">
               Ready to secure your <br />
-              <span className="text-yellow-400 font-tronica">compliance</span> future?
+              <span className="text-yellow-600 font-tronica">compliance</span> future?
             </h2>
 
-            <p className="text-slate-300 text-lg md:text-xl mb-12 max-w-2xl mx-auto font-medium leading-relaxed">
+            <p className="text-slate-600 text-lg md:text-xl mb-12 max-w-2xl mx-auto font-medium leading-relaxed">
               Get in touch with our expert consultants today to secure your
               business and streamline your regulatory framework.
             </p>
@@ -231,6 +342,7 @@ export const Industry = ({ industry }: { industry?: IndustryItem }) => {
     <>
       <div className="min-h-screen font-sans bg-white selection:bg-yellow-400 selection:text-slate-900 overflow-x-hidden">
         <IndustryHero industry={displayIndustry} />
+        <IndustryDetailSections industry={displayIndustry} />
         <IndustryOverview industry={displayIndustry} />
         <IndustryBentoSection industry={displayIndustry} />
         <CTASection />

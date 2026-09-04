@@ -40,7 +40,7 @@ const TrainingHero = () => {
               </div>
             </StaggerItem>
 
-            <h1 className="text-5xl md:text-6xl lg:text-[5.5rem] font-extrabold text-slate-900 mb-6 leading-[1.05] tracking-tight">
+            <h1 className="text-4xl sm:text-5xl lg:text-[5.5rem] font-extrabold text-slate-900 mb-6 leading-[1.05] tracking-tight">
               <StaggerItem>Professional</StaggerItem>
               <StaggerItem>
                 <span className="font-tronica text-transparent bg-clip-text bg-linear-to-r from-yellow-500 to-yellow-600 drop-shadow-sm">
@@ -110,17 +110,17 @@ const TrainingModule = ({
 
   // Theme colors based on the data object
   const blobColor =
-    data.theme === "blue"
-      ? "bg-sky-100"
+    data.theme === "yellow"
+      ? "bg-yellow-100"
       : data.theme === "slate"
         ? "bg-slate-200"
-        : "bg-cyan-100";
+        : "bg-amber-100";
   const checkBg =
-    data.theme === "blue"
-      ? "bg-[#0ea5e9]"
+    data.theme === "yellow"
+      ? "bg-yellow-400"
       : data.theme === "slate"
-        ? "bg-[#334155]"
-        : "bg-[#06b6d4]";
+        ? "bg-slate-700"
+        : "bg-amber-400";
 
   return (
     <section
@@ -166,9 +166,9 @@ const TrainingModule = ({
               <ul className="space-y-4">
                 {data.list.map((item, iIdx) => (
                   <li key={iIdx} className="flex items-start gap-4 group/item">
-                    {/* Solid Circular Checkmark as requested */}
+                    {/* Solid Circular Checkmark */}
                     <div
-                      className={`mt-1 w-6 h-6 rounded-full bg-amber-500 text-white flex items-center justify-center shrink-0 shadow-md group-hover/item:scale-110 transition-transform duration-300`}
+                      className={`mt-1 w-6 h-6 rounded-full ${checkBg} text-white flex items-center justify-center shrink-0 shadow-md group-hover/item:scale-110 transition-transform duration-300`}
                     >
                       <Check className="w-3.5 h-3.5 stroke-3" />
                     </div>
@@ -191,21 +191,20 @@ export const CTASection = () => (
   <section className="py-24 bg-slate-50 relative border-t border-slate-200">
     <div className="container mx-auto px-6 lg:px-16 relative z-10">
       <FadeIn scale>
-        <div className="bg-[#0f1423] rounded-[3rem] p-12 md:p-24 flex flex-col items-center text-center relative overflow-hidden shadow-2xl border border-slate-800">
+        <div className="bg-slate-50 rounded-[3rem] p-8 sm:p-12 md:p-16 lg:p-24 flex flex-col items-center text-center relative overflow-hidden shadow-2xl border border-slate-200">
           <div className="absolute -top-32 -left-32 w-[60%] h-[60%] bg-yellow-400/10 blur-[120px] rounded-full pointer-events-none"></div>
-          <div className="absolute -bottom-32 -right-32 w-[60%] h-[60%] bg-blue-500/10 blur-[120px] rounded-full pointer-events-none"></div>
 
           <div className="relative z-10 w-full flex flex-col items-center">
             <div className="mb-8">
-              <PhoneCall className="w-12 h-12 text-yellow-400 stroke-2 animate-pulse" />
+              <PhoneCall className="w-12 h-12 text-yellow-500 stroke-2 animate-pulse" />
             </div>
 
-            <h2 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white mb-6 tracking-tight leading-[1.1]">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 mb-6 tracking-tight leading-[1.1]">
               Ready to secure your <br />
-              <span className="text-yellow-400 font-tronica">compliance</span> future?
+              <span className="text-yellow-600 font-tronica">compliance</span> future?
             </h2>
 
-            <p className="text-slate-300 text-lg md:text-xl mb-12 max-w-2xl mx-auto font-medium leading-relaxed">
+            <p className="text-slate-600 text-lg md:text-xl mb-12 max-w-2xl mx-auto font-medium leading-relaxed">
               Get in touch with our expert consultants today to secure your
               business and streamline your regulatory framework.
             </p>

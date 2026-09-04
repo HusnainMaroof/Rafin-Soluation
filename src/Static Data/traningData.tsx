@@ -14,7 +14,7 @@ export const trainingPages = [
       "AML & CFT Regulations.",
       "Scenario based real life training examples.",
     ],
-    theme: "ywellow",
+    theme: "yellow",
   },
   {
     slug: "consumer-training",

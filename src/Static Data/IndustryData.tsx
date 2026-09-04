@@ -1,29 +1,13 @@
 import React from "react";
 import {
-  Search,
   ShieldCheck,
-  Settings,
-  Network,
-  Landmark,
   RefreshCw,
-  FileText,
-  Coins,
-  Scale,
-  Clock,
-  Briefcase,
-  Building2,
-  Users,
-  CreditCard,
+  Wallet,
+  Landmark,
   Cpu,
-  Bitcoin,
-  TrendingUp,
-  AlertTriangle,
-  BarChart3,
-  Lock,
-  Globe,
-  ClipboardCheck,
+  Smartphone,
   Zap,
-  Eye,
+  Repeat,
 } from "lucide-react";
 
 export interface IndustryItem {
@@ -40,247 +24,420 @@ export interface IndustryItem {
     desc: string;
     points: string[];
   }[];
+  challenges?: {
+    operational: string[];
+    compliance: string[];
+  };
+  howWeSupport?: string[];
 }
+
 export const INDUSTRIES_DATA: IndustryItem[] = [
   {
-    slug: "banks-financial-institutions",
-    icon: <Building2 />,
-    title: "Banks Institutions",
-    desc: "Unified AML compliance for high-volume banking environments.",
+    slug: "remittance-companies",
+    icon: <Repeat />,
+    title: "Remittance Companies",
+    desc: "Practical compliance, operations, and governance support for money transfer businesses.",
     overviewText:
-      "Navigating anti-money laundering (AML) compliance for banks and financial institutions presents distinctive challenges — significant daily transaction volume across traditional and digital channels, an ever-evolving regulatory framework, and the intricate task of managing false positives. Rafin Solutions offers an integrated compliance platform that implements real-time data collection and automation, adopting a risk-based approach across all facets of compliance.",
-    image:
-      "https://images.unsplash.com/photo-1541354329998-f4d9a9f9297f?auto=format&fit=crop&q=80&w=800",
-    features: [
-      {
-        title: "Unified AML Platform",
-        desc: "An integrated compliance platform merging all functions — from the first red flag to the final regulatory report — into a single cohesive system.",
-      },
-      {
-        title: "AML Search & Transaction Monitoring",
-        desc: "Advanced real-time transaction monitoring to detect and address suspicious activity promptly.",
-      },
-    ],
-    bentoBoxes: [
-      {
-        icon: <BarChart3 />,
-        title: "Risk Intelligence",
-        desc: "Comprehensive AML Policy Risk Assessment tailored to your institution's unique needs with daily client risk score updates.",
-        points: [
-          "AML policy risk assessment",
-          "External AML audit preparation",
-        ],
-      },
-      {
-        icon: <ClipboardCheck />,
-        title: "Regulatory Reporting",
-        desc: "Streamlined preparation, validation, and submission of regulatory reports, removing manual overhead and reducing error risk.",
-        points: ["Automated submission", "Sanctions/PEP integration"],
-      },
-    ],
-  },
-  {
-    slug: "credit-unions",
-    icon: <Users />,
-    title: "Credit Unions",
-    desc: "Scalable AML solutions built for credit union operations.",
-    overviewText:
-      "In the fast-paced world of finance, staying on top means adapting to new technologies, currencies, and regulatory rules. Our adaptive AML Credit Union Solution is a smart, cost-effective platform that grows with your needs, making compliance straightforward.",
-    image:
-      "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=800",
-    features: [
-      {
-        title: "Instant Identity Verification",
-        desc: "Seamlessly validate member identities in real-time by integrating with your onboarding system.",
-      },
-      {
-        title: "Tailored Risk Scoring",
-        desc: "Create a customised risk scoring model aligned with your risk tolerance, with real-time updates.",
-      },
-    ],
-    bentoBoxes: [
-      {
-        icon: <Zap />,
-        title: "Automation & Efficiency",
-        desc: "Time-consuming AML tasks are automated, freeing your team to focus on investigations rather than manual processes.",
-        points: ["Minimise false positives", "Swift resolutions"],
-      },
-      {
-        icon: <ShieldCheck />,
-        title: "Sanctions & Monitoring",
-        desc: "Real-time checks against sanction lists and internal high-risk databases during onboarding and ongoing monitoring.",
-        points: ["Risk-free onboarding", "Multi-jurisdiction reporting"],
-      },
-    ],
-  },
-  {
-    slug: "msbs",
-    icon: <RefreshCw />,
-    title: "Money Services",
-    desc: "AML programs purpose-built for Money Services Businesses.",
-    overviewText:
-      "While MSBs share AML obligations with other financial institutions, the compliance game is fundamentally different. You provide swift access to money orders, currency exchange, and transfer services — often to transitory customers. You need a solution built for your pace.",
+      "Rafin Solutions supports remittance companies with practical compliance, operations, payment workflow, customer support, documentation, and outsourced back-office services.",
     image:
       "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&q=80&w=800",
     features: [
       {
-        title: "Real-Time Name Screening",
-        desc: "Real-time screening against sanctions watchlists and PEP databases during all interactions.",
+        title: "Payment Workflows",
+        desc: "Clear workflows for transfers, payouts, exceptions, and reconciliation.",
       },
       {
-        title: "Customisable Risk Scoring",
-        desc: "Build a risk scoring model aligned with your organization's risk tolerance, updated dynamically.",
+        title: "Corridor Support",
+        desc: "Compliance and operations support across your payment corridors.",
       },
     ],
     bentoBoxes: [
       {
-        icon: <Eye />,
-        title: "Suspicious Detection",
-        desc: "Detect suspicious transactions — including structuring and flipping — across single or multi-site operations in real time.",
-        points: ["Real-time oversight", "Daily threshold updates"],
+        icon: <RefreshCw />,
+        title: "Transfer Operations",
+        desc: "Practical operations for sending, receiving, and reconciling cross-border transfers.",
+        points: ["Exception handling", "Payout coordination"],
       },
       {
-        icon: <FileText />,
-        title: "Swift Reporting",
-        desc: "Regulatory reporting simplified — accurate, and seamlessly submitted across multiple jurisdictions without manual overhead.",
-        points: ["Multi-jurisdiction submission", "Continuous expert support"],
+        icon: <ShieldCheck />,
+        title: "AML Controls",
+        desc: "AML/CFT controls designed around transitory customers and corridor risk.",
+        points: ["Screening and monitoring", "Audit evidence"],
       },
+    ],
+    challenges: {
+      operational: [
+        "Multiple corridors with different payment routes and partner requirements.",
+        "Manual onboarding and monitoring processes that create backlogs.",
+        "Reconciliation breaks and customer escalations.",
+      ],
+      compliance: [
+        "AML/CFT controls, KYC/KYB, and sanctions screening.",
+        "Transaction monitoring across corridors.",
+        "Audit evidence and periodic reviews.",
+      ],
+    },
+    howWeSupport: [
+      "We review gaps and build practical transfer operations and documentation.",
+      "We support screening, monitoring, and exception-handling workflows.",
+      "We provide ongoing back-office and compliance capacity.",
     ],
   },
   {
-    slug: "payments",
-    icon: <CreditCard />,
-    title: "Payment Processors",
-    desc: "Compliance infrastructure for payment processors and institutions.",
+    slug: "money-service-businesses",
+    icon: <Landmark />,
+    title: "Money Service Businesses",
+    desc: "Practical compliance, operations, and governance support for MSB teams.",
     overviewText:
-      "Payment processors operate under intensifying scrutiny. We help you navigate this pressure with a robust AML solution designed specifically for payment firms, from licence application to audit readiness.",
+      "Rafin Solutions supports Money Service Businesses with practical compliance, operations, payment workflow, customer support, documentation, and outsourced back-office services.",
+    image:
+      "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&q=80&w=800",
+    features: [
+      {
+        title: "Swift Services",
+        desc: "Support for money orders, currency exchange, and transfer services.",
+      },
+      {
+        title: "Multi-Site Controls",
+        desc: "Consistent AML and operations controls across single or multi-site operations.",
+      },
+    ],
+    bentoBoxes: [
+      {
+        icon: <ShieldCheck />,
+        title: "AML Programmes",
+        desc: "AML/CFT programmes built for MSB pace and transitory customers.",
+        points: ["Risk-based onboarding", "Real-time screening"],
+      },
+      {
+        icon: <RefreshCw />,
+        title: "Reporting",
+        desc: "Swift, accurate regulatory reporting without manual overhead.",
+        points: ["Multi-jurisdiction submission", "Expert support"],
+      },
+    ],
+    challenges: {
+      operational: [
+        "Swift access to money orders, currency exchange, and transfer services for transitory customers.",
+        "Multiple sites and channels with inconsistent onboarding and monitoring.",
+        "Manual processes that create backlogs and reporting gaps.",
+      ],
+      compliance: [
+        "AML/CFT controls, KYC/KYB, sanctions screening, and PEP checks.",
+        "Transaction monitoring across single or multi-site operations.",
+        "Suspicious activity reporting and audit evidence.",
+      ],
+    },
+    howWeSupport: [
+      "We build risk-based AML frameworks tailored to MSB business models and pace.",
+      "We support real-time screening, transaction monitoring operations, and regulatory reporting.",
+      "We provide practical documentation and ongoing compliance capacity.",
+    ],
+  },
+  {
+    slug: "electronic-money-institutions",
+    icon: <Wallet />,
+    title: "Electronic Money Institutions",
+    desc: "Practical compliance, operations, and governance support for EMI teams.",
+    overviewText:
+      "Rafin Solutions supports Electronic Money Institutions with practical compliance, operations, payment workflow, safeguarding, customer support, and documentation.",
+    image:
+      "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=800",
+    features: [
+      {
+        title: "E-Money Controls",
+        desc: "Practical controls over issuance, redemption, and safeguarding.",
+      },
+      {
+        title: "Ongoing Compliance",
+        desc: "Monitoring, reporting, and audit support for EMI obligations.",
+      },
+    ],
+    bentoBoxes: [
+      {
+        icon: <Wallet />,
+        title: "Safeguarding",
+        desc: "Clear safeguarding and record-keeping processes that evidence segregation.",
+        points: ["Reconciliation", "Audit-ready records"],
+      },
+      {
+        icon: <ShieldCheck />,
+        title: "AML/CFT",
+        desc: "AML/CFT and onboarding controls suited to digital account issuance.",
+        points: ["KYC/KYB design", "Monitoring operations"],
+      },
+    ],
+    challenges: {
+      operational: [
+        "Digital account issuance at volume with manual onboarding.",
+        "Safeguarding, reconciliation, and record-keeping pressure.",
+        "Partner and programme-manager coordination.",
+      ],
+      compliance: [
+        "E-money and safeguarding obligations.",
+        "AML/CFT controls, KYC/KYB, and sanctions screening.",
+        "Monitoring, reporting, and audit evidence.",
+      ],
+    },
+    howWeSupport: [
+      "We build onboarding, monitoring, and safeguarding documentation and controls.",
+      "We support payment operations and exception handling.",
+      "We provide ongoing compliance and reporting capacity.",
+    ],
+  },
+  {
+    slug: "payment-institutions",
+    icon: <Landmark />,
+    title: "Payment Institutions",
+    desc: "Practical compliance, operations, and governance support for payment firms.",
+    overviewText:
+      "Rafin Solutions supports Payment Institutions with practical compliance, operations, payment workflow, customer support, documentation, and outsourced back-office services.",
     image:
       "https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&q=80&w=800",
     features: [
       {
         title: "Licence Support",
-        desc: "End-to-end management of your Payment Institution licence application, streamlining submission to authorities.",
+        desc: "Authorisation and ongoing compliance support for payment institutions.",
       },
       {
-        title: "Transaction Software",
-        desc: "Sophisticated software enabling real-time transaction oversight to identify suspicious activities promptly.",
+        title: "Payment Flows",
+        desc: "Practical operations for payment flows, exceptions, and reconciliation.",
       },
     ],
     bentoBoxes: [
-      {
-        icon: <TrendingUp />,
-        title: "Ongoing Compliance",
-        desc: "Continuous support as regulations evolve, including automated reporting and comprehensive risk assessments.",
-        points: ["Automated preparation", "Specific exposure frameworks"],
-      },
       {
         icon: <ShieldCheck />,
-        title: "External AML Audit",
-        desc: "Prepare for external AML audits with confidence. We support you in demonstrating compliance to banking partners.",
-        points: ["Pre-audit documentation", "Compliance evidence"],
+        title: "Authorisation",
+        desc: "End-to-end support for payment institution authorisation and scope.",
+        points: ["Business plan drafting", "Regulatory engagement"],
       },
+      {
+        icon: <RefreshCw />,
+        title: "Operations",
+        desc: "Payment operations, monitoring, and reporting that evidence control.",
+        points: ["Exception handling", "Reporting cadence"],
+      },
+    ],
+    challenges: {
+      operational: [
+        "Authorisation and ongoing regulatory obligations.",
+        "High-volume payment flows with exception and reconciliation pressure.",
+        "Banking partner and scheme coordination.",
+      ],
+      compliance: [
+        "AML/CFT controls, KYC/KYB, and sanctions screening.",
+        "Transaction monitoring and safeguarding.",
+        "Audit evidence and periodic reviews.",
+      ],
+    },
+    howWeSupport: [
+      "We support authorisation, compliance frameworks, and payment operations.",
+      "We build monitoring and exception-handling workflows.",
+      "We prepare firms for audits and banking partner due diligence.",
     ],
   },
   {
-    slug: "corporate-listed-firms",
-    icon: <Briefcase />,
-    title: "Corporate Firms",
-    desc: "Governance and AML compliance for corporate and public companies.",
-    overviewText:
-      "For corporate and listed firms, regulatory compliance is the cornerstone of trust. We offer a comprehensive approach: from fortifying governance to providing a robust AML Safety Manual.",
-    image:
-      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=800",
-    features: [
-      {
-        title: "Corporate Governance",
-        desc: "Elevate your governance standards, ensuring transparency, accountability, and ethical practices for growth.",
-      },
-      {
-        title: "AML Safety Manual",
-        desc: "A tailored Anti-Money Laundering Safety Manual crafted to the unique needs of corporate firms.",
-      },
-    ],
-    bentoBoxes: [
-      {
-        icon: <Scale />,
-        title: "Risk Assessment",
-        desc: "Comprehensive risk assessments tailored to your specific industry nuances, fortifying your management framework.",
-        points: ["Industry-specific identification", "Regulatory updates"],
-      },
-      {
-        icon: <ClipboardCheck />,
-        title: "Regulatory Reporting",
-        desc: "Streamlined preparation and electronic submission of reports, removing manual effort and reducing risk.",
-        points: ["Validated preparation", "Electronic submission"],
-      },
-    ],
-  },
-  {
-    slug: "fintech",
+    slug: "fintech-startups",
     icon: <Cpu />,
-    title: "FinTech Startups",
-    desc: "Scalable AML compliance for digital-first financial businesses.",
+    title: "Fintech Startups",
+    desc: "Practical compliance, operations, and governance support for scaling fintech teams.",
     overviewText:
-      "The increasing scrutiny from regulators necessitates a robust AML framework tailored specifically for FinTech organisations. Our cloud-based solution scales with your transaction volume.",
+      "Rafin Solutions supports Fintech Startups with practical compliance, operations, documentation, and outsourced back-office services as they scale.",
     image:
       "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800",
     features: [
       {
-        title: "Real-Time Due Diligence",
-        desc: "Integrate with your onboarding system for efficient and automated due diligence fulfilment.",
+        title: "Pre-Launch Controls",
+        desc: "Compliance, governance, and operating documentation before scaling.",
       },
       {
-        title: "360° Client View",
-        desc: "A comprehensive view of client information, facilitating easier investigation and faster resolution.",
-      },
-    ],
-    bentoBoxes: [
-      {
-        icon: <Network />,
-        title: "Scalable Cloud",
-        desc: "Our solution scales with volume, offering cost-effective deployment with the compliance insights your team needs.",
-        points: ["FinTech growth design", "Adverse media screening"],
-      },
-      {
-        icon: <Lock />,
-        title: "Automated Reporting",
-        desc: "Streamline validation and submission of CTRs, SARs, and STRs across jurisdictions with advanced case management.",
-        points: ["Multi-jurisdiction submission", "Team collaboration tools"],
-      },
-    ],
-  },
-  {
-    slug: "crypto",
-    icon: <Bitcoin />,
-    title: "Crypto Assets",
-    desc: "Compliance and risk management for digital asset businesses.",
-    overviewText:
-      "Businesses operating in digital assets require solutions that seamlessly integrate traditional compliance rigour with the dynamic requirements of the crypto market.",
-    image:
-      "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&q=80&w=800",
-    features: [
-      {
-        title: "Regulatory Assurance",
-        desc: "Ensure adherence to standards in the crypto space with our integrated compliance solutions.",
-      },
-      {
-        title: "Strategic Risk Mgmt",
-        desc: "Navigate volatile cryptocurrency markets with protocols that minimise transaction-associated exposure.",
+        title: "Scalable Ops",
+        desc: "Back-office and support capacity that grows with your business.",
       },
     ],
     bentoBoxes: [
       {
-        icon: <Globe />,
-        title: "Digital Infrastructure",
-        desc: "Secure wallet solutions, efficient processing, and technology integration aligned with the evolving crypto landscape.",
-        points: ["Secure user-friendly wallets", "Data-driven analytics"],
+        icon: <Cpu />,
+        title: "Launch Readiness",
+        desc: "Practical controls and documentation to launch and raise with confidence.",
+        points: ["Policy packs", "Risk frameworks"],
       },
       {
         icon: <ShieldCheck />,
-        title: "AML for Crypto",
-        desc: "Instant verification, sanctions screening, and real-time monitoring — the complete AML stack for digital assets.",
-        points: ["Real-time PEP screening", "Tailored profile updates"],
+        title: "Ongoing Support",
+        desc: "Outsourced operations and compliance capacity as an extension of your team.",
+        points: ["Support queues", "Reporting cadence"],
       },
+    ],
+    challenges: {
+      operational: [
+        "Limited in-house compliance and operations headcount.",
+        "Rapid product iteration outpacing controls and documentation.",
+        "Investor and partner due diligence demands.",
+      ],
+      compliance: [
+        "Building a robust AML/CFT framework for a digital-first model.",
+        "KYC/KYB, sanctions screening, and adverse media monitoring.",
+        "Preparing for authorisation and audit.",
+      ],
+    },
+    howWeSupport: [
+      "We design compliance frameworks and documentation that scale with growth.",
+      "We support onboarding, monitoring, and reporting operations end-to-end.",
+      "We provide practical compliance and back-office capacity.",
+    ],
+  },
+  {
+    slug: "digital-wallets",
+    icon: <Smartphone />,
+    title: "Digital Wallets",
+    desc: "Practical compliance, operations, and governance support for wallet providers.",
+    overviewText:
+      "Rafin Solutions supports Digital Wallet providers with practical compliance, operations, customer support, documentation, and outsourced back-office services.",
+    image:
+      "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&q=80&w=800",
+    features: [
+      {
+        title: "Wallet Operations",
+        desc: "Practical operations for issuance, transactions, and customer support.",
+      },
+      {
+        title: "Digital Onboarding",
+        desc: "KYC/KYB and onboarding controls for high-volume digital account opening.",
+      },
+    ],
+    bentoBoxes: [
+      {
+        icon: <Smartphone />,
+        title: "Digital Onboarding",
+        desc: "Identity verification and risk controls for fast, safe account opening.",
+        points: ["Verification rules", "Risk scoring"],
+      },
+      {
+        icon: <ShieldCheck />,
+        title: "Monitoring",
+        desc: "Transaction monitoring and customer support operations that scale.",
+        points: ["Alert handling", "Support SOPs"],
+      },
+    ],
+    challenges: {
+      operational: [
+        "High-volume digital account opening and transaction flows.",
+        "Customer support and complaint handling at scale.",
+        "Partner and card scheme coordination.",
+      ],
+      compliance: [
+        "AML/CFT controls, KYC/KYB, and sanctions screening.",
+        "Transaction monitoring and suspicious activity reporting.",
+        "Financial promotions and fair treatment of customers.",
+      ],
+    },
+    howWeSupport: [
+      "We build onboarding, monitoring, and support operations for wallet providers.",
+      "We support customer support SOPs and complaint handling.",
+      "We provide ongoing compliance and back-office capacity.",
+    ],
+  },
+  {
+    slug: "payment-service-providers",
+    icon: <Zap />,
+    title: "Payment Service Providers",
+    desc: "Practical compliance, operations, and governance support for PSPs.",
+    overviewText:
+      "Rafin Solutions supports Payment Service Providers with practical compliance, operations, merchant onboarding, customer support, documentation, and outsourced back-office services.",
+    image:
+      "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=800",
+    features: [
+      {
+        title: "Merchant Onboarding",
+        desc: "KYC/KYB and risk controls for merchant and partner onboarding.",
+      },
+      {
+        title: "Scheme Operations",
+        desc: "Practical operations across card schemes and acquiring flows.",
+      },
+    ],
+    bentoBoxes: [
+      {
+        icon: <Zap />,
+        title: "Merchant Controls",
+        desc: "Risk-based merchant onboarding and monitoring controls.",
+        points: ["KYB checks", "Ongoing monitoring"],
+      },
+      {
+        icon: <ShieldCheck />,
+        title: "Acquiring Ops",
+        desc: "Operations support for settlement, exceptions, and scheme compliance.",
+        points: ["Exception handling", "Reporting"],
+      },
+    ],
+    challenges: {
+      operational: [
+        "High-volume merchant and transaction flows.",
+        "Settlement, exception, and chargeback pressure.",
+        "Scheme and banking partner coordination.",
+      ],
+      compliance: [
+        "Merchant KYC/KYB and risk monitoring.",
+        "AML/CFT controls and sanctions screening.",
+        "Scheme rules and audit evidence.",
+      ],
+    },
+    howWeSupport: [
+      "We build merchant onboarding and monitoring operations for PSPs.",
+      "We support settlement, exception, and scheme compliance workflows.",
+      "We provide ongoing compliance and back-office capacity.",
+    ],
+  },
+  {
+    slug: "foreign-exchange-businesses",
+    icon: <RefreshCw />,
+    title: "Foreign Exchange Businesses",
+    desc: "Practical compliance, operations, and governance support for FX firms.",
+    overviewText:
+      "Rafin Solutions supports Foreign Exchange businesses with practical compliance, operations, trade workflows, customer support, documentation, and outsourced back-office services.",
+    image:
+      "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&q=80&w=800",
+    features: [
+      {
+        title: "Trade Workflows",
+        desc: "Practical operations for quotes, execution, settlement, and exceptions.",
+      },
+      {
+        title: "FX Controls",
+        desc: "AML/CFT and counterparty controls suited to FX activity.",
+      },
+    ],
+    bentoBoxes: [
+      {
+        icon: <RefreshCw />,
+        title: "Trade Operations",
+        desc: "Workflows for quotes, execution, and settlement with clear records.",
+        points: ["Exception handling", "Reconciliation"],
+      },
+      {
+        icon: <ShieldCheck />,
+        title: "AML Controls",
+        desc: "AML/CFT and screening controls for clients and counterparties.",
+        points: ["Client onboarding", "Monitoring"],
+      },
+    ],
+    challenges: {
+      operational: [
+        "Fast-moving trade and settlement cycles.",
+        "Client and counterparty onboarding pressure.",
+        "Reconciliation and exception handling.",
+      ],
+      compliance: [
+        "AML/CFT controls, KYC/KYB, and sanctions screening.",
+        "Transaction monitoring and reporting.",
+        "Audit evidence and policy maintenance.",
+      ],
+    },
+    howWeSupport: [
+      "We build trade operations and compliance controls for FX businesses.",
+      "We support client onboarding, monitoring, and reporting.",
+      "We provide ongoing compliance and back-office capacity.",
     ],
   },
 ];

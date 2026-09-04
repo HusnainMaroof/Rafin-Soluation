@@ -30,7 +30,7 @@ export const AboutHero = () => {
       <div className="container mx-auto px-6 lg:px-16 relative z-20 flex flex-col lg:flex-row items-center gap-16 w-full grow pt-10">
         <div className="lg:w-1/2 flex flex-col justify-center">
           <StaggerContainer>
-            <h1 className="text-5xl md:text-7xl font-extrabold text-slate-900 mb-6 leading-[1.1] tracking-tight">
+            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-slate-900 mb-6 leading-[1.1] tracking-tight">
               <StaggerItem>Welcome to</StaggerItem>
               <StaggerItem>
                 <span className="font-tronica text-transparent bg-clip-text bg-linear-to-r from-yellow-500 to-yellow-400">
@@ -52,7 +52,7 @@ export const AboutHero = () => {
                 {/* <Link href="/our-team">
                   <Button primary>Meet Our Team</Button>
                 </Link> */}
-                <Link href="/service/total-compliance">
+                <Link href="/service/aml-cft-compliance">
                   <Button >Our Services</Button>
                 </Link>
               </div>
@@ -91,29 +91,28 @@ export const AboutHero = () => {
 export const ApprovalStatsBanner = () => (
   <section className="relative z-30 container mx-auto px-6 lg:px-16 py-12 lg:py-0 lg:-mt-16">
     <FadeIn scale>
-      <div className="bg-slate-900 rounded-[3rem] p-8 md:p-12 shadow-[0_20px_40px_rgba(0,0,0,0.2),inset_0_-8px_0_0_rgba(15,23,42,1)] flex flex-col md:flex-row items-center justify-between gap-8 group hover:-translate-y-2 transition-transform duration-500 cursor-pointer overflow-hidden relative">
-        <div className="absolute right-0 top-0 w-64 h-64 bg-yellow-500/10 blur-[80px] rounded-full pointer-events-none transition-all duration-700 group-hover:scale-150"></div>
-        <div className="absolute left-0 bottom-0 w-64 h-64 bg-blue-500/10 blur-[80px] rounded-full pointer-events-none transition-all duration-700 group-hover:scale-150"></div>
+      <div className="bg-white rounded-[3rem] p-8 md:p-12 shadow-[0_20px_40px_rgba(0,0,0,0.08),inset_0_-8px_0_0_rgb(226,232,240,1)] flex flex-col md:flex-row items-center justify-between gap-8 group hover:-translate-y-2 transition-transform duration-500 cursor-pointer overflow-hidden relative border border-slate-200">
+        <div className="absolute right-0 top-0 w-64 h-64 bg-yellow-400/10 blur-[80px] rounded-full pointer-events-none transition-all duration-700 group-hover:scale-150"></div>
 
         <div className="flex items-center gap-6 relative z-10">
-          <div className="w-16 h-16 rounded-2xl bg-slate-800 border border-slate-700 flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:bg-yellow-400 group-hover:text-slate-900 transition-all duration-500 shadow-[0_0_20px_rgba(0,0,0,0.5)]">
+          <div className="w-16 h-16 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:bg-yellow-400 group-hover:text-slate-900 transition-all duration-500 shadow-[0_0_20px_rgba(0,0,0,0.1)]">
             <ShieldCheck className="w-8 h-8 text-yellow-400 group-hover:text-slate-900" />
           </div>
           <div>
-            <h3 className="text-4xl md:text-5xl font-tronica font-bold text-yellow-400 tracking-tighter mb-2">
+            <h3 className="text-4xl md:text-5xl font-tronica font-bold text-yellow-600 tracking-tighter mb-2">
               150+
             </h3>
-            <p className="text-white font-medium text-lg">
+            <p className="text-slate-900 font-medium text-lg">
               Financial Services firms approved
             </p>
           </div>
         </div>
 
-        <div className="w-full md:w-px h-px md:h-24 bg-slate-700 relative z-10"></div>
+        <div className="w-full md:w-px h-px md:h-24 bg-slate-200 relative z-10"></div>
 
-        <div className="text-slate-300 max-w-sm text-center md:text-left text-sm md:text-base leading-relaxed relative z-10">
+        <div className="text-slate-600 max-w-sm text-center md:text-left text-sm md:text-base leading-relaxed relative z-10">
           Successfully authorized by the{" "}
-          <strong className="text-white">FCA</strong> and European regulatory
+          <strong className="text-slate-900">FCA</strong> and European regulatory
           bodies.
         </div>
       </div>

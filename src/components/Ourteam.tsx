@@ -23,7 +23,7 @@ export const TeamHero = () => {
 
       <div className="container mx-auto px-6 lg:px-16 relative z-20 flex flex-col items-center text-center w-full">
         <StaggerContainer>
-          <h1 className="text-5xl md:text-7xl font-extrabold text-slate-900 mb-6 leading-[1.1] tracking-tight flex flex-col md:flex-row flex-wrap justify-center gap-x-4">
+          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-slate-900 mb-6 leading-[1.1] tracking-tight flex flex-col md:flex-row flex-wrap justify-center gap-x-4">
             <StaggerItem>The Minds Behind</StaggerItem>
             <StaggerItem>
               <span className="font-tronica  text-transparent bg-clip-text bg-linear-to-r from-yellow-500 to-yellow-400">

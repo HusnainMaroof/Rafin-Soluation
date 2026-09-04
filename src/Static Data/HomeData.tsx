@@ -27,49 +27,45 @@ export const globalStyles = `
 export const NAV_ITEMS = [
   { label: "Home", href: "/" },
   {
-    label: "About Us",
-    dropdown: [
-      { label: "Who We Are?", href: "/about-us" },
-      // { label: "Our Team", href: "/our-team" },
-    ],
-  },
-  {
     label: "Services",
+    href: "/service/aml-cft-compliance",
     dropdown: [
-      { label: "Compliance Solutions", href: "/service/total-compliance" },
-      { label: "Fintech Services", href: "/service/fin-tech-services" },
-      { label: "Trainings", href: "/service/aml-training" },
+      { label: "AML/CFT Compliance", href: "/service/aml-cft-compliance" },
+      { label: "KYC and KYB", href: "/service/kyc-and-kyb" },
+      { label: "Transaction Monitoring", href: "/service/transaction-monitoring" },
+      { label: "Payment Operations", href: "/service/payment-operations" },
       {
-        label: "Brand Building and Management",
-        href: "/service/branding-design",
+        label: "Transaction Processing",
+        href: "/service/transaction-processing",
       },
+      { label: "Customer Support", href: "/service/customer-support" },
       {
-        label: "Licensing and Regulatory Support",
-        href: "/service/consumer-credit",
+        label: "Technology and IT Governance",
+        href: "/service/technology-and-it-governance",
       },
+      { label: "Meta Ads for Fintech", href: "/service/meta-ads-for-fintech" },
     ],
   },
+  { label: "Industries", href: "/industry/money-service-businesses" },
+  { label: "About Us", href: "/about-us" },
+  { label: "Contact Us", href: "/contact-us" },
+];
 
+export const FINCORE_SERVICES = [
+  { label: "AML/CFT Compliance", href: "/service/aml-cft-compliance" },
+  { label: "KYC and KYB", href: "/service/kyc-and-kyb" },
+  { label: "Transaction Monitoring", href: "/service/transaction-monitoring" },
+  { label: "Payment Operations", href: "/service/payment-operations" },
   {
-    label: "Industry",
-    dropdown: [
-      {
-        label: "Banks and Financial Institutions",
-        href: "/industry/banks-financial-institutions",
-      },
-      { label: "Credit Unions", href: "/industry/credit-unions" },
-      { label: "MSBs", href: "/industry/msbs" },
-      { label: "Payments", href: "/industry/payments" },
-      {
-        label: "Corporate and Listed Firms",
-        href: "/industry/corporate-listed-firms",
-      },
-      { label: "Fintech", href: "/industry/fintech" },
-      // { label: "Crypto", href: "/industry/crypto" },
-    ],
+    label: "Transaction Processing",
+    href: "/service/transaction-processing",
   },
-  { label: "News & Event", href: "/news-events" },
-  { label: "Contact", href: "/contact-us" },
+  { label: "Customer Support", href: "/service/customer-support" },
+  {
+    label: "Technology and IT Governance",
+    href: "/service/technology-and-it-governance",
+  },
+  { label: "Meta Ads for Fintech", href: "/service/meta-ads-for-fintech" },
 ];
 
 // data.ts
@@ -78,17 +74,17 @@ export const ADVISORY_CARDS = [
     title: "Compliance Solution",
     img: "https://images.unsplash.com/photo-1556740749-887f6717d7e4?auto=format&fit=crop&q=80&w=800",
     desc: "Comprehensive compliance solution tailored for the financial services including Authorisation, Ongoing monitoring, and health checks.",
-    url: "/service/total-compliance",
+    url: "/service/aml-cft-compliance",
   },
   {
     title: "Fin-Tech Service",
     desc: "Assist Fintech clients with services, including KYC/AML verification tools, monitoring, and visa/master card membership.",
-    url: "/service/fin-tech-services",
+    url: "/service/kyc-and-kyb",
   },
   {
     title: "AML/CFT Training",
     desc: "Extensive AML/CFT training programs that encompass a broad spectrum of AML regulations.",
-    url: "/service/aml-training",
+    url: "/service/aml-cft-compliance",
   },
 ];
 
@@ -141,8 +137,8 @@ export const FINTECH_POINTS = [
 export const FOOTER_LINKS = {
   quickLinks: [
     { title: "About Us", href: "/about-us" },
-    { title: "Total Compliance", href: "/service/total-compliance" },
-    { title: "Careers", href: "/careers" },
+    { title: "AML/CFT Compliance", href: "/service/aml-cft-compliance" },
+    { title: "KYC and KYB", href: "/service/kyc-and-kyb" },
     { title: "Contact Us", href: "/contact-us" },
   ],
   legal: ["Privacy Policy", "Terms & Conditions", "Cookie Policy"],

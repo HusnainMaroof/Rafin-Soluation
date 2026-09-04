@@ -102,7 +102,7 @@ export const ContactHero = () => {
 
       <div className="container mx-auto px-6 lg:px-16 relative z-20 flex flex-col items-center text-center w-full">
         <StaggerContainer>
-          <h1 className="text-5xl md:text-7xl font-extrabold text-slate-900 mb-6 leading-[1.1] tracking-tight flex flex-col md:flex-row flex-wrap justify-center gap-x-4">
+          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-slate-900 mb-6 leading-[1.1] tracking-tight flex flex-col md:flex-row flex-wrap justify-center gap-x-4">
             <StaggerItem>Get in</StaggerItem>
             <StaggerItem>
               <span className="font-tronica  text-transparent bg-clip-text bg-linear-to-r from-yellow-500 to-yellow-400">
@@ -215,21 +215,19 @@ export const ContactFormSection = () => {
             </FadeIn>
           </div>
 
-          {/* RIGHT: TACTILE INFO CARD (Dark Match) */}
+          {/* RIGHT: TACTILE INFO CARD (Light Match) */}
           <div className="lg:w-[42%] w-full h-full">
             <FadeIn delay={0.3} scale direction="none" className="h-full">
-              <div className="bg-[#0f1423] rounded-3xl p-10 md:p-14 relative overflow-hidden shadow-2xl border border-slate-800 group h-full flex gap-10 flex-col justify-between">
-                {/* Glow match to image_017761.png */}
+              <div className="bg-white rounded-3xl p-10 md:p-14 relative overflow-hidden shadow-2xl border border-slate-200 group h-full flex gap-10 flex-col justify-between">
                 <div className="absolute -top-32 -left-32 w-80 h-84 bg-yellow-400/10 blur-[100px] rounded-full pointer-events-none group-hover:bg-yellow-400/20 transition-all duration-700"></div>
-                <div className="absolute -bottom-32 -right-32 w-80 h-84 bg-blue-500/10 blur-[100px] rounded-full pointer-events-none group-hover:bg-blue-500/20 transition-all duration-700"></div>
 
                 <div className="relative z-10 flex flex-col gap-8">
                   {/* Headline */}
                   <div>
-                    <h3 className="text-3xl font-bold text-white mb-4">
+                    <h3 className="text-3xl font-bold text-slate-900 mb-4">
                       Global Offices
                     </h3>
-                    <p className="text-slate-400 font-medium">
+                    <p className="text-slate-600 font-medium">
                       Rafin Solutions is operational across international
                       borders.
                     </p>
@@ -237,14 +235,14 @@ export const ContactFormSection = () => {
 
                   {/* Office */}
                   <div className="flex items-start gap-6 group/item">
-                    <div className="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center border border-white/10 text-yellow-400 group-hover/item:bg-yellow-400 group-hover/item:text-slate-900 transition-all duration-300 shadow-lg">
+                    <div className="w-14 h-14 bg-slate-50 rounded-2xl flex items-center justify-center border border-slate-200 text-yellow-500 group-hover/item:bg-yellow-400 group-hover/item:text-slate-900 transition-all duration-300 shadow-sm">
                       <MapPin className="w-7 h-7" />
                     </div>
                     <div className="flex-1">
-                      <h4 className="text-white font-bold text-xl mb-3 tracking-tight">
+                      <h4 className="text-slate-900 font-bold text-xl mb-3 tracking-tight">
                         Pakistan Office
                       </h4>
-                      <p className="text-slate-400 text-base leading-relaxed font-medium">
+                      <p className="text-slate-600 text-base leading-relaxed font-medium">
                         Opposite to Bega Sanitary Store, <br /> Gulyana Road
                         Kharian, District, Gujrat, Pakistan
                       </p>
@@ -253,16 +251,16 @@ export const ContactFormSection = () => {
 
                   {/* Email */}
                   <div className="flex items-center gap-6 group/item">
-                    <div className="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center border border-white/10 text-yellow-400 group-hover/item:bg-yellow-400 group-hover/item:text-slate-900 transition-all duration-300 shadow-lg">
+                    <div className="w-14 h-14 bg-slate-50 rounded-2xl flex items-center justify-center border border-slate-200 text-yellow-500 group-hover/item:bg-yellow-400 group-hover/item:text-slate-900 transition-all duration-300 shadow-sm">
                       <Mail className="w-7 h-7" />
                     </div>
                     <div>
-                      <h4 className="text-white font-bold text-xl mb-1 tracking-tight">
+                      <h4 className="text-slate-900 font-bold text-xl mb-1 tracking-tight">
                         Direct Email
                       </h4>
                       <a
                         href="mailto:rafinsolutions@outlook.com"
-                        className="text-slate-400 text-base hover:text-yellow-400 transition-colors font-medium"
+                        className="text-slate-600 text-base hover:text-yellow-600 transition-colors font-medium"
                       >
                         rafinsolutions@outlook.com{" "}
                       </a>
@@ -271,28 +269,28 @@ export const ContactFormSection = () => {
 
                   {/* Phone */}
                   <div className="flex items-start gap-6 group/item">
-                    <div className="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center border border-white/10 text-yellow-400 group-hover/item:bg-yellow-400 group-hover/item:text-slate-900 transition-all duration-300 shadow-lg">
+                    <div className="w-14 h-14 bg-slate-50 rounded-2xl flex items-center justify-center border border-slate-200 text-yellow-500 group-hover/item:bg-yellow-400 group-hover/item:text-slate-900 transition-all duration-300 shadow-sm">
                       <Phone className="w-7 h-7" />
                     </div>
                     <div>
-                      <h4 className="text-white font-bold text-xl mb-3 tracking-tight">
+                      <h4 className="text-slate-900 font-bold text-xl mb-3 tracking-tight">
                         Phone Numbers
                       </h4>
                       <div className="flex flex-col gap-3">
                         {/* <a
                           href="tel:+442075157080"
-                          className="flex items-center gap-3 text-slate-300 hover:text-yellow-400 transition-colors font-medium group/line"
+                          className="flex items-center gap-3 text-slate-600 hover:text-yellow-600 transition-colors font-medium group/line"
                         >
-                          <span className="text-[10px] bg-white/10 px-2 py-0.5 rounded text-white group-hover/line:bg-yellow-400 group-hover/line:text-black transition-colors ">
+                          <span className="text-[10px] bg-slate-100 px-2 py-0.5 rounded text-slate-900 group-hover/line:bg-yellow-400 group-hover/line:text-black transition-colors ">
                             UK
                           </span>
                           +44 (0) 207 515 7080
                         </a> */}
                         <a
                           href="tel:+923045896617"
-                          className="flex items-center gap-3 text-slate-300 hover:text-yellow-400 transition-colors font-medium group/line"
+                          className="flex items-center gap-3 text-slate-600 hover:text-yellow-600 transition-colors font-medium group/line"
                         >
-                          <span className="text-[10px] bg-white/10 px-2 py-0.5 rounded text-white group-hover/line:bg-yellow-400 group-hover/line:text-black transition-colors ">
+                          <span className="text-[10px] bg-slate-100 px-2 py-0.5 rounded text-slate-900 group-hover/line:bg-yellow-400 group-hover/line:text-black transition-colors ">
                             PK
                           </span>
                           +92 (0) 04 5896617
@@ -303,7 +301,7 @@ export const ContactFormSection = () => {
                 </div>
 
                 {/* Card Status Indicator */}
-                <div className="mt-16 pt-8 border-t border-white/5 flex items-center gap-3">
+                <div className="mt-16 pt-8 border-t border-slate-200 flex items-center gap-3">
                   <div className="w-2 h-2 rounded-full bg-yellow-400 animate-pulse"></div>
                   <p className=" text-slate-500 text-[10px] uppercase tracking-[0.3em] font-bold">
                     Strategic Partnership Support active

@@ -141,16 +141,16 @@ const PROCESS_STEPS = [
 ];
 
 export const EngagementSection = () => (
-  <section className="bg-slate-900 py-24 text-white">
+  <section className="bg-slate-50 py-24 border-t border-slate-200">
     <div className="container mx-auto px-6 lg:px-16 w-full">
       <div className="max-w-2xl mb-14">
-        <div className="text-xs font-bold uppercase tracking-widest text-yellow-400 mb-3">
+        <div className="text-xs font-bold uppercase tracking-widest text-yellow-600 mb-3">
           Flagship Engagement
         </div>
-        <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">
+        <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6 text-slate-900">
           Your Dedicated Advisory Team
         </h2>
-        <p className="text-lg text-slate-300 leading-relaxed">
+        <p className="text-lg text-slate-600 leading-relaxed">
           One team, one point of accountability — covering compliance,
           licensing, fintech services, training, and ongoing governance.
         </p>
@@ -159,13 +159,13 @@ export const EngagementSection = () => (
         {PROCESS_STEPS.map((step) => (
           <div
             key={step.num}
-            className="rounded-xl border border-white/10 bg-white/5 p-8 hover:border-yellow-400/50 transition-colors"
+            className="rounded-xl border border-slate-200 bg-white p-8 hover:border-yellow-400 transition-colors shadow-sm"
           >
-            <div className="text-4xl font-extrabold text-yellow-400 font-heading mb-6">
+            <div className="text-4xl font-extrabold text-yellow-500 font-heading mb-6">
               {step.num}
             </div>
-            <h3 className="text-xl font-bold mb-3">{step.title}</h3>
-            <p className="text-slate-400 text-sm leading-relaxed">
+            <h3 className="text-xl font-bold text-slate-900 mb-3">{step.title}</h3>
+            <p className="text-slate-600 text-sm leading-relaxed">
               {step.desc}
             </p>
           </div>
