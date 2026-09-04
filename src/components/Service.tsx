@@ -1,14 +1,12 @@
-"use client";
+﻿"use client";
 
-import React, { useState } from "react";
-import { Button, FadeIn, StaggerContainer, StaggerItem } from "./HelperComponent";
+import React from "react";
+import { FadeIn, StaggerContainer, StaggerItem } from "./HelperComponent";
 import { ArrowRight, Check, PhoneCall, ShieldCheck, Target } from "lucide-react";
-import { globalStyles } from "../Static Data/HomeData";
-import { Footer } from "./Footer";
 import Link from "next/link";
 import { DynamicIcon } from "./DynamicIcon";
 
-// ─── Types ────────────────────────────────────────────────────────────────────
+// â”€â”€â”€ Types â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 interface Feature {
   title: string;
@@ -33,15 +31,9 @@ interface Service {
   bentoBoxes: BentoBox[];
 }
 
-// ─── Hero ─────────────────────────────────────────────────────────────────────
+// â”€â”€â”€ Hero â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 export const ServicesHero = ({ service }: { service: Service }) => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
-    const { left, top } = e.currentTarget.getBoundingClientRect();
-    setMousePosition({ x: e.clientX - left, y: e.clientY - top });
-  };
 
   const [firstWord, ...rest] = service.title.split(" ");
   const remainingWords = rest.join(" ") || "Service";
@@ -49,31 +41,14 @@ export const ServicesHero = ({ service }: { service: Service }) => {
   return (
     <section
       className="relative pt-32 pb-16 md:pt-48 md:pb-24 overflow-hidden z-0 bg-slate-50"
-      onMouseMove={handleMouseMove}
     >
-      <div
-        className="pointer-events-none absolute inset-0 z-10 transition-opacity duration-300"
-        style={{
-          background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(0,0,0,0.06), transparent 40%)`,
-        }}
-      />
       <div className="absolute inset-0 z-0 pointer-events-none">
         <div className="absolute top-0 right-[10%] w-[30vw] h-[30vw] bg-yellow-400/20 rounded-full blur-[120px] mix-blend-multiply" />
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAwIDEwIEwgNDAgMTAgTSAxMCAwIEwgMTAgNDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgwLCAwLCAwLCAwLjA0KSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+PC9zdmc+')] z-10" />
+        <div className="absolute inset-0 z-10 bg-[radial-gradient(circle,rgba(15,23,42,0.10)_1px,transparent_1px)] [background-size:22px_22px]" />
       </div>
 
       <div className="container mx-auto px-6 lg:px-16 relative z-20 flex flex-col items-center text-center w-full">
         <StaggerContainer>
-          <StaggerItem>
-            <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white border border-slate-200 text-slate-600 shadow-[0_2px_10px_rgba(0,0,0,0.05),inset_0_-2px_0_0_rgb(226,232,240,1)] text-xs md:text-sm font-medium mb-8">
-              <span className="text-slate-900 w-4 h-4 flex items-center justify-center">
-                {/* ✅ DynamicIcon replaces React.cloneElement */}
-                <DynamicIcon name={service.icon} className="w-4 h-4" />
-              </span>
-              Our Services / {service.title}
-            </div>
-          </StaggerItem>
-
           <h1 className="text-5xl md:text-7xl font-extrabold text-slate-900 mb-6 leading-[1.1] tracking-tight flex flex-col md:flex-row flex-wrap justify-center gap-x-4">
             <StaggerItem>{firstWord}</StaggerItem>
             <StaggerItem>
@@ -94,7 +69,7 @@ export const ServicesHero = ({ service }: { service: Service }) => {
   );
 };
 
-// ─── Overview ─────────────────────────────────────────────────────────────────
+// â”€â”€â”€ Overview â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 export const ServiceOverview = ({ service }: { service: Service }) => (
   <section className="bg-white py-24 border-t border-slate-200">
@@ -154,7 +129,7 @@ export const ServiceOverview = ({ service }: { service: Service }) => (
   </section>
 );
 
-// ─── Bento Features ───────────────────────────────────────────────────────────
+// â”€â”€â”€ Bento Features â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 export const BentoFeaturesSection = ({ service }: { service: Service }) => (
   <section className="py-24 bg-slate-50 border-t border-slate-200">
@@ -165,7 +140,7 @@ export const BentoFeaturesSection = ({ service }: { service: Service }) => (
             <div className="bg-white border border-slate-200 rounded-[2.5rem] p-10 md:p-12 h-full flex flex-col transition-all duration-500 ease-out hover:-translate-y-3 hover:scale-[1.02] shadow-[0_8px_30px_rgb(0,0,0,0.04),inset_0_-4px_0_0_rgb(226,232,240,1)] hover:shadow-[0_30px_60px_rgb(0,0,0,0.12),inset_0_-6px_0_0_rgb(15,23,42,1)] hover:border-slate-900 group overflow-hidden relative cursor-pointer">
               
               <div className="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center border border-slate-200 mb-8 group-hover:bg-slate-900 transition-colors duration-500 shadow-sm">
-                {/* ✅ DynamicIcon replaces React.cloneElement */}
+                {/* âœ… DynamicIcon replaces React.cloneElement */}
                 <DynamicIcon
                   name={box.icon}
                   className="w-8 h-8 text-yellow-500 group-hover:scale-110 transition-transform duration-500 group-hover:text-yellow-400"
@@ -199,7 +174,7 @@ export const BentoFeaturesSection = ({ service }: { service: Service }) => (
   </section>
 );
 
-// ─── CTA ──────────────────────────────────────────────────────────────────────
+// â”€â”€â”€ CTA â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 export const CTASection = () => (
   <section className="py-24 bg-white relative">
@@ -238,11 +213,10 @@ export const CTASection = () => (
   </section>
 );
 
-// ─── Page Root ────────────────────────────────────────────────────────────────
+// â”€â”€â”€ Page Root â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 export const Services = ({ service }: { service: Service }) => (
   <>
-    <style>{globalStyles}</style>
     <div className="min-h-screen font-sans selection:bg-yellow-400 selection:text-slate-900 overflow-x-hidden bg-white">
       <ServicesHero service={service} />
       <ServiceOverview service={service} />

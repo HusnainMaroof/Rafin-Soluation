@@ -1,46 +1,27 @@
-"use client";
+﻿"use client";
 
-import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import React, { useEffect } from "react";
 import {
   ArrowRight,
   Check,
   BookOpen,
   GraduationCap,
-  ShieldCheck,
   PhoneCall,
-  Award,
-  Target,
-  Users,
-  BookMarked,
-  Play,
 } from "lucide-react";
 import { FadeIn, StaggerContainer, StaggerItem } from "./HelperComponent";
 import { trainingPages } from "../Static Data/traningData";
-import { globalStyles } from "../Static Data/HomeData";
 import Link from "next/link";
 
 const TrainingHero = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
-    const { currentTarget, clientX, clientY } = e;
-    const { left, top } = currentTarget.getBoundingClientRect();
-    setMousePosition({ x: clientX - left, y: clientY - top });
-  };
 
   return (
     <section
-      className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden z-0 bg-white flex flex-col items-center justify-center min-h-[70vh]"
-      onMouseMove={handleMouseMove}
+      className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden z-0 bg-slate-50 flex flex-col items-center justify-center min-h-[70vh]"
     >
-      <div className="absolute inset-0 bg-dot-pattern mask-[linear-gradient(to_bottom,white,transparent)] z-0"></div>
-      <div
-        className="pointer-events-none absolute inset-0 z-10 transition-opacity duration-300"
-        style={{
-          background: `radial-gradient(800px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(250,204,21,0.08), transparent 40%)`,
-        }}
-      />
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <div className="absolute top-[20%] left-[10%] w-[40vw] h-[40vw] bg-yellow-400/20 rounded-full blur-[120px] mix-blend-multiply" />
+        <div className="absolute inset-0 z-10 bg-[radial-gradient(circle,rgba(15,23,42,0.10)_1px,transparent_1px)] [background-size:22px_22px]" />
+      </div>
 
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0 opacity-5 pointer-events-none">
         <GraduationCap className="w-[60vw] h-[60vw] text-slate-900" />
@@ -246,7 +227,13 @@ export const CTASection = () => (
 // ==========================================
 // 5. MAIN PAGE COMPONENT (Single Page Scroll)
 // ==========================================
-export default function TrainingPage({ slug, params }: any) {
+export default function TrainingPage({
+  slug,
+  params,
+}: {
+  slug?: { slug: string };
+  params?: { slug?: string };
+}) {
   // Safe, Robust DOM scroll handler
   useEffect(() => {
     const scrollToTarget = () => {
@@ -306,7 +293,6 @@ export default function TrainingPage({ slug, params }: any) {
 
   return (
     <>
-      <style>{globalStyles}</style>
       <div className="min-h-screen font-sans selection:bg-yellow-400 selection:text-slate-900 overflow-x-hidden bg-white">
         <TrainingHero />
         {/* <GeneralOverview /> */}

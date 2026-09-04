@@ -1,10 +1,12 @@
 import { NewsEventsSection } from "@/src/components/NewsEventsSection";
+import { CTABandSection } from "@/src/components/FinCoreSections";
 import React from "react";
 
 const page = () => {
   return (
     <div>
-      <NewsEventsSection params={""} />
+      <NewsEventsSection />
+      <CTABandSection />
     </div>
   );
 };

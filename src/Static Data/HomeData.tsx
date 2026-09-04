@@ -1,72 +1,23 @@
 "use client";
 import {
-  ArrowRight,
   Settings,
-  CreditCard,
-  Calculator,
-  BookOpen,
-  Users,
   MonitorSmartphone,
-  Check,
-  MapPin,
-  Phone,
-  Mail,
-  ChevronRight,
-  ArrowUp,
-  Menu,
-  ShieldCheck,
-  ArrowUpRight,
-  Network,
-  Hexagon,
-  Command,
-  Activity,
-  Aperture,
-  Box,
-  Triangle,
-  CloudLightning,
+  Users,
   Palette,
-  Smartphone,
   Landmark,
 } from "lucide-react";
 
 export const globalStyles = `
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap');
-  
   :root {
     --brand-yellow: #facc15;
-    --brand-white: #ffffff;
     --brand-light: #f8fafc;
     --brand-dark: #0f172a;
   }
-  
+
   body {
-    background-color: var(--brand-light);
+    background-color: #ffffff;
     color: var(--brand-dark);
     font-family: 'Inter', sans-serif;
-  }
-  
-  .font-tech {
-    font-family: 'Tronica Mono', 'Space Mono', monospace;
-  }
-
-  ::-webkit-scrollbar { width: 10px; }
-  ::-webkit-scrollbar-track { background: #f1f5f9; }
-  ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 5px; }
-  ::-webkit-scrollbar-thumb:hover { background: #facc15; }
-
-  @keyframes marquee {
-    0% { transform: translateX(0%); }
-    100% { transform: translateX(-50%); }
-  }
-  
-  .animate-marquee {
-    display: flex;
-    width: max-content;
-    animation: marquee 40s linear infinite;
-  }
-  
-  .animate-marquee:hover {
-    animation-play-state: paused;
   }
 `;
 
@@ -122,17 +73,6 @@ export const NAV_ITEMS = [
 ];
 
 // data.ts
-export const CLIENT_LOGOS = [
-  { icon: "Building2", name: "BARCLAYS" },
-  { icon: "Landmark", name: "HSBC" },
-  { icon: "Briefcase", name: "DELOITTE" },
-  { icon: "Scale", name: "PWC" },
-  { icon: "ShieldCheck", name: "FCA REGULATED" },
-  { icon: "Globe", name: "SWIFT" },
-  { icon: "CreditCard", name: "MASTERCARD" },
-  { icon: "Network", name: "VISA" },
-];
-
 export const ADVISORY_CARDS = [
   {
     title: "Compliance Solution",

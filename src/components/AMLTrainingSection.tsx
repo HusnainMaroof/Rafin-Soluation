@@ -9,12 +9,11 @@ export const AMLTrainingSection = () => (
   <section className="bg-slate-50 py-24 border-t border-slate-200 overflow-hidden">
     <div className="container mx-auto px-6 lg:px-16 w-full">
       <div className="flex flex-col lg:flex-row items-center gap-16">
-        <FadeIn scale className="lg:w-1/2 w-full relative">
-           <div className="absolute -inset-4 md:-inset-8 bg-blue-100/60 rounded-[3rem] rotate-3 transform z-0 transition-transform duration-700 hover:rotate-6"></div>
-           <div className="relative z-10 rounded-4xl overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.1)] group">
-             <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=800" alt="AML Training" className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
-           </div>
-        </FadeIn>
+        <div className="lg:w-1/2 w-full">
+          <div className="rounded-2xl overflow-hidden border border-slate-200">
+            <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=800" alt="AML Training" className="w-full h-auto object-cover" />
+          </div>
+        </div>
         <div className="lg:w-1/2 w-full z-10">
           <FadeIn>
             <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight text-slate-900">AML/CFT Training</h2>

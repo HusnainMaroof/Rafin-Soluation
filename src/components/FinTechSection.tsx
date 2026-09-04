@@ -13,7 +13,7 @@ export const FinTechServicesSection = () => (
           <FadeIn>
             <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight text-slate-900">Our Fin-Tech Services</h2>
             <p className="text-slate-600 mb-10 leading-relaxed text-lg">Assist Fintech clients with comprehensive services, including KYC/AML verification tools & automated transaction monitoring (partnering ship with Comply Advantage & SUMSUB), assist the FINTECH companies to successfully secure the visa/master card membership, and full access to SWIFT & SEPA payment schemes.</p>
-            <h3 className="text-2xl font-bold mb-6 text-slate-800">What's included in Fin-Tech Services?</h3>
+            <h3 className="text-2xl font-bold mb-6 text-slate-800">What&apos;s included in Fin-Tech Services?</h3>
             <ul className="space-y-4">
               {[
                 "Assist in SWIFT and SEPA payment schemes.",
@@ -31,12 +31,11 @@ export const FinTechServicesSection = () => (
             </ul>
           </FadeIn>
         </div>
-        <FadeIn scale className="lg:w-1/2 w-full relative">
-           <div className="absolute -inset-4 md:-inset-8 bg-blue-50 rounded-[3rem] -rotate-3 transform z-0 transition-transform duration-700 hover:-rotate-6"></div>
-           <div className="relative z-10 rounded-4xl overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.1)] group">
-             <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800" alt="Fin-Tech Services" className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
-           </div>
-        </FadeIn>
+        <div className="lg:w-1/2 w-full">
+          <div className="rounded-2xl overflow-hidden border border-slate-200">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800" alt="Fin-Tech Services" className="w-full h-auto object-cover" />
+          </div>
+        </div>
       </div>
     </div>
   </section>
