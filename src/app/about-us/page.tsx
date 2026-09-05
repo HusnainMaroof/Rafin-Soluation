@@ -1,21 +1,45 @@
-﻿import {
+﻿import type { Metadata } from "next";
+import {
   AboutHero,
   ApprovalStatsBanner,
   TailoredComplianceSection,
 } from "@/src/components/AboutUs";
-import { CTABandSection } from "@/src/components/FinCoreSections";
+import { CTABandSection } from "@/src/components/SharedCTASection";
 import {
   renderExpertiseCard,
   StickySplitSection,
 } from "@/src/components/HelperComponent";
 import { expertiseData } from "@/src/Static Data/AboutUsData";
 import React from "react";
+import { buildMetadata, orgJsonLd, webpageJsonLd } from "@/src/lib/seo";
+import { JsonLd } from "@/src/lib/JsonLd";
+
+export const metadata: Metadata = buildMetadata({
+  title: "About Us",
+  description:
+    "Rafin Solutions is a specialist compliance consultancy and outsourced-operations firm built on hands-on experience inside regulated payment, remittance, EMI, MSB, and fintech environments.",
+  path: "/about-us",
+  keywords: [
+    "about Rafin Solutions",
+    "compliance consultancy firm",
+    "AML/CFT consultants",
+    "regulated financial services experts",
+  ],
+});
 
 const page = () => {
   return (
     <>
+      <JsonLd data={orgJsonLd()} />
+      <JsonLd
+        data={webpageJsonLd({
+          title: "About Us | Rafin Solutions",
+          description:
+            "Rafin Solutions is a specialist compliance consultancy and outsourced-operations firm built on hands-on experience inside regulated payment, remittance, EMI, MSB, and fintech environments.",
+          path: "/about-us",
+        })}
+      />
       <div className="min-h-screen font-sans selection:bg-yellow-400 selection:text-slate-900 overflow-x-hidden bg-white">
-
         <AboutHero />
         <ApprovalStatsBanner />
 
@@ -28,7 +52,6 @@ const page = () => {
 
         <TailoredComplianceSection />
         <CTABandSection />
-
       </div>
     </>
   );

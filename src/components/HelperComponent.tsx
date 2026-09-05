@@ -1,37 +1,209 @@
 ﻿"use client";
 
-import React from "react";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
-import { redirect } from "next/navigation";
+import React, {
+  useEffect,
+  useRef,
+  useState,
+  useSyncExternalStore,
+} from "react";
+import Image from "next/image";
 
-// Plain wrapper â€” kept for API compatibility. No animations.
+/* ============================================================
+   Motion utilities — lightweight, dependency-free scroll
+   reveals and hero staggers. All animations respect
+   prefers-reduced-motion.
+   ============================================================ */
+
+function subscribeReducedMotion(callback: () => void) {
+  if (typeof window === "undefined" || !window.matchMedia) return () => {};
+  const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+  mq.addEventListener?.("change", callback);
+  return () => mq.removeEventListener?.("change", callback);
+}
+
+function usePrefersReducedMotion() {
+  return useSyncExternalStore(
+    subscribeReducedMotion,
+    () =>
+      typeof window !== "undefined" &&
+      !!window.matchMedia?.("(prefers-reduced-motion: reduce)").matches,
+    () => false,
+  );
+}
+
+function useInView<T extends HTMLElement>(threshold = 0.12) {
+  const ref = useRef<T | null>(null);
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    const node = ref.current;
+    if (!node) return;
+
+    if (typeof IntersectionObserver === "undefined") {
+      const t = window.setTimeout(() => setInView(true), 0);
+      return () => window.clearTimeout(t);
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setInView(true);
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold, rootMargin: "0px 0px -40px 0px" },
+    );
+
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [threshold]);
+
+  return [ref, inView] as const;
+}
+
+/* ============================================================
+   FadeIn — fades/slides content in when scrolled into view.
+   Elements already in the viewport on mount reveal immediately.
+   ============================================================ */
 export const FadeIn = ({
   children,
   className = "",
+  delay = 0,
+  direction = "up",
+  scale = false,
 }: {
   children: React.ReactNode;
   delay?: number;
   className?: string;
   direction?: "up" | "left" | "right" | "none";
   scale?: boolean;
-}) => <div className={className}>{children}</div>;
+}) => {
+  const [ref, inView] = useInView<HTMLDivElement>();
+  const reduced = usePrefersReducedMotion();
+
+  const hiddenTransform =
+    direction === "left"
+      ? "translateX(-24px)"
+      : direction === "right"
+        ? "translateX(24px)"
+        : direction === "none"
+          ? "none"
+          : "translateY(24px)";
+
+  const style: React.CSSProperties = reduced
+    ? {}
+    : {
+        opacity: inView ? 1 : 0,
+        transform: inView
+          ? "none"
+          : scale
+            ? `${hiddenTransform} scale(0.96)`
+            : hiddenTransform,
+        transition: `opacity 650ms ease-out ${delay}ms, transform 650ms cubic-bezier(0.22,1,0.36,1) ${delay}ms`,
+        willChange: "opacity, transform",
+      };
+
+  return (
+    <div ref={ref} className={className} style={style}>
+      {children}
+    </div>
+  );
+};
+
+/* ============================================================
+   StaggerContainer / StaggerItem — sequenced entrance used in
+   page heroes. Items animate in shortly after mount.
+   ============================================================ */
+const StaggerContext = React.createContext(0);
 
 export const StaggerContainer = ({
   children,
   className = "",
+  delay = 0,
 }: {
   children: React.ReactNode;
   className?: string;
-}) => <div className={className}>{children}</div>;
+  delay?: number;
+}) => {
+  const [started, setStarted] = useState(false);
+  const reduced = usePrefersReducedMotion();
+
+  useEffect(() => {
+    if (reduced) return; // reduced users see content immediately (derived below)
+    const t = window.setTimeout(() => setStarted(true), 60 + delay);
+    return () => window.clearTimeout(t);
+  }, [reduced, delay]);
+
+  // When reduced motion is on, treat the container as always "started"
+  // so children never sit in their hidden state.
+  const effectiveStarted = reduced || started;
+
+  return (
+    <StaggerContext.Provider value={effectiveStarted ? 1 : 0}>
+      <div className={className}>
+        {React.Children.map(children, (child, childIndex) => {
+          if (React.isValidElement(child) && child.type === StaggerItem) {
+            const props = child.props as { index?: number };
+            return React.cloneElement(
+              child as React.ReactElement<{ index?: number }>,
+              { index: props.index ?? childIndex },
+            );
+          }
+          return child;
+        })}
+      </div>
+    </StaggerContext.Provider>
+  );
+};
 
 export const StaggerItem = ({
   children,
   className = "",
+  index = 0,
 }: {
   children: React.ReactNode;
   className?: string;
-}) => <div className={className}>{children}</div>;
+  index?: number;
+}) => {
+  const parentStarted = React.useContext(StaggerContext);
+  const [localStarted, setLocalStarted] = useState(false);
+  const reduced = usePrefersReducedMotion();
 
+  useEffect(() => {
+    if (reduced) return; // derived: always visible below
+    if (parentStarted) {
+      const t = window.setTimeout(() => setLocalStarted(true), index * 90);
+      return () => window.clearTimeout(t);
+    }
+  }, [parentStarted, reduced, index]);
+
+  const visible = reduced || localStarted;
+
+  return (
+    <div
+      className={className}
+      style={
+        visible
+          ? undefined
+          : {
+              opacity: 0,
+              transform: "translateY(16px)",
+              transition:
+                "opacity 550ms ease-out, transform 550ms cubic-bezier(0.22,1,0.36,1)",
+              willChange: "opacity, transform",
+            }
+      }
+    >
+      {children}
+    </div>
+  );
+};
+
+/* ============================================================
+   Button — unchanged API, subtle press + arrow micro-motion.
+   ============================================================ */
 export const Button = ({
   children,
   primary = true,
@@ -42,7 +214,7 @@ export const Button = ({
   className?: string;
 }) => (
   <button
-    className={`group inline-flex cursor-pointer items-center justify-center gap-2 px-6 py-3 rounded-md text-sm font-semibold transition-colors duration-200
+    className={`group inline-flex cursor-pointer items-center justify-center gap-2 px-6 py-3 rounded-md text-sm font-semibold transition-all duration-200 active:scale-[0.97]
     ${
       primary
         ? "bg-slate-900 text-white hover:bg-slate-700"
@@ -76,92 +248,51 @@ export const StickySplitSection = <T,>({
           <p className="text-base md:text-lg leading-relaxed text-slate-600 mb-8 max-w-sm">
             {subtitle}
           </p>
+          {/* Scroll hint (desktop only) */}
+          <p className="hidden lg:inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-slate-400">
+            <span className="w-5 h-px bg-slate-300 inline-block" />
+            Scroll
+          </p>
         </div>
       </div>
 
-      {/* RIGHT PANE: Scrolling Content */}
+      {/* RIGHT PANE: Independently scrollable card column on desktop */}
       <div className="lg:w-2/3 flex flex-col gap-6">
-        {items.map((item, idx) => (
-          <div key={idx} className="w-full">
-            {renderCard(item, idx)}
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-};
-
-// Custom render functions for the cards in the Split Layouts
-export const renderAdvisoryCard = (card: {
-  img?: string;
-  url: string;
-  title?: string;
-  desc?: string;
-}, idx: number) => {
-  if (card.img) {
-    // Featured card with image
-    return (
-      <div
-        onClick={() => redirect(card.url)}
-        className="group bg-white rounded-xl border border-slate-200 overflow-hidden hover:border-slate-400 transition-colors cursor-pointer flex flex-col"
-      >
-        <img
-          src={card.img}
-          alt={card.title}
-          className="w-full h-64 object-cover"
-        />
-        <div className="p-8">
-          <h3 className="text-2xl font-bold text-slate-900 mb-4">
-            {card.title}
-          </h3>
-          <p className="text-slate-600 text-lg max-w-md mb-8">{card.desc}</p>
-          <span className="text-slate-900 font-semibold flex items-center gap-2">
-            Learn more <ArrowRight className="w-5 h-5" />
-          </span>
+        <div className="expertise-scroll relative lg:max-h-[560px] lg:overflow-y-auto lg:pr-3 lg:-mr-3 lg:overscroll-contain">
+          {items.map((item, idx) => (
+            <div key={idx} className="w-full mb-6 last:mb-0">
+              {renderCard(item, idx)}
+            </div>
+          ))}
+          {/* Bottom fade hint */}
+          <div className="hidden lg:block sticky bottom-0 h-16 -mt-16 pointer-events-none bg-linear-to-t from-white to-transparent" />
         </div>
       </div>
-    );
-  }
-  // Regular card
-  return (
-    <div
-      onClick={() => redirect(card.url)}
-      className="bg-white rounded-xl p-8 border border-slate-200 flex flex-col group relative transition-colors hover:border-slate-400 cursor-pointer"
-    >
-      <ArrowUpRight className="absolute top-6 right-6 text-slate-400 w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity" />
-      <h3 className="font-semibold text-lg text-slate-900 mb-3">{card.title}</h3>
-      <p className="text-slate-600 text-sm leading-relaxed">{card.desc}</p>
     </div>
   );
 };
-
-export const renderServiceCard = (srv: {
-  icon: React.ReactElement<{ className?: string }>;
-  title: string;
-  desc: string;
-}, idx: number) => (
-  <div className="p-8 rounded-xl bg-white border border-slate-200 flex flex-col group transition-colors hover:border-slate-400 cursor-pointer">
-    <div className="flex items-center gap-5 mb-4">
-      <div className="w-12 h-12 rounded-lg bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-700 shrink-0">
-        {React.cloneElement(srv.icon, { className: "w-5 h-5" })}
-      </div>
-      <h3 className="font-semibold text-xl text-slate-900">{srv.title}</h3>
-    </div>
-    <p className="text-slate-600 text-base leading-relaxed pl-17">{srv.desc}</p>
-  </div>
-);
 
 export const renderExpertiseCard = (item: {
-  icon: React.ReactElement<{ className?: string }>;
+  image?: string;
   title?: string;
   desc?: string;
-}, idx: number) => (
-  <div className="p-8 rounded-xl bg-white border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center gap-6 group transition-colors hover:border-slate-400 cursor-pointer">
-    <div className="w-14 h-14 bg-slate-50 border border-slate-200 rounded-lg flex items-center justify-center text-slate-700 shrink-0">
-      {React.cloneElement(item.icon, { className: "w-6 h-6" })}
-    </div>
+}) => (
+  <div className="group p-8 rounded-xl bg-white border border-slate-200 flex flex-col gap-6 transition-all duration-300 hover:border-slate-400 hover:shadow-[0_12px_30px_-12px_rgba(15,23,42,0.18)] hover:-translate-y-1 cursor-pointer">
+    {item.image && (
+      <div className="relative h-44 rounded-lg overflow-hidden shrink-0">
+        <Image
+          src={item.image}
+          alt={item.title ?? ""}
+          fill
+          sizes="(max-width: 768px) 100vw, 400px"
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+      </div>
+    )}
     <div>
-      <h3 className="font-semibold text-xl text-slate-900 mb-2">{item.title}</h3>
+      <h3 className="font-semibold text-xl text-slate-900 mb-2 transition-colors duration-300 group-hover:text-yellow-600">
+        {item.title}
+      </h3>
       <p className="text-slate-600 text-base leading-relaxed">{item.desc}</p>
     </div>
   </div>

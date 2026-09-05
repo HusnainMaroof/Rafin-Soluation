@@ -1,4 +1,5 @@
-﻿import React from "react";
+﻿import type { Metadata } from "next";
+import React from "react";
 import {
   HeroSection,
   CoreValueSection,
@@ -9,14 +10,38 @@ import {
   IndustriesSection,
   ExpertiseSection,
   CaseStudiesSection,
-  InsightsSection,
   FAQSection,
   CTABandSection,
 } from "../components/HomepageSections";
+import {
+  buildMetadata,
+  faqJsonLd,
+  orgJsonLd,
+  websiteJsonLd,
+} from "@/src/lib/seo";
+import { JsonLd } from "@/src/lib/JsonLd";
+import { FAQ_ITEMS } from "@/src/Static Data/FaqData";
+
+export const metadata: Metadata = buildMetadata({
+  title: "Compliance & Fintech Consultancy | Rafin Solutions",
+  description:
+    "Rafin Solutions is a specialist compliance and fintech consultancy helping regulated financial businesses with licensing, AML/CFT, KYC/KYB, payments operations, training, and outsourced back-office support.",
+  path: "/",
+  keywords: [
+    "financial services compliance consultancy",
+    "AML/CFT compliance",
+    "FCA authorisation support",
+    "KYC KYB outsourcing",
+    "fintech operations support",
+  ],
+});
 
 const page = () => {
   return (
     <>
+      <JsonLd data={orgJsonLd()} />
+      <JsonLd data={websiteJsonLd()} />
+      <JsonLd data={faqJsonLd(FAQ_ITEMS)} />
       <div className="min-h-screen font-sans selection:bg-yellow-400 selection:text-slate-900 overflow-x-hidden bg-white">
         <HeroSection />
         <CoreValueSection />
@@ -29,7 +54,6 @@ const page = () => {
         <IndustriesSection />
         <ExpertiseSection />
         <CaseStudiesSection />
-        <InsightsSection />
         <FAQSection />
         <CTABandSection />
       </div>

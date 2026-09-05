@@ -7,7 +7,6 @@ import {
   ChevronDown,
   Mail,
   MapPin,
-  PersonStanding,
   Phone,
   Send,
 } from "lucide-react";
@@ -105,7 +104,7 @@ export const ContactHero = () => {
           <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-slate-900 mb-6 leading-[1.1] tracking-tight flex flex-col md:flex-row flex-wrap justify-center gap-x-4">
             <StaggerItem>Get in</StaggerItem>
             <StaggerItem>
-              <span className="font-tronica  text-transparent bg-clip-text bg-linear-to-r from-yellow-500 to-yellow-400">
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-yellow-500 to-yellow-400">
                 Touch
               </span>
             </StaggerItem>
@@ -125,6 +124,9 @@ export const ContactHero = () => {
 
 export const ContactFormSection = () => {
   const [selectedSubject, setSelectedSubject] = useState("General Inquiry");
+  const [status, setStatus] = useState<
+    "idle" | "sending" | "success" | "error"
+  >("idle");
   const subjects = [
     "General Inquiry",
     "FCA Authorization",
@@ -132,6 +134,38 @@ export const ContactFormSection = () => {
     "Fintech Advisory",
     "AML/CFT Training",
   ];
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    setStatus("sending");
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          fullName: formData.get("fullName"),
+          email: formData.get("email"),
+          phone: formData.get("phone"),
+          subject: selectedSubject,
+          message: formData.get("message"),
+        }),
+      });
+
+      if (!response.ok) {
+        setStatus("error");
+        return;
+      }
+
+      setStatus("success");
+      form.reset();
+      setSelectedSubject("General Inquiry");
+    } catch {
+      setStatus("error");
+    }
+  };
   return (
     <section className="bg-slate-50 py-24 border-t border-slate-200 relative overflow-hidden">
       <div className="container mx-auto px-6 lg:px-16 relative z-10 w-full">
@@ -151,40 +185,67 @@ export const ContactFormSection = () => {
             </FadeIn>
 
             <FadeIn delay={0.2}>
-              <form className="bg-white p-8 md:p-12 rounded-[2.5rem] border border-slate-200 shadow-[0_10px_40px_-15px_rgba(0,0,0,0.05)] space-y-8">
+              <form
+                className="bg-white p-8 md:p-12 rounded-[2.5rem] border border-slate-200 shadow-[0_10px_40px_-15px_rgba(0,0,0,0.05)] space-y-8"
+                onSubmit={handleSubmit}
+              >
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div className="space-y-2">
-                    <label className="text-xs font-bold text-slate-400 uppercase tracking-widest ml-1">
+                    <label
+                      htmlFor="full-name"
+                      className="text-xs font-bold text-slate-400 uppercase tracking-widest ml-1"
+                    >
                       Full Name *
                     </label>
                     <input
+                      id="full-name"
+                      name="fullName"
                       type="text"
-                      placeholder="John Doe"
+                      required
+                      autoComplete="name"
+                      placeholder="Your full name"
                       className="w-full bg-slate-50 border border-slate-100 rounded-xl px-6 py-4 outline-none focus:bg-white focus:border-yellow-400 focus:shadow-[0_0_20px_rgba(250,204,21,0.1)] transition-all font-medium text-slate-900"
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-xs font-bold text-slate-400 uppercase tracking-widest ml-1">
+                    <label
+                      htmlFor="email"
+                      className="text-xs font-bold text-slate-400 uppercase tracking-widest ml-1"
+                    >
                       Email Address *
                     </label>
                     <input
+                      id="email"
+                      name="email"
                       type="email"
-                      placeholder="john@company.com"
+                      required
+                      autoComplete="email"
+                      placeholder="you@company.com"
                       className="w-full bg-slate-50 border border-slate-100 rounded-xl px-6 py-4 outline-none focus:bg-white focus:border-yellow-400 focus:shadow-[0_0_20px_rgba(250,204,21,0.1)] transition-all font-medium text-slate-900"
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-xs font-bold text-slate-400 uppercase tracking-widest ml-1">
+                    <label
+                      htmlFor="phone"
+                      className="text-xs font-bold text-slate-400 uppercase tracking-widest ml-1"
+                    >
                       Phone Number *
                     </label>
                     <input
+                      id="phone"
+                      name="phone"
                       type="tel"
-                      placeholder="+44 (0) ..."
+                      required
+                      autoComplete="tel"
+                      placeholder="+92 ..."
                       className="w-full bg-slate-50 border border-slate-100 rounded-xl px-6 py-4 outline-none focus:bg-white focus:border-yellow-400 focus:shadow-[0_0_20px_rgba(250,204,21,0.1)] transition-all font-medium text-slate-900"
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-xs font-bold text-slate-400 uppercase tracking-widest ml-1">
+                    <label
+                      htmlFor="subject"
+                      className="text-xs font-bold text-slate-400 uppercase tracking-widest ml-1"
+                    >
                       Subject *
                     </label>
                     <CustomDropdown
@@ -195,22 +256,48 @@ export const ContactFormSection = () => {
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <label className="text-xs font-bold text-slate-400 uppercase tracking-widest ml-1">
+                  <label
+                    htmlFor="message"
+                    className="text-xs font-bold text-slate-400 uppercase tracking-widest ml-1"
+                  >
                     Your Message *
                   </label>
                   <textarea
+                    id="message"
+                    name="message"
                     rows={5}
+                    required
                     placeholder="Tell us about your regulatory challenges..."
                     className="w-full bg-slate-50 border border-slate-100 rounded-2xl px-6 py-5 outline-none focus:bg-white focus:border-yellow-400 focus:shadow-[0_0_20px_rgba(250,204,21,0.1)] transition-all resize-none font-medium text-slate-900"
                   ></textarea>
                 </div>
                 <button
                   type="submit"
-                  className="group w-full cursor-pointer bg-slate-900 text-white font-bold py-5 rounded-2xl flex items-center justify-center gap-3 shadow-xl hover:bg-black hover:-translate-y-1 transition-all active:scale-[0.98]"
+                  disabled={status === "sending"}
+                  className="group w-full cursor-pointer bg-slate-900 text-white font-bold py-5 rounded-2xl flex items-center justify-center gap-3 shadow-xl hover:bg-black hover:-translate-y-1 transition-all active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:translate-y-0"
                 >
-                  Submit Message{" "}
-                  <Send className="w-5 h-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                  {status === "sending" ? "Sending…" : "Submit Message"}
+                  <Send className="w-5 h-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" aria-hidden="true" />
                 </button>
+
+                {status === "success" && (
+                  <p
+                    role="status"
+                    className="rounded-xl border border-green-200 bg-green-50 px-5 py-4 text-sm font-medium text-green-800"
+                  >
+                    Thank you — your message has been sent. We will get back to
+                    you shortly.
+                  </p>
+                )}
+                {status === "error" && (
+                  <p
+                    role="alert"
+                    className="rounded-xl border border-red-200 bg-red-50 px-5 py-4 text-sm font-medium text-red-800"
+                  >
+                    Sorry, something went wrong sending your message. Please try
+                    again or email rafinsolutions@outlook.com directly.
+                  </p>
+                )}
               </form>
             </FadeIn>
           </div>
@@ -277,15 +364,6 @@ export const ContactFormSection = () => {
                         Phone Numbers
                       </h4>
                       <div className="flex flex-col gap-3">
-                        {/* <a
-                          href="tel:+442075157080"
-                          className="flex items-center gap-3 text-slate-600 hover:text-yellow-600 transition-colors font-medium group/line"
-                        >
-                          <span className="text-[10px] bg-slate-100 px-2 py-0.5 rounded text-slate-900 group-hover/line:bg-yellow-400 group-hover/line:text-black transition-colors ">
-                            UK
-                          </span>
-                          +44 (0) 207 515 7080
-                        </a> */}
                         <a
                           href="tel:+923045896617"
                           className="flex items-center gap-3 text-slate-600 hover:text-yellow-600 transition-colors font-medium group/line"

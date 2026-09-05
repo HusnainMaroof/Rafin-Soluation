@@ -43,7 +43,7 @@ const TrainingHero = () => {
             <h1 className="text-4xl sm:text-5xl lg:text-[5.5rem] font-extrabold text-slate-900 mb-6 leading-[1.05] tracking-tight">
               <StaggerItem>Professional</StaggerItem>
               <StaggerItem>
-                <span className="font-tronica text-transparent bg-clip-text bg-linear-to-r from-yellow-500 to-yellow-600 drop-shadow-sm">
+                <span className="block text-transparent bg-clip-text bg-linear-to-r from-yellow-500 to-yellow-600">
                   Compliance Training
                 </span>
               </StaggerItem>
@@ -131,7 +131,7 @@ const TrainingModule = ({
         <div
           className={`flex flex-col lg:flex-row items-center gap-16 lg:gap-24 ${isEven ? "lg:flex-row-reverse" : ""}`}
         >
-          {/* IMAGE SIDE (With offset background shape) */}
+            {/* IMAGE SIDE (With offset background shape) */}
           <FadeIn
             scale
             direction={isEven ? "right" : "left"}
@@ -140,12 +140,38 @@ const TrainingModule = ({
             <div
               className={`absolute -inset-4 md:-inset-8 ${blobColor} rounded-[3rem] ${isEven ? "rotate-3 hover:rotate-6" : "-rotate-3 hover:-rotate-6"} transform z-0 transition-transform duration-700`}
             ></div>
-            <div className="relative z-10 rounded-[2.5rem] overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.1)] group">
-              <img
-                src={data.image}
-                alt={data.title}
-                className="w-full h-auto md:h-112.5 object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+            <div className="relative z-10 rounded-[2.5rem] overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.1)] bg-white border border-slate-200 flex items-center justify-center min-h-[300px] md:min-h-[380px]">
+              {/* Branded panel in place of a stock photo */}
+              <div className="absolute inset-0 bg-[radial-gradient(circle,rgba(15,23,42,0.07)_1px,transparent_1px)] [background-size:22px_22px]" />
+              <div
+                className={`absolute -top-16 -right-16 w-56 h-56 rounded-full blur-[90px] ${
+                  data.theme === "yellow"
+                    ? "bg-yellow-400/20"
+                    : data.theme === "slate"
+                      ? "bg-slate-300/40"
+                      : "bg-amber-300/30"
+                }`}
               />
+              <div className="relative z-10 flex flex-col items-center text-center px-8 py-12">
+                <div
+                  className={`w-20 h-20 rounded-2xl bg-slate-900 flex items-center justify-center shadow-lg mb-6 ${
+                    data.theme === "yellow"
+                      ? "text-yellow-400"
+                      : data.theme === "slate"
+                        ? "text-slate-200"
+                        : "text-amber-300"
+                  }`}
+                >
+                  <GraduationCap className="w-10 h-10" />
+                </div>
+                <h3 className="text-2xl font-bold text-slate-900 mb-2">
+                  {data.title}
+                </h3>
+                <p className="text-slate-500 text-sm max-w-xs leading-relaxed">
+                  Rafin Solutions Academy — practitioner-led training for
+                  regulated financial services teams.
+                </p>
+              </div>
             </div>
           </FadeIn>
 
@@ -178,6 +204,34 @@ const TrainingModule = ({
                   </li>
                 ))}
               </ul>
+
+              {/* Related training courses — internal linking */}
+              {trainingPages.filter((t) => t.slug !== data.slug).length > 0 && (
+                <div className="mt-10 pt-8 border-t border-slate-200">
+                  <p className="text-xs font-bold uppercase tracking-widest text-slate-500 mb-4">
+                    Related training
+                  </p>
+                  <div className="flex flex-col gap-3">
+                    {trainingPages
+                      .filter((t) => t.slug !== data.slug)
+                      .map((t) => (
+                        <Link
+                          key={t.slug}
+                          href={`/training/${t.slug}`}
+                          className="group/link flex items-center justify-between gap-3 rounded-xl border border-slate-200 bg-slate-50 px-5 py-4 transition-colors hover:border-slate-900"
+                        >
+                          <span className="text-[#0f172a] font-bold group-hover/link:text-slate-900">
+                            {t.title}
+                          </span>
+                          <ArrowRight
+                            className="w-4 h-4 text-yellow-500 shrink-0 group-hover/link:translate-x-1 transition-transform"
+                            aria-hidden="true"
+                          />
+                        </Link>
+                      ))}
+                  </div>
+                </div>
+              )}
             </FadeIn>
           </div>
         </div>
@@ -201,7 +255,10 @@ export const CTASection = () => (
 
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 mb-6 tracking-tight leading-[1.1]">
               Ready to secure your <br />
-              <span className="text-yellow-600 font-tronica">compliance</span> future?
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-yellow-500 to-yellow-400">
+                compliance
+              </span>{" "}
+              future?
             </h2>
 
             <p className="text-slate-600 text-lg md:text-xl mb-12 max-w-2xl mx-auto font-medium leading-relaxed">
@@ -209,12 +266,12 @@ export const CTASection = () => (
               business and streamline your regulatory framework.
             </p>
 
-             <Link href={"/contact-us"}>
-              {" "}
-              <button className="group cursor-pointer inline-flex items-center justify-center gap-3 px-10 py-4 rounded-full text-base font-bold transition-all duration-300 bg-yellow-400 text-slate-900 shadow-[0_0_20px_rgba(250,204,21,0.5)] hover:shadow-[0_0_30px_rgba(250,204,21,0.7)] hover:bg-yellow-300 hover:-translate-y-1">
-                Contact Us{" "}
-                <ArrowRight className="w-5 h-5 ml-1 transition-transform group-hover:translate-x-1" />
-              </button>
+            <Link
+              href="/contact-us"
+              className="group cursor-pointer inline-flex items-center justify-center gap-3 px-10 py-4 rounded-full text-base font-bold transition-all duration-300 bg-yellow-400 text-slate-900 shadow-[0_0_20px_rgba(250,204,21,0.5)] hover:shadow-[0_0_30px_rgba(250,204,21,0.7)] hover:bg-yellow-300 hover:-translate-y-1"
+            >
+              Contact Us
+              <ArrowRight className="w-5 h-5 ml-1 transition-transform group-hover:translate-x-1" aria-hidden="true" />
             </Link>
           </div>
         </div>

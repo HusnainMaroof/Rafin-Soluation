@@ -1,9 +1,14 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Manrope } from "next/font/google";
 import "./globals.css";
 import localFont from "next/font/local";
 import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
+import {
+  SITE_DESCRIPTION,
+  SITE_NAME,
+  SITE_URL,
+} from "@/src/lib/seo";
 
 const tronica = localFont({
   src: [
@@ -30,12 +35,54 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "Rafin Solutions ",
-  description:
-    "Rafin Solutions is a leading provider of compliance and fintech services, dedicated to helping businesses navigate the complex regulatory landscape with confidence and ease.",
-      icons: {
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: SITE_NAME,
+    template: `%s | ${SITE_NAME}`,
+  },
+  description: SITE_DESCRIPTION,
+  applicationName: SITE_NAME,
+  keywords: [
+    "Rafin Solutions",
+    "compliance consultancy",
+    "fintech compliance",
+    "AML/CFT",
+    "KYC KYB",
+    "payment operations",
+    "FCA authorisation",
+    "financial services consultant",
+  ],
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    siteName: SITE_NAME,
+    title: SITE_NAME,
+    description: SITE_DESCRIPTION,
+    url: SITE_URL,
+    locale: "en_GB",
+    images: [{ url: `${SITE_URL}/opengraph-image`, width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE_NAME,
+    description: SITE_DESCRIPTION,
+    images: [`${SITE_URL}/opengraph-image`],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  icons: {
     icon: "/icon.png",
   },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#ffffff",
 };
 
 export default function RootLayout({
@@ -49,9 +96,18 @@ export default function RootLayout({
       className={`${tronica.variable} ${inter.variable} ${manrope.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:top-2 focus:left-2 focus:bg-yellow-400 focus:text-slate-900 focus:px-4 focus:py-2 focus:rounded-md focus:font-bold"
+        >
+          Skip to content
+        </a>
         <Navbar />
 
-        {children}
+        <main id="main" className="flex-1 flex flex-col">
+          {children}
+        </main>
+
         <Footer />
       </body>
     </html>

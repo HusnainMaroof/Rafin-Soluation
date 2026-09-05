@@ -1,4 +1,4 @@
-// data/services.ts — FinCore-aligned service catalog
+﻿// Rafin Solutions service catalog
 
 export interface ServiceCopyBlock {
   title: string;
@@ -8,10 +8,10 @@ export interface ServiceCopyBlock {
 export interface ServiceData {
   slug: string;
   icon: string;
+  photo: string;
   title: string;
   desc: string;
   overviewText: string;
-  image: string;
   features: { title: string; desc: string }[];
   bentoBoxes: {
     icon: string;
@@ -26,12 +26,11 @@ export const SERVICES_DATA: ServiceData[] = [
   {
     slug: "aml-cft-compliance",
     icon: "ShieldCheck",
+    photo: "/images/services/aml-cft-compliance.jpg",
     title: "AML/CFT Compliance",
     desc: "Build practical AML/CFT frameworks, risk assessments, monitoring controls and reporting processes tailored to your business model.",
     overviewText:
       "AML/CFT Compliance support from Rafin Solutions helps regulated and growing financial businesses create practical, documented, and operationally usable controls.",
-    image:
-      "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=800",
     features: [
       {
         title: "Risk-Based Frameworks",
@@ -122,12 +121,11 @@ export const SERVICES_DATA: ServiceData[] = [
   {
     slug: "kyc-and-kyb",
     icon: "UserCheck",
+    photo: "/images/services/kyc-and-kyb.jpg",
     title: "KYC and KYB",
     desc: "Design reliable KYC and KYB onboarding workflows, verification rules, risk scoring and approval controls for individuals and businesses.",
     overviewText:
       "KYC and KYB support from Rafin Solutions helps regulated and growing financial businesses create practical, documented, and operationally usable onboarding controls.",
-    image:
-      "https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&q=80&w=800",
     features: [
       {
         title: "Onboarding Workflows",
@@ -207,12 +205,11 @@ export const SERVICES_DATA: ServiceData[] = [
   {
     slug: "transaction-monitoring",
     icon: "Radar",
+    photo: "/images/services/transaction-monitoring.jpg",
     title: "Transaction Monitoring",
     desc: "Develop risk-based transaction monitoring rules, alert investigation workflows, threshold tuning and management reporting.",
     overviewText:
       "Transaction monitoring support from Rafin Solutions helps regulated financial businesses build practical alert review and investigation operations that produce clear, defensible decisions.",
-    image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800",
     features: [
       {
         title: "Risk-Based Rules",
@@ -292,12 +289,11 @@ export const SERVICES_DATA: ServiceData[] = [
   {
     slug: "payment-operations",
     icon: "CreditCard",
+    photo: "/images/services/payment-operations.jpg",
     title: "Payment Operations",
     desc: "Improve payment operations through clear workflows for settlements, exceptions, reconciliation, partner coordination and operational reporting.",
     overviewText:
       "Payment operations support from Rafin Solutions helps payment and fintech businesses run reliable settlement, exception, and reconciliation processes.",
-    image:
-      "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=800",
     features: [
       {
         title: "Clear Workflows",
@@ -377,12 +373,11 @@ export const SERVICES_DATA: ServiceData[] = [
   {
     slug: "transaction-processing",
     icon: "ArrowLeftRight",
+    photo: "/images/services/transaction-processing.jpg",
     title: "Transaction Processing",
     desc: "Support accurate transaction processing, status management, failed-payment handling, reprocessing, reconciliation and exception escalation.",
     overviewText:
       "Transaction processing support from Rafin Solutions helps payment teams maintain accurate, well-managed processing operations with clear exception handling.",
-    image:
-      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=800",
     features: [
       {
         title: "Status Management",
@@ -462,12 +457,11 @@ export const SERVICES_DATA: ServiceData[] = [
   {
     slug: "customer-support",
     icon: "Headset",
+    photo: "/images/services/customer-support.jpg",
     title: "Customer Support",
     desc: "Build responsive fintech customer support operations with clear SOPs, escalation paths, quality reviews, complaint handling and reporting.",
     overviewText:
       "Customer support operations support from Rafin Solutions helps financial businesses deliver responsive, consistent support with clear escalation and quality control.",
-    image:
-      "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&q=80&w=800",
     features: [
       {
         title: "Support SOPs",
@@ -547,12 +541,11 @@ export const SERVICES_DATA: ServiceData[] = [
   {
     slug: "technology-and-it-governance",
     icon: "Cpu",
+    photo: "/images/services/technology-and-it-governance.jpg",
     title: "Technology and IT Governance",
     desc: "Strengthen technology governance with access controls, change management, incident processes, vendor oversight, security reviews and IT reporting.",
     overviewText:
       "Technology and IT governance support from Rafin Solutions helps financial businesses build practical controls over systems, access, change, incidents, and vendors.",
-    image:
-      "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=800",
     features: [
       {
         title: "Access & Change",
@@ -632,12 +625,11 @@ export const SERVICES_DATA: ServiceData[] = [
   {
     slug: "meta-ads-for-fintech",
     icon: "Megaphone",
+    photo: "/images/services/meta-ads-for-fintech.jpg",
     title: "Meta Ads for Fintech",
     desc: "Plan compliant, structured Meta Ads activity for fintech campaigns, including messaging review, campaign setup coordination, landing-page alignment, and performance reporting.",
     overviewText:
       "Meta Ads support from Rafin Solutions helps regulated financial businesses run structured, compliant advertising activity that protects customers and the brand.",
-    image:
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
     features: [
       {
         title: "Messaging Review",

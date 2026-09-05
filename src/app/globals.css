@@ -30,3 +30,56 @@ h5,
 h6 {
   font-family: var(--font-manrope), Arial, Helvetica, sans-serif;
 }
+
+/* ============================================================
+   Scrollable expertise column — styled, slim scrollbar
+   ============================================================ */
+.expertise-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #facc15 transparent;
+}
+
+.expertise-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.expertise-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.expertise-scroll::-webkit-scrollbar-thumb {
+  background-color: #eab308;
+  border-radius: 9999px;
+}
+
+.expertise-scroll::-webkit-scrollbar-thumb:hover {
+  background-color: #ca8a04;
+}
+
+/* ============================================================
+   Respect reduced-motion preferences
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ============================================================
+   Accessible, consistent focus state for interactive elements
+   ============================================================ */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[role="button"]:focus-visible {
+  outline: 2px solid #eab308;
+  outline-offset: 2px;
+  border-radius: 4px;
+}

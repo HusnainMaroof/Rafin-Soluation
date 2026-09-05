@@ -20,7 +20,7 @@ export const Navbar = () => {
 
   return (
     <header className="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
-      <div className="container mx-auto px-6 lg:px-16 flex items-center justify-between min-h-[64px] md:min-h-[68px] lg:min-h-[76px] gap-3 md:gap-4 lg:gap-5">
+      <div className=" mx-auto px-6 lg:px-16 flex items-center justify-between min-h-[64px] md:min-h-[68px] lg:min-h-[76px] gap-3 md:gap-4 lg:gap-5">
         {/* Brand */}
         <Link href="/" className="flex items-center shrink-0" aria-label="Rafin Solutions">
           <Image
@@ -54,8 +54,16 @@ export const Navbar = () => {
                         {item.label}
                         <ChevronDown className="hidden lg:inline-block w-3.5 h-3.5 ml-1 -mt-0.5" />
                       </Link>
-                      {/* Active/hover underline */}
-                      <span className="absolute left-3 right-3 -bottom-0.5 h-0.5 bg-yellow-400 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+                      {/* Animated underline — visible only when active or hovered */}
+                      <span
+                        aria-hidden="true"
+                        style={
+                          isActive(item.href) || isActive(item.dropdown[0].href)
+                            ? { transform: "scaleX(1)" }
+                            : undefined
+                        }
+                        className="absolute left-3 right-3 -bottom-0.5 h-0.5 origin-left scale-x-0 bg-yellow-400 transition-transform duration-300 ease-out group-hover:scale-x-100"
+                      />
                       <ul className="absolute top-full left-auto right-0 lg:left-0 lg:right-auto hidden group-hover:grid group-focus-within:grid gap-1 w-72 m-0 p-2.5 list-none bg-white border border-slate-200 rounded-lg shadow-xl">
                         {item.dropdown.map((dropItem) => (
                           <li key={dropItem.label}>
@@ -76,7 +84,7 @@ export const Navbar = () => {
                   ) : (
                     <Link
                       href={item.href ?? "/"}
-                      className={`relative font-bold px-2 lg:px-3 py-2.5 transition-colors md:text-[13px] lg:text-sm ${
+                      className={`group relative font-bold px-2 lg:px-3 py-2.5 transition-colors md:text-[13px] lg:text-sm ${
                         isActive(item.href)
                           ? "text-slate-900"
                           : "text-slate-600 hover:text-slate-900"
@@ -84,11 +92,13 @@ export const Navbar = () => {
                     >
                       {item.label}
                       <span
-                        className={`absolute left-3 right-3 -bottom-0.5 h-0.5 transition-opacity ${
+                        aria-hidden="true"
+                        style={
                           isActive(item.href)
-                            ? "bg-yellow-400 opacity-100"
-                            : "bg-yellow-400 opacity-0 hover:opacity-100"
-                        }`}
+                            ? { transform: "scaleX(1)" }
+                            : undefined
+                        }
+                        className="absolute left-3 right-3 -bottom-0.5 h-0.5 origin-left scale-x-0 bg-yellow-400 transition-transform duration-300 ease-out group-hover:scale-x-100"
                       />
                     </Link>
                   )}
@@ -125,37 +135,48 @@ export const Navbar = () => {
           <div className="max-h-[70vh] overflow-y-auto px-5 py-4 flex flex-col gap-1">
             {NAV_ITEMS.map((item) => (
               <div key={item.label} className="flex flex-col">
-                <div
-                  className="flex items-center justify-between py-3.5 text-slate-900 font-bold cursor-pointer"
-                  onClick={() => {
-                    if (item.dropdown) {
-                      setActiveDropdown(
-                        activeDropdown === item.label ? null : item.label,
-                      );
-                    }
-                  }}
-                >
+                <div className="flex items-center justify-between py-3.5">
                   {item.href ? (
                     <Link
                       href={item.href}
-                      className="flex-1"
+                      className="flex-1 text-slate-900 font-bold"
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       {item.label}
                     </Link>
                   ) : (
-                    <span className="flex-1">{item.label}</span>
+                    <span className="flex-1 text-slate-900 font-bold">
+                      {item.label}
+                    </span>
                   )}
                   {item.dropdown && (
-                    <ChevronDown
-                      className={`w-5 h-5 transition-transform duration-300 ${
-                        activeDropdown === item.label ? "rotate-180 text-slate-900" : "text-slate-400"
-                      }`}
-                    />
+                    <button
+                      type="button"
+                      aria-expanded={activeDropdown === item.label}
+                      aria-controls={`mobile-menu-${item.label}`}
+                      aria-label={`Toggle ${item.label} submenu`}
+                      className="p-1 -m-1 text-slate-900"
+                      onClick={() =>
+                        setActiveDropdown(
+                          activeDropdown === item.label ? null : item.label,
+                        )
+                      }
+                    >
+                      <ChevronDown
+                        className={`w-5 h-5 transition-transform duration-300 ${
+                          activeDropdown === item.label
+                            ? "rotate-180 text-slate-900"
+                            : "text-slate-400"
+                        }`}
+                      />
+                    </button>
                   )}
                 </div>
                 {item.dropdown && activeDropdown === item.label && (
-                  <div className="flex flex-col gap-1 pl-4 pb-3 border-l-2 border-slate-200 ml-4 mt-1">
+                  <div
+                    id={`mobile-menu-${item.label}`}
+                    className="flex flex-col gap-1 pl-4 pb-3 border-l-2 border-slate-200 ml-4 mt-1"
+                  >
                     {item.dropdown.map((dropItem) => (
                       <Link
                         key={dropItem.label}

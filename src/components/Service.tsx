@@ -1,6 +1,7 @@
 ﻿"use client";
 
 import React from "react";
+import Image from "next/image";
 import { FadeIn, StaggerContainer, StaggerItem } from "./HelperComponent";
 import { ArrowRight, Check, PhoneCall, ShieldCheck, Target } from "lucide-react";
 import Link from "next/link";
@@ -24,15 +25,15 @@ interface BentoBox {
 interface Service {
   slug: string;
   icon: string;
+  photo: string;
   title: string;
   desc: string;
   overviewText: string;
-  image: string;
   features: Feature[];
   bentoBoxes: BentoBox[];
 }
 
-// Render the FinCore-style structured service copy blocks
+// Render the structured service copy blocks
 export const ServiceDetailSections = ({ service }: { service: ServiceData }) => {
   const blocks = service.copyBlocks ?? [];
 
@@ -96,7 +97,7 @@ export const ServicesHero = ({ service }: { service: Service }) => {
           <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-slate-900 mb-6 leading-[1.1] tracking-tight flex flex-col md:flex-row flex-wrap justify-center gap-x-4">
             <StaggerItem>{firstWord}</StaggerItem>
             <StaggerItem>
-              <span className="font-tronica text-transparent bg-clip-text bg-linear-to-r from-yellow-500 to-yellow-400">
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-yellow-500 to-yellow-400">
                 {remainingWords}
               </span>
             </StaggerItem>
@@ -121,11 +122,15 @@ export const ServiceOverview = ({ service }: { service: Service }) => (
       <div className="flex flex-col lg:flex-row items-center gap-16">
         <FadeIn scale className="lg:w-1/2 w-full relative">
           <div className="absolute -inset-4 md:-inset-8 bg-yellow-100/70 rounded-[3rem] rotate-3 transform z-0 transition-transform duration-700 hover:rotate-6" />
-          <div className="relative z-10 rounded-4xl overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.1)] group aspect-[4/3] sm:aspect-[16/10]">
-            <img
-              src={service.image}
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+          <div className="relative z-10 rounded-4xl overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.1)] aspect-[4/3] sm:aspect-[16/10] bg-white border border-slate-200">
+            {/* Contextual service photo */}
+            <Image
+              src={service.photo}
               alt={service.title}
+              fill
+              priority
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover"
             />
           </div>
         </FadeIn>
@@ -157,9 +162,9 @@ export const ServiceOverview = ({ service }: { service: Service }) => (
                       )}
                     </div>
                     <div>
-                      <h4 className="font-bold text-slate-900 text-lg mb-2">
+                      <h3 className="font-bold text-slate-900 text-lg mb-2">
                         {feature.title}
-                      </h4>
+                      </h3>
                       <p className="text-slate-600 text-sm leading-relaxed">
                         {feature.desc}
                       </p>
@@ -237,7 +242,9 @@ export const CTASection = () => (
 
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 mb-6 tracking-tight leading-[1.1]">
               Ready to secure your <br />
-              <span className="text-yellow-600 font-tronica">compliance</span>{" "}
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-yellow-500 to-yellow-400">
+                compliance
+              </span>{" "}
               future?
             </h2>
 
@@ -246,11 +253,12 @@ export const CTASection = () => (
               business and streamline your regulatory framework.
             </p>
 
-            <Link href="/contact-us">
-              <button className="group cursor-pointer inline-flex items-center justify-center gap-3 px-10 py-4 rounded-full text-base font-bold transition-all duration-300 bg-yellow-400 text-slate-900 shadow-[0_0_20px_rgba(250,204,21,0.5)] hover:shadow-[0_0_30px_rgba(250,204,21,0.7)] hover:bg-yellow-300 hover:-translate-y-1">
-                Contact Us
-                <ArrowRight className="w-5 h-5 ml-1 transition-transform group-hover:translate-x-1" />
-              </button>
+            <Link
+              href="/contact-us"
+              className="group cursor-pointer inline-flex items-center justify-center gap-3 px-10 py-4 rounded-full text-base font-bold transition-all duration-300 bg-yellow-400 text-slate-900 shadow-[0_0_20px_rgba(250,204,21,0.5)] hover:shadow-[0_0_30px_rgba(250,204,21,0.7)] hover:bg-yellow-300 hover:-translate-y-1"
+            >
+              Contact Us
+              <ArrowRight className="w-5 h-5 ml-1 transition-transform group-hover:translate-x-1" aria-hidden="true" />
             </Link>
           </div>
         </div>

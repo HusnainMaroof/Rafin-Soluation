@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import { FAQ_ITEMS } from "../Static Data/FaqData";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -16,16 +17,15 @@ import {
 } from "lucide-react";
 
 /* ============================================================
-   FinCore-style homepage sections built with Rafin's data +
-   Rafin's existing theme (white / slate / yellow, Manrope
-   headings, Inter body, rounded-xl cards).
-   Structure mirrors https://fincoresolutions.com homepage.
+   Rafin Solutions homepage sections — built with Rafin's own
+   services, industries, and operating model, styled with the
+   site theme (white / slate / yellow, Manrope headings,
+   Inter body, rounded-xl cards).
    ============================================================ */
 
 const container = "container mx-auto px-6 lg:px-16 w-full";
 
-/* Section heading with gold underline, matching FinCore's
-   `.section-heading` layout: eyebrow + h2 + paragraph. */
+/* Section heading: eyebrow + h2 + paragraph. */
 const SectionHeading = ({
   eyebrow,
   title,
@@ -70,7 +70,7 @@ const SectionHeading = ({
   </div>
 );
 
-/* Small dark icon tile used across FinCore-style cards */
+/* Small icon tile used across homepage cards */
 const IconTile = ({
   children,
   dark = false,
@@ -88,16 +88,10 @@ const IconTile = ({
 );
 
 /* ------------------------------------------------------------
-   1. HERO  — dark FinCore hero: eyebrow + h1 + paragraph +
-   primary/secondary CTAs + trust row, with Rafin's dotted-grid
+   1. HERO — light hero: eyebrow + h1 + paragraph +
+   primary/secondary CTAs, with Rafin's dotted-grid
    and glow visuals, mapped to a 2-column layout.
    ------------------------------------------------------------ */
-const HERO_STATS = [
-  { value: "8+", label: "Years Fintech Experience" },
-  { value: "5+", label: "Service Areas" },
-  { value: "100+", label: "Institutions Trusted" },
-];
-
 export const HeroSection = () => {
   return (
     <section className="relative min-h-[720px] flex items-center overflow-hidden bg-slate-50 pt-32 pb-24">
@@ -117,8 +111,8 @@ export const HeroSection = () => {
               Practical fintech operating support
             </p>
             <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight leading-[1.02] mb-6 text-slate-900">
-              Your Fintech. <br />
-              <span className="font-tronica text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-yellow-400">
+              Your Fintech,<br />
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-yellow-500 to-yellow-400">
                 Our Expertise
               </span>
             </h1>
@@ -140,28 +134,11 @@ export const HeroSection = () => {
                 Explore Services
               </Link>
             </div>
-
-            {/* Trust row */}
-            <div className="grid grid-cols-3 gap-2 sm:gap-3 mt-10 sm:mt-12 max-w-lg">
-              {HERO_STATS.map((stat) => (
-                <div
-                  key={stat.label}
-                  className="rounded-lg border border-slate-200 bg-white px-2 py-3 sm:px-4 sm:py-4 shadow-sm"
-                >
-                  <strong className="block text-yellow-600 text-lg sm:text-xl font-extrabold leading-tight">
-                    {stat.value}
-                  </strong>
-                  <span className="text-[11px] sm:text-xs text-slate-500 font-semibold leading-snug">
-                    {stat.label}
-                  </span>
-                </div>
-              ))}
-            </div>
           </div>
 
           {/* Right column: ecosystem visual built with Rafin styling */}
-          <div className="hidden lg:block">
-            <FinCoreVisual />
+          <div className="block">
+            <OpsEcosystemVisual />
           </div>
         </div>
       </div>
@@ -169,20 +146,20 @@ export const HeroSection = () => {
   );
 };
 
-/* Simplified visual panel echoing FinCore's ops-ecosystem:
+/* Simplified visual panel of Rafin's operating ecosystem:
    a glass panel with a central badge, rings, and capability nodes. */
-const FinCoreVisual = () => {
+const OpsEcosystemVisual = () => {
   const nodes = [
-    { label: "Compliance", sub: "AML/KYC", className: "left-6 top-10" },
-    { label: "Payments", sub: "Ops", className: "right-6 top-8" },
-    { label: "Support", sub: "Queues", className: "left-10 bottom-12" },
-    { label: "Technology", sub: "Governance", className: "right-10 bottom-16" },
+    { label: "Compliance", sub: "AML/KYC", className: "left-5 md:left-15 lg:left-25 top-10" },
+    { label: "Payments", sub: "Operations", className: "right-5 md:right-15 lg:right-25 top-10" },
+    { label: "Support", sub: "Queues", className: "left-5 md:left-15 lg:left-25 bottom-20" },
+    { label: "Technology", sub: "Governance", className: "right-5 md:right-15 lg:right-25 bottom-20" },
     { label: "Risk", sub: "Monitoring", className: "left-1/2 -translate-x-1/2 bottom-4" },
   ];
   return (
-    <div className="relative h-[460px] rounded-xl overflow-hidden border border-slate-200 bg-white shadow-xl">
+    <div className="relative h-[460px] rounded-4xl overflow-hidden border border-slate-200 bg-white shadow-xl">
       <div className="absolute inset-0 bg-[linear-gradient(rgba(15,23,42,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(15,23,42,0.04)_1px,transparent_1px)] [background-size:38px_38px]" />
-      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 rounded-full border border-yellow-400/50 flex flex-col items-center justify-center bg-gradient-to-br from-yellow-400 to-yellow-300 text-slate-900 shadow-[0_0_60px_rgba(250,204,21,0.45)] z-10">
+      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 rounded-full border border-yellow-400/50 flex flex-col items-center justify-center bg-linear-to-br from-yellow-400 to-yellow-300 text-slate-900 shadow-[0_0_60px_rgba(250,204,21,0.45)] z-10">
         <strong className="text-xl font-extrabold">Rafin</strong>
         <span className="text-[10px] font-bold uppercase tracking-widest -mt-1">
           Solutions
@@ -194,7 +171,7 @@ const FinCoreVisual = () => {
       {nodes.map((node) => (
         <div
           key={node.label}
-          className={`absolute ${node.className} z-10 min-w-[120px] rounded-lg border border-slate-200 bg-white/90 px-3 py-2.5 backdrop-blur shadow-sm`}
+          className={`absolute ${node.className} z-10 min-w-[120px] rounded-lg border border-slate-200 bg-white/90 px-3 py-2.5 backdrop-blur shadow-sm text-center`}
         >
           <strong className="block text-yellow-600 text-sm font-bold leading-tight">
             {node.label}
@@ -208,7 +185,7 @@ const FinCoreVisual = () => {
 
 /* ------------------------------------------------------------
    2. CORE VALUE PROPOSITION — two-column value board:
-   heading left, 2x2 pill grid right (FinCore value-section).
+   heading left, 2x2 pill grid right.
    ------------------------------------------------------------ */
 const VALUE_STEPS = [
   {
@@ -267,7 +244,7 @@ export const CoreValueSection = () => (
 
 /* ------------------------------------------------------------
    3. ABOUT — home-about split: text left, visual stack right
-   with jurisdiction badges (FinCore home-about + metric-grid).
+   with jurisdiction badges.
    ------------------------------------------------------------ */
 const JURISDICTIONS = [
   { country: "UK", body: "FCA / HMRC" },
@@ -320,7 +297,7 @@ export const AboutSection = () => (
 );
 
 /* ------------------------------------------------------------
-   4. SERVICES GRID — FinCore .grid.services (4-col) of Rafin's
+   4. SERVICES GRID — 4-col grid of Rafin's
    real services, each card = icon + title + desc + View Service.
    ------------------------------------------------------------ */
 const HOME_SERVICES = [
@@ -425,8 +402,8 @@ export const ServicesGridSection = () => (
 
 /* ------------------------------------------------------------
    5. FLAGSHIP ENGAGEMENT (dark) — left sticky lead text + right
-   numbered process steps, echoing FinCore's vbo/section-dark.
-   Uses Rafin's existing EngagementSection concept restyled.
+   numbered process steps, with Rafin's operating model
+   described as an engagement journey.
    ------------------------------------------------------------ */
 const PROCESS_STEPS = [
   {
@@ -488,7 +465,7 @@ export const EngagementSection = () => (
 );
 
 /* ------------------------------------------------------------
-   6. WHY — 3-col card grid (FinCore .grid.why).
+   6. WHY — 3-col card grid.
    ------------------------------------------------------------ */
 const WHY_CARDS = [
   {
@@ -550,7 +527,7 @@ export const WhySection = () => (
 );
 
 /* ------------------------------------------------------------
-   7. INDUSTRIES — FinCore .grid.services.industry-grid mapping to
+   7. INDUSTRIES — grid mapping to
    Rafin's real industry pages.
    ------------------------------------------------------------ */
 const HOME_INDUSTRIES = [
@@ -595,7 +572,7 @@ export const IndustriesSection = () => (
 );
 
 /* ------------------------------------------------------------
-   8. EXPERTISE — 3 detail boxes (FinCore detail-grid.expertise).
+   8. EXPERTISE — 3 detail boxes.
    ------------------------------------------------------------ */
 const EXPERTISE = [
   {
@@ -664,7 +641,7 @@ export const ExpertiseSection = () => (
 );
 
 /* ------------------------------------------------------------
-   9. CASE STUDIES — FinCore mini-grid of 3 case cards.
+   9. CASE STUDIES — mini-grid of 3 anonymised case cards.
    ------------------------------------------------------------ */
 const CASE_STUDIES = [
   {
@@ -717,93 +694,9 @@ export const CaseStudiesSection = () => (
 );
 
 /* ------------------------------------------------------------
-   10. INSIGHTS — FinCore post-grid of the latest News & Events.
+   10. FAQ — mini-grid of FAQ cards (Rafin's FAQ content,
+   rendered as cards).
    ------------------------------------------------------------ */
-import { NEWS_DATA } from "../Static Data/HomeData";
-
-export const InsightsSection = () => (
-  <section className="bg-white py-20 border-t border-slate-200">
-    <div className={`${container}`}>
-      <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-9">
-        <SectionHeading
-          eyebrow="Insights"
-          title="Latest compliance and operations articles."
-        />
-        <Link
-          href="/news-events"
-          className="inline-flex items-center gap-2 text-sm font-bold text-slate-900 hover:text-yellow-600 transition-colors shrink-0 mb-9"
-        >
-          View all news
-          <ArrowRight className="w-4 h-4" />
-        </Link>
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {NEWS_DATA.slice(0, 3).map((item, idx) => (
-          <Link
-            key={idx}
-            href="/news-events"
-            className="group flex flex-col rounded-xl overflow-hidden border border-slate-200 bg-white shadow-sm hover:border-yellow-400 hover:shadow-lg transition-all duration-300"
-          >
-            <div className="relative h-48 overflow-hidden bg-slate-100">
-              <img
-                src={item.img}
-                alt={item.title}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute top-3 left-3 bg-slate-900/90 text-white rounded-lg px-3 py-1.5 text-xs font-bold">
-                {item.day} {item.month}
-              </div>
-            </div>
-            <div className="p-6 flex flex-col grow">
-              <h3 className="font-bold text-slate-900 leading-snug mb-3 line-clamp-2">
-                {item.title}
-              </h3>
-              <p className="text-sm text-slate-600 leading-relaxed mb-4 line-clamp-3 grow">
-                {item.desc}
-              </p>
-              <span className="inline-flex items-center gap-1.5 text-sm font-bold text-yellow-600">
-                Read More
-                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </span>
-            </div>
-          </Link>
-        ))}
-      </div>
-    </div>
-  </section>
-);
-
-/* ------------------------------------------------------------
-   11. FAQ — FinCore mini-grid of FAQ cards (Rafin's FAQ content,
-   rendered as cards rather than an accordion to match FinCore).
-   ------------------------------------------------------------ */
-const FAQ_ITEMS = [
-  {
-    q: "Does Rafin Solutions provide ongoing compliance support?",
-    a: "Yes. Rafin provides project-based or ongoing compliance support, including licence authorisation, ongoing monitoring, annual compliance audits, and safeguarding.",
-  },
-  {
-    q: "Can Rafin prepare AML and KYC policies?",
-    a: "Yes. Rafin can prepare practical AML/CFT, KYC, KYB, onboarding, monitoring, escalation, and review documentation tailored to your business model.",
-  },
-  {
-    q: "Can Rafin support transaction monitoring operations?",
-    a: "Yes. Rafin can support transaction monitoring through alert review workflows, investigation notes, escalation routes, and documented decision trails.",
-  },
-  {
-    q: "Does Rafin provide AML/CFT training?",
-    a: "Yes. Rafin delivers business-tailored online and in-person AML/CFT training, with assessments and scenario-based learning.",
-  },
-  {
-    q: "How can a client request a proposal?",
-    a: "Clients can book a consultation or contact Rafin with their requirements. A proposal is prepared after scope, urgency, and service areas are reviewed.",
-  },
-  {
-    q: "What type of businesses does Rafin support?",
-    a: "Rafin supports banks, credit unions, MSBs, payment firms, fintech startups, and regulated financial service teams globally.",
-  },
-];
-
 export const FAQSection = () => (
   <section className="bg-slate-50 py-20 border-t border-slate-200">
     <div className={`${container}`}>
@@ -832,8 +725,7 @@ export const FAQSection = () => (
 );
 
 /* ------------------------------------------------------------
-   12. FINAL CTA — dark band with a gold underline heading
-   (FinCore .cta, centered layout).
+   11. FINAL CTA — centered CTA band with a gold underline heading.
    ------------------------------------------------------------ */
 export const CTABandSection = () => (
   <section className="bg-slate-50 py-20 text-slate-900 border-t border-slate-200">
@@ -844,14 +736,23 @@ export const CTABandSection = () => (
         </h2>
         <p className="text-slate-600 max-w-2xl text-lg leading-relaxed mb-8">
           Whether you need a single compliance document, a full licensing setup,
-          or ongoing advisory support, Rafin Solutions is ready to deliver.
+          ongoing advisory support, or staff training, Rafin Solutions is ready
+          to deliver.
         </p>
-        <Link
-          href="/contact-us"
-          className="inline-flex items-center justify-center gap-2 min-h-11 px-7 rounded-md bg-yellow-400 text-slate-900 text-sm font-extrabold transition-colors hover:bg-yellow-300"
-        >
-          Book a Consultation
-        </Link>
+        <div className="flex flex-wrap items-center justify-center gap-3">
+          <Link
+            href="/contact-us"
+            className="inline-flex items-center justify-center gap-2 min-h-11 px-7 rounded-md bg-yellow-400 text-slate-900 text-sm font-extrabold transition-colors hover:bg-yellow-300"
+          >
+            Book a Consultation
+          </Link>
+          <Link
+            href="/training/aml-cft-training"
+            className="inline-flex items-center justify-center gap-2 min-h-11 px-7 rounded-md border border-slate-300 bg-white text-slate-700 text-sm font-extrabold transition-colors hover:border-slate-900 hover:text-slate-900"
+          >
+            Explore Compliance Training
+          </Link>
+        </div>
       </div>
     </div>
   </section>

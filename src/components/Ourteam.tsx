@@ -1,7 +1,6 @@
 ﻿"use client";
 
 import React from "react";
-import { Mail, Link } from "lucide-react";
 import { TEAM_MEMBERS } from "../Static Data/TeamData";
 import { FadeIn, StaggerContainer, StaggerItem } from "./HelperComponent";
 
@@ -26,7 +25,7 @@ export const TeamHero = () => {
           <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-slate-900 mb-6 leading-[1.1] tracking-tight flex flex-col md:flex-row flex-wrap justify-center gap-x-4">
             <StaggerItem>The Minds Behind</StaggerItem>
             <StaggerItem>
-              <span className="font-tronica  text-transparent bg-clip-text bg-linear-to-r from-yellow-500 to-yellow-400">
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-yellow-500 to-yellow-400">
                 Rafin Solutions
               </span>
             </StaggerItem>
@@ -52,32 +51,14 @@ export const TeamGrid = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {TEAM_MEMBERS.map((member, idx) => (
             <FadeIn scale key={idx} delay={(idx % 4) * 0.1}>
-              <div className="group relative bg-white rounded-4xl border border-slate-200 flex flex-col overflow-hidden transition-all duration-500 ease-out hover:-translate-y-3 hover:scale-[1.02] shadow-[0_8px_30px_rgb(0,0,0,0.04),inset_0_-4px_0_0_rgb(226,232,240,1)] hover:shadow-[0_30px_60px_rgb(0,0,0,0.15),inset_0_-6px_0_0_rgb(15,23,42,1)] hover:border-slate-900 h-full cursor-pointer">
-                {/* Top Image Container */}
-                <div className="h-64 sm:h-72 overflow-hidden relative border-b border-slate-100">
-                  <div className="absolute inset-0 bg-slate-900/20 mix-blend-overlay opacity-100 group-hover:opacity-0 transition-opacity duration-500 z-10"></div>
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    loading="lazy"
-                    className="w-full h-full object-cover  group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700 ease-out"
-                  />
-
-                  {/* Social Overlay on Hover */}
-                  <div className="absolute inset-0 bg-slate-900/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
-                  <div className="absolute top-4 right-4 z-20 flex flex-col gap-2 opacity-0 translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500">
-                    <a
-                      href="#"
-                      className="w-8 h-8 rounded-full bg-white/90 backdrop-blur-md border border-slate-200 flex items-center justify-center text-slate-600 hover:bg-slate-900 hover:text-yellow-400 hover:border-slate-900 transition-colors shadow-sm"
-                    >
-                      <Link className="w-4 h-4" /> 
-                    </a>
-                    <a
-                      href="#"
-                      className="w-8 h-8 rounded-full bg-white/90 backdrop-blur-md border border-slate-200 flex items-center justify-center text-slate-600 hover:bg-slate-900 hover:text-yellow-400 hover:border-slate-900 transition-colors shadow-sm"
-                    >
-                      <Mail className="w-4 h-4" />
-                    </a>
+              <div className="group relative bg-white rounded-4xl border border-slate-200 flex flex-col overflow-hidden transition-all duration-500 ease-out hover:-translate-y-3 hover:scale-[1.02] shadow-[0_8px_30px_rgb(0,0,0,0.04),inset_0_-4px_0_0_rgb(226,232,240,1)] hover:shadow-[0_30px_60px_rgb(0,0,0,0.15),inset_0_-6px_0_0_rgb(15,23,42,1)] hover:border-slate-900 h-full">
+                {/* Initials monogram in place of a profile photo */}
+                <div className="h-64 sm:h-72 overflow-hidden relative border-b border-slate-100 flex items-center justify-center bg-linear-to-br from-slate-50 via-white to-yellow-50">
+                  <div className="absolute inset-0 bg-[radial-gradient(circle,rgba(15,23,42,0.06)_1px,transparent_1px)] [background-size:22px_22px] opacity-60" />
+                  <div className="relative z-10 w-32 h-32 sm:w-36 sm:h-36 rounded-full bg-slate-900 flex items-center justify-center shadow-[inset_0_-6px_0_0_rgba(0,0,0,0.35),0_10px_30px_rgba(15,23,42,0.25)] group-hover:scale-105 transition-transform duration-500">
+                    <span className="font-heading text-4xl sm:text-5xl font-extrabold text-yellow-400 tracking-tight">
+                      {member.initials}
+                    </span>
                   </div>
                 </div>
 

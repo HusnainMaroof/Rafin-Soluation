@@ -1,6 +1,8 @@
 ﻿"use client";
 
 import React from "react";
+import Image from "next/image";
+import NextLink from "next/link";
 import {
   ArrowRight,
   ShieldCheck,
@@ -8,7 +10,6 @@ import {
   Check,
   PhoneCall,
   LucideProps,
-  Link,
 } from "lucide-react";
 import { FadeIn, StaggerContainer, StaggerItem } from "./HelperComponent";
 import { INDUSTRIES_DATA, IndustryItem } from "../Static Data/IndustryData";
@@ -43,7 +44,7 @@ export const IndustryHero = ({ industry }: { industry: IndustryItem }) => {
           <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-slate-900 mb-6 leading-[1.1] tracking-tight flex flex-col md:flex-row flex-wrap justify-center gap-x-4">
             <StaggerItem>{firstWord}</StaggerItem>
             <StaggerItem>
-              <span className="font-tronica block text-transparent bg-clip-text bg-linear-to-r from-yellow-500 to-yellow-400">
+              <span className="block text-transparent bg-clip-text bg-linear-to-r from-yellow-500 to-yellow-400">
                 {restOfTitle || "Solutions"}
               </span>
             </StaggerItem>
@@ -68,11 +69,15 @@ export const IndustryOverview = ({ industry }: { industry: IndustryItem }) => (
         <FadeIn scale className="lg:w-1/2 w-full relative">
           <div className="absolute -inset-4 md:-inset-8 bg-yellow-100/70 rounded-[3rem] rotate-3 transform z-0 transition-transform duration-700 hover:rotate-6"></div>
 
-          <div className="relative w-full aspect-square  mx-auto rounded-4xl overflow-hidden shadow-[0_20px_60px_-15px_rgba(0,0,0,0.15)] group transition-transform duration-700 hover:scale-[1.02]">
-            <img
-              src={industry.image}
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+          <div className="relative w-full aspect-square mx-auto rounded-4xl overflow-hidden shadow-[0_20px_60px_-15px_rgba(0,0,0,0.15)] bg-white border border-slate-200">
+            {/* Contextual industry photo */}
+            <Image
+              src={industry.photo}
               alt={industry.title}
+              fill
+              priority
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover"
             />
           </div>
         </FadeIn>
@@ -104,9 +109,9 @@ export const IndustryOverview = ({ industry }: { industry: IndustryItem }) => (
                       )}
                     </div>
                     <div>
-                      <h4 className="font-bold text-slate-900 text-lg mb-1">
+                      <h3 className="font-bold text-slate-900 text-lg mb-1">
                         {feature.title}
-                      </h4>
+                      </h3>
                       <p className="text-slate-600 text-sm leading-relaxed font-medium">
                         {feature.desc}
                       </p>
@@ -309,7 +314,10 @@ export const CTASection = () => (
 
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 mb-6 tracking-tight leading-[1.1]">
               Ready to secure your <br />
-              <span className="text-yellow-600 font-tronica">compliance</span> future?
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-yellow-500 to-yellow-400">
+                compliance
+              </span>{" "}
+              future?
             </h2>
 
             <p className="text-slate-600 text-lg md:text-xl mb-12 max-w-2xl mx-auto font-medium leading-relaxed">
@@ -317,13 +325,13 @@ export const CTASection = () => (
               business and streamline your regulatory framework.
             </p>
 
-             <Link href={"/contact-us"}>
-              {" "}
-              <button className="group cursor-pointer inline-flex items-center justify-center gap-3 px-10 py-4 rounded-full text-base font-bold transition-all duration-300 bg-yellow-400 text-slate-900 shadow-[0_0_20px_rgba(250,204,21,0.5)] hover:shadow-[0_0_30px_rgba(250,204,21,0.7)] hover:bg-yellow-300 hover:-translate-y-1">
-                Contact Us{" "}
-                <ArrowRight className="w-5 h-5 ml-1 transition-transform group-hover:translate-x-1" />
-              </button>
-            </Link>
+            <NextLink
+              href="/contact-us"
+              className="group cursor-pointer inline-flex items-center justify-center gap-3 px-10 py-4 rounded-full text-base font-bold transition-all duration-300 bg-yellow-400 text-slate-900 shadow-[0_0_20px_rgba(250,204,21,0.5)] hover:shadow-[0_0_30px_rgba(250,204,21,0.7)] hover:bg-yellow-300 hover:-translate-y-1"
+            >
+              Contact Us
+              <ArrowRight className="w-5 h-5 ml-1 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+            </NextLink>
           </div>
         </div>
       </FadeIn>

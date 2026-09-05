@@ -1,11 +1,8 @@
 ﻿"use client";
 
 import React from "react";
-import {
-  ArrowRight,
-  ShieldCheck,
-  Building2,
-} from "lucide-react";
+import Image from "next/image";
+import { ArrowRight, Scale } from "lucide-react";
 import {
   Button,
   FadeIn,
@@ -33,7 +30,7 @@ export const AboutHero = () => {
             <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-slate-900 mb-6 leading-[1.1] tracking-tight">
               <StaggerItem>Welcome to</StaggerItem>
               <StaggerItem>
-                <span className="font-tronica text-transparent bg-clip-text bg-linear-to-r from-yellow-500 to-yellow-400">
+                <span className="text-transparent bg-clip-text bg-linear-to-r from-yellow-500 to-yellow-400">
                   Rafin Solutions
                 </span>
               </StaggerItem>
@@ -60,26 +57,51 @@ export const AboutHero = () => {
           </StaggerContainer>
         </div>
 
-        <FadeIn direction="left" className="lg:w-1/2 w-full h-125 relative">
-          <div className="absolute inset-0 rounded-[3rem] bg-linear-to-tr from-slate-200 to-white overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.1),inset_0_-8px_0_0_rgba(226,232,240,1)] group">
-            <img
-              src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80&w=1200"
-              alt="Rafin Solutions Office"
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out opacity-90"
+        <FadeIn direction="left" className="lg:w-1/2 w-full relative">
+          <div className="relative h-full min-h-[420px] rounded-[3rem] overflow-hidden border border-slate-200 bg-white shadow-[0_20px_50px_rgba(0,0,0,0.1),inset_0_-8px_0_0_rgba(226,232,240,1)]">
+            {/* Contextual hero photo — global reach */}
+            <Image
+              src="/images/about-us/global-reach.jpg"
+              alt="A globe representing Rafin Solutions' global reach across the UK, EU and beyond"
+              fill
+              priority
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover"
             />
-            {/* Interactive Badge */}
-            <div className="absolute bottom-8 left-8 bg-white/90 backdrop-blur-md p-6 rounded-2xl border border-slate-200 shadow-xl max-w-70 group-hover:-translate-y-2 transition-transform duration-500">
-              <div className="flex items-center gap-4 mb-3">
-                <div className="w-10 h-10 bg-yellow-400 rounded-full flex items-center justify-center text-slate-900 shadow-sm">
-                  <Building2 className="w-5 h-5" />
-                </div>
-                <div className="font-bold text-slate-900 text-lg">
-                  Global Reach
-                </div>
-              </div>
-              <p className="text-slate-600 text-sm leading-relaxed">
-                Assisting FinTechs across the UK, EU, and beyond.
+            {/* Soft overlay to keep text readable */}
+            <div className="absolute inset-0 bg-linear-to-t from-slate-900/70 via-slate-900/10 to-transparent" />
+
+            <div className="absolute inset-x-0 bottom-0 z-10 p-8 md:p-10">
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-3 drop-shadow">
+                Global Reach
+              </h3>
+              <p className="text-slate-100 leading-relaxed max-w-sm drop-shadow">
+                Assisting FinTechs and regulated financial businesses across
+                the UK, EU, and beyond with practitioner-built compliance and
+                operations support.
               </p>
+            </div>
+
+            {/* Bottom accent card */}
+            <div className="absolute top-6 right-6 z-20 bg-white/90 backdrop-blur-md p-4 rounded-2xl border border-slate-200 shadow-xl flex items-center gap-4">
+              <div className="relative w-11 h-11 rounded-full overflow-hidden shrink-0">
+                <Image
+                  src="/images/about-us/compliance-led.jpg"
+                  alt=""
+                  aria-hidden
+                  fill
+                  sizes="44px"
+                  className="object-cover"
+                />
+              </div>
+              <div>
+                <div className="font-bold text-slate-900 text-sm">
+                  Compliance-led operations
+                </div>
+                <p className="text-slate-600 text-xs leading-relaxed">
+                  Practical support for regulated financial services firms.
+                </p>
+              </div>
             </div>
           </div>
         </FadeIn>
@@ -91,29 +113,101 @@ export const AboutHero = () => {
 export const ApprovalStatsBanner = () => (
   <section className="relative z-30 container mx-auto px-6 lg:px-16 py-12 lg:py-0 lg:-mt-16">
     <FadeIn scale>
-      <div className="bg-white rounded-[3rem] p-8 md:p-12 shadow-[0_20px_40px_rgba(0,0,0,0.08),inset_0_-8px_0_0_rgb(226,232,240,1)] flex flex-col md:flex-row items-center justify-between gap-8 group hover:-translate-y-2 transition-transform duration-500 cursor-pointer overflow-hidden relative border border-slate-200">
-        <div className="absolute right-0 top-0 w-64 h-64 bg-yellow-400/10 blur-[80px] rounded-full pointer-events-none transition-all duration-700 group-hover:scale-150"></div>
+      <div className="bg-white rounded-[3rem] p-8 md:p-12 shadow-[0_20px_40px_rgba(0,0,0,0.08),inset_0_-8px_0_0_rgb(226,232,240,1)] overflow-hidden relative border border-slate-200">
+        <div className="absolute right-0 top-0 w-64 h-64 bg-yellow-400/10 blur-[80px] rounded-full pointer-events-none" />
 
-        <div className="flex items-center gap-6 relative z-10">
-          <div className="w-16 h-16 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:bg-yellow-400 group-hover:text-slate-900 transition-all duration-500 shadow-[0_0_20px_rgba(0,0,0,0.1)]">
-            <ShieldCheck className="w-8 h-8 text-yellow-400 group-hover:text-slate-900" />
-          </div>
-          <div>
-            <h3 className="text-4xl md:text-5xl font-tronica font-bold text-yellow-600 tracking-tighter mb-2">
-              150+
-            </h3>
-            <p className="text-slate-900 font-medium text-lg">
-              Financial Services firms approved
+        <div className="relative z-10">
+          <div className="flex items-center gap-3 mb-5">
+            <div className="w-10 h-10 rounded-xl bg-slate-900 flex items-center justify-center shrink-0">
+              <Scale className="w-5 h-5 text-yellow-400" />
+            </div>
+            <p className="text-xs font-bold uppercase tracking-widest text-slate-500">
+              What we help with
             </p>
           </div>
-        </div>
 
-        <div className="w-full md:w-px h-px md:h-24 bg-slate-200 relative z-10"></div>
-
-        <div className="text-slate-600 max-w-sm text-center md:text-left text-sm md:text-base leading-relaxed relative z-10">
-          Successfully authorized by the{" "}
-          <strong className="text-slate-900">FCA</strong> and European regulatory
-          bodies.
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="rounded-2xl bg-slate-50 border border-slate-200 overflow-hidden group">
+              <div className="relative h-28 overflow-hidden">
+                <Image
+                  src="/images/about-us/stat-licence.jpg"
+                  alt="Licence authorisation support"
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+              </div>
+              <div className="p-5">
+                <h3 className="font-bold text-slate-900 mb-1">
+                  Licence authorisation support
+                </h3>
+                <p className="text-sm text-slate-600 leading-relaxed">
+                  Practical help preparing applications and remediating gaps for
+                  financial services authorisation.
+                </p>
+              </div>
+            </div>
+            <div className="rounded-2xl bg-slate-50 border border-slate-200 overflow-hidden group">
+              <div className="relative h-28 overflow-hidden">
+                <Image
+                  src="/images/about-us/stat-monitoring.jpg"
+                  alt="Ongoing compliance"
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+              </div>
+              <div className="p-5">
+                <h3 className="font-bold text-slate-900 mb-1">
+                  Ongoing compliance
+                </h3>
+                <p className="text-sm text-slate-600 leading-relaxed">
+                  Monitoring, policies, reporting packs, and audit-ready evidence
+                  for regulated businesses.
+                </p>
+              </div>
+            </div>
+            <div className="rounded-2xl bg-slate-50 border border-slate-200 overflow-hidden group">
+              <div className="relative h-28 overflow-hidden">
+                <Image
+                  src="/images/about-us/stat-regulatory.jpg"
+                  alt="Regulatory insight"
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+              </div>
+              <div className="p-5">
+                <h3 className="font-bold text-slate-900 mb-1">
+                  Regulatory insight
+                </h3>
+                <p className="text-sm text-slate-600 leading-relaxed">
+                  Practitioner guidance across UK, EU, and international AML/CFT
+                  expectations.
+                </p>
+              </div>
+            </div>
+            <div className="rounded-2xl bg-slate-50 border border-slate-200 overflow-hidden group">
+              <div className="relative h-28 overflow-hidden">
+                <Image
+                  src="/images/about-us/fintech-digital.jpg"
+                  alt="Fintech operations"
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+              </div>
+              <div className="p-5">
+                <h3 className="font-bold text-slate-900 mb-1">
+                  Fintech operations
+                </h3>
+                <p className="text-sm text-slate-600 leading-relaxed">
+                  KYC/KYB, payments, transaction monitoring, support, and
+                  technology governance.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </FadeIn>
@@ -142,10 +236,23 @@ export const TailoredComplianceSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {complianceData.map((item, idx) => (
             <FadeIn scale key={idx} delay={idx * 0.1}>
-              <div className="p-8 rounded-4xl bg-white border border-slate-200 transition-all duration-500 ease-out hover:-translate-y-3 hover:scale-[1.02] shadow-[0_8px_30px_rgb(0,0,0,0.04),inset_0_-4px_0_0_rgb(226,232,240,1)] hover:shadow-[0_30px_60px_rgb(0,0,0,0.12),inset_0_-6px_0_0_rgb(15,23,42,1)] hover:border-slate-900 cursor-pointer group h-full flex flex-col">
-                <div className="w-14 h-14 bg-slate-50 border border-slate-200 rounded-xl flex items-center justify-center text-slate-700 mb-8 group-hover:scale-110 group-hover:bg-slate-900 group-hover:text-yellow-400 group-hover:-rotate-6 transition-all duration-300 shadow-sm">
-                  {React.cloneElement(item.icon, { className: "w-6 h-6" })}
-                </div>
+              <Link
+                href={item.href}
+                aria-label={item.linkLabel}
+                className="p-8 rounded-4xl bg-white border border-slate-200 transition-all duration-500 ease-out hover:-translate-y-3 hover:scale-[1.02] shadow-[0_8px_30px_rgb(0,0,0,0.04),inset_0_-4px_0_0_rgb(226,232,240,1)] hover:shadow-[0_30px_60px_rgb(0,0,0,0.12),inset_0_-6px_0_0_rgb(15,23,42,1)] hover:border-slate-900 group h-full flex flex-col overflow-hidden"
+              >
+                {item.image && (
+                  <div className="relative h-48 rounded-2xl overflow-hidden mb-8 shrink-0">
+                    <Image
+                      src={item.image}
+                      alt=""
+                      aria-hidden
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover group-hover:scale-[1.03] transition-transform duration-700"
+                    />
+                  </div>
+                )}
                 <h3 className="font-bold text-xl text-slate-900 mb-4 transition-colors duration-300">
                   {item.title}
                 </h3>
@@ -154,11 +261,11 @@ export const TailoredComplianceSection = () => {
                 </p>
                 <div className="mt-auto">
                   <span className="text-sm font-bold text-slate-900 flex items-center gap-2 group-hover:gap-4 transition-all uppercase tracking-wider">
-                    Click here{" "}
-                    <ArrowRight className="w-4 h-4 text-yellow-500" />
+                    {item.linkLabel}
+                    <ArrowRight className="w-4 h-4 text-yellow-500" aria-hidden="true" />
                   </span>
                 </div>
-              </div>
+              </Link>
             </FadeIn>
           ))}
         </div>
