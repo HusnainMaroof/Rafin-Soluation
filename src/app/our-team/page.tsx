@@ -2,8 +2,9 @@
 import { CTABandSection } from "@/src/components/SharedCTASection";
 import { TeamGrid, TeamHero } from "@/src/components/Ourteam";
 import React from "react";
-import { buildMetadata, webpageJsonLd } from "@/src/lib/seo";
+import { buildMetadata, teamJsonLd, webpageJsonLd } from "@/src/lib/seo";
 import { JsonLd } from "@/src/lib/JsonLd";
+import { TEAM_MEMBERS } from "@/src/Static Data/TeamData";
 
 export const metadata: Metadata = buildMetadata({
   title: "Our Team",
@@ -21,6 +22,7 @@ export const metadata: Metadata = buildMetadata({
 const page = () => {
   return (
     <>
+      <JsonLd data={teamJsonLd(TEAM_MEMBERS)} />
       <JsonLd
         data={webpageJsonLd({
           title: "Our Team | Rafin Solutions",

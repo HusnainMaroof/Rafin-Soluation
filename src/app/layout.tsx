@@ -4,6 +4,7 @@ import "./globals.css";
 import localFont from "next/font/local";
 import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
+import { GoogleAnalytics } from "@/src/components/GoogleAnalytics";
 import {
   SITE_DESCRIPTION,
   SITE_NAME,
@@ -73,9 +74,26 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
+    },
   },
+  manifest: "/manifest.webmanifest",
   icons: {
+    // Served from src/app/icon.png and src/app/apple-icon.png
     icon: "/icon.png",
+    apple: "/apple-icon.png",
+  },
+  // Paste your tokens after verifying the site in each console:
+  verification: {
+    google: process.env.GOOGLE_SITE_VERIFICATION,
+    other: process.env.YANDEX_VERIFICATION
+      ? { "yandex-verification": process.env.YANDEX_VERIFICATION }
+      : undefined,
   },
 };
 
@@ -109,6 +127,8 @@ export default function RootLayout({
         </main>
 
         <Footer />
+        {/* Rendered only when NEXT_PUBLIC_GA_ID is set */}
+        <GoogleAnalytics />
       </body>
     </html>
   );

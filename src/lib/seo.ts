@@ -20,7 +20,7 @@ export const CONTACT = {
   },
 };
 
-export const DEFAULT_OG_IMAGE = `${SITE_URL}/opengraph-image`;
+export const DEFAULT_OG_IMAGE = `${SITE_URL}/opengraph-image.png`;
 
 /** Shared keywords used across the site (kept natural, not stuffed). */
 export const CORE_KEYWORDS = [
@@ -31,6 +31,14 @@ export const CORE_KEYWORDS = [
   "payment operations",
   "FCA authorisation support",
 ];
+
+/**
+ * Social profile URLs, referenced by the Organization JSON-LD (`sameAs`).
+ * Add your real profiles here, e.g.:
+ * "https://www.linkedin.com/company/rafinsolutions",
+ * "https://x.com/rafinsolutions",
+ */
+export const SOCIAL_PROFILES: string[] = [];
 
 export interface BuildMetadataArgs {
   title: string;
@@ -100,6 +108,7 @@ export function orgJsonLd(): JsonLdValue {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": `${SITE_URL}/#organization`,
     name: SITE_NAME,
     url: SITE_URL,
     logo: `${SITE_URL}/Logo/logo.png`,
@@ -118,6 +127,7 @@ export function orgJsonLd(): JsonLdValue {
       telephone: CONTACT.phoneHref.replace("tel:", ""),
       availableLanguage: ["English"],
     },
+    ...(SOCIAL_PROFILES.length > 0 ? { sameAs: SOCIAL_PROFILES } : {}),
   };
 }
 
@@ -125,6 +135,7 @@ export function websiteJsonLd(): JsonLdValue {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
+    "@id": `${SITE_URL}/#website`,
     name: SITE_NAME,
     url: SITE_URL,
     description: SITE_DESCRIPTION,
@@ -195,6 +206,30 @@ export function faqJsonLd(items: { q: string; a: string }[]): JsonLdValue {
       "@type": "Question",
       name: item.q,
       acceptedAnswer: { "@type": "Answer", text: item.a },
+    })),
+  };
+}
+
+/**
+ * Team members as an ItemList of Person entities, linked to the
+ * Organization via its canonical @id.
+ */
+export function teamJsonLd(
+  members: { name: string; role: string }[],
+): JsonLdValue {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: members.map((member, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: {
+        "@type": "Person",
+        name: member.name,
+        jobTitle: member.role,
+        worksFor: { "@id": `${SITE_URL}/#organization` },
+        url: `${SITE_URL}/our-team`,
+      },
     })),
   };
 }

@@ -36,8 +36,8 @@ const nextConfig: NextConfig = {
         ],
       },
       {
-        // Branded OG image
-        source: "/opengraph-image",
+        // Branded OG image (served by src/app/opengraph-image.png)
+        source: "/opengraph-image.png",
         headers: [
           {
             key: "Cache-Control",
