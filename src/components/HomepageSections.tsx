@@ -23,7 +23,7 @@ import {
    Inter body, rounded-xl cards).
    ============================================================ */
 
-const container = "container mx-auto px-6 lg:px-16 w-full";
+const container = " w-full xl:w-[85%] mx-auto px-6 lg:px-16 ";
 
 /* Section heading: eyebrow + h2 + paragraph. */
 const SectionHeading = ({
@@ -103,14 +103,14 @@ export const HeroSection = () => {
       </div>
 
       <div className={`${container} relative z-10`}>
-        <div className="grid grid-cols-1 lg:grid-cols-[0.95fr_0.85fr] gap-12 lg:gap-16 items-center">
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-center justify-between">
           {/* Left column */}
           <div>
             <p className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-yellow-600 mb-5">
               <span className="w-8 h-0.5 bg-yellow-500 inline-block" />
               Practical fintech operating support
             </p>
-            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight leading-[1.02] mb-6 text-slate-900">
+            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight leading-[1.02] mb-6 text-slate-900 text-nowrap">
               Your Fintech,<br />
               <span className="text-transparent bg-clip-text bg-linear-to-r from-yellow-500 to-yellow-400">
                 Our Expertise
@@ -137,7 +137,7 @@ export const HeroSection = () => {
           </div>
 
           {/* Right column: ecosystem visual built with Rafin styling */}
-          <div className="block">
+          <div className="w-full  ">
             <OpsEcosystemVisual />
           </div>
         </div>
@@ -150,14 +150,14 @@ export const HeroSection = () => {
    a glass panel with a central badge, rings, and capability nodes. */
 const OpsEcosystemVisual = () => {
   const nodes = [
-    { label: "Compliance", sub: "AML/KYC", className: "left-5 md:left-15 lg:left-25 top-10" },
-    { label: "Payments", sub: "Operations", className: "right-5 md:right-15 lg:right-25 top-10" },
-    { label: "Support", sub: "Queues", className: "left-5 md:left-15 lg:left-25 bottom-20" },
-    { label: "Technology", sub: "Governance", className: "right-5 md:right-15 lg:right-25 bottom-20" },
+    { label: "Compliance", sub: "AML/KYC", className: "left-5 md:left-10 xl:left-25 top-10" },
+    { label: "Payments", sub: "Operations", className: "right-5 md:right-10 xl:right-25 top-10" },
+    { label: "Support", sub: "Queues", className: "left-5 md:left-10 xl:left-25 bottom-20" },
+    { label: "Technology", sub: "Governance", className: "right-5 md:right-10 xl:right-25 bottom-20" },
     { label: "Risk", sub: "Monitoring", className: "left-1/2 -translate-x-1/2 bottom-4" },
   ];
   return (
-    <div className="relative h-[460px] rounded-4xl overflow-hidden border border-slate-200 bg-white shadow-xl">
+    <div className="relative h-[460px] rounded-4xl overflow-hidden border border-slate-200 bg-white shadow-xl w-full">
       <div className="absolute inset-0 bg-[linear-gradient(rgba(15,23,42,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(15,23,42,0.04)_1px,transparent_1px)] [background-size:38px_38px]" />
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 rounded-full border border-yellow-400/50 flex flex-col items-center justify-center bg-linear-to-br from-yellow-400 to-yellow-300 text-slate-900 shadow-[0_0_60px_rgba(250,204,21,0.45)] z-10">
         <strong className="text-xl font-extrabold">Rafin</strong>
