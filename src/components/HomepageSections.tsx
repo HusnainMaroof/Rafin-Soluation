@@ -1,17 +1,18 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { FAQ_ITEMS } from "../Static Data/FaqData";
+import { SERVICES_DATA } from "../Static Data/ServiceData";
+import { INDUSTRIES_DATA } from "../Static Data/IndustryData";
 import {
   ArrowRight,
   ArrowUpRight,
   Check,
   Landmark,
   MonitorSmartphone,
-  Palette,
   Scale,
-  Settings,
   ShieldCheck,
   Users,
 } from "lucide-react";
@@ -23,7 +24,7 @@ import {
    Inter body, rounded-xl cards).
    ============================================================ */
 
-const container = " w-full xl:w-[85%] mx-auto px-6 lg:px-16 ";
+const container = " w-full xl:container mx-auto px-6 lg:px-16 ";
 
 /* Section heading: eyebrow + h2 + paragraph. */
 const SectionHeading = ({
@@ -70,20 +71,60 @@ const SectionHeading = ({
   </div>
 );
 
-/* Small icon tile used across homepage cards */
-const IconTile = ({
-  children,
-  dark = false,
+/* Fixed top image band for photo-led cards (services / industries /
+   case studies). Renders a contextual photo so cards feel tangible
+   instead of icon-driven. Place inside an overflow-hidden rounded card;
+   the band sits flush to the card's top edge. */
+const CardPhoto = ({
+  src,
+  alt,
+  aspect = "aspect-[16/10]",
 }: {
-  children: React.ReactNode;
-  dark?: boolean;
+  src: string;
+  alt: string;
+  aspect?: string;
 }) => (
-  <div
-    className={`w-11 h-11 rounded-lg flex items-center justify-center mb-5 ${
-      dark ? "bg-slate-900 text-yellow-500" : "bg-slate-100 text-slate-700"
-    }`}
-  >
-    {children}
+  <div className={`relative w-full ${aspect} overflow-hidden bg-slate-100`}>
+    <Image
+      src={src}
+      alt={alt}
+      fill
+      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+      className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+    />
+    <div className="absolute inset-0 bg-linear-to-t from-slate-900/15 via-transparent to-transparent" />
+  </div>
+);
+
+/* Decorated photo panel used in the About / Engagement sections —
+   a rounded image with a rotated yellow offset frame, matching the
+   service + industry detail pages. */
+const FramedPhoto = ({
+  src,
+  alt,
+  aspect = "aspect-[4/3]",
+  rounded = "rounded-[2rem]",
+}: {
+  src: string;
+  alt: string;
+  aspect?: string;
+  rounded?: string;
+}) => (
+  <div className="relative">
+    <div
+      className={`absolute -inset-3 md:-inset-4 bg-yellow-100/70 ${rounded} rotate-3 transform transition-transform duration-700 hover:rotate-6`}
+    />
+    <div
+      className={`relative ${rounded} overflow-hidden shadow-[0_20px_45px_-12px_rgba(15,23,42,0.18)] border border-slate-200 ${aspect} bg-white`}
+    >
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        sizes="(max-width: 1024px) 100vw, 50vw"
+        className="object-cover"
+      />
+    </div>
   </div>
 );
 
@@ -103,7 +144,7 @@ export const HeroSection = () => {
       </div>
 
       <div className={`${container} relative z-10`}>
-        <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-center justify-between">
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 lg:items-center justify-between">
           {/* Left column */}
           <div>
             <p className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-yellow-600 mb-5">
@@ -134,10 +175,13 @@ export const HeroSection = () => {
                 Explore Services
               </Link>
             </div>
+
+            {/* Trust row — mirrors FinCore's hero stats */}
+   
           </div>
 
           {/* Right column: ecosystem visual built with Rafin styling */}
-          <div className="w-full  ">
+          <div className=" w-full lg:w-[600px] ">
             <OpsEcosystemVisual />
           </div>
         </div>
@@ -258,7 +302,7 @@ const JURISDICTIONS = [
 export const AboutSection = () => (
   <section className="bg-slate-50 py-20 border-t border-slate-200">
     <div className={`${container}`}>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-12 lg:gap-16 items-center">
         <SectionHeading
           eyebrow="About Rafin Solutions"
           title={
@@ -269,9 +313,16 @@ export const AboutSection = () => (
           }
           subtitle="Rafin Solutions is a specialist compliance consultancy and outsourced-operations firm built on hands-on experience inside regulated payment, remittance, EMI, MSB, API, and digital financial service environments."
         />
-        <div className="flex flex-col gap-5">
-          <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
-            <p className="text-sm text-slate-500 font-semibold uppercase tracking-wider mb-4">
+        <div className="relative pb-6 md:pb-8">
+          {/* Visual stack: framed photo with the jurisdiction panel
+              overlapping its lower edge — same intent as FinCore's
+              About workflow visual. */}
+          <FramedPhoto
+            src="/images/about-us/business-as-usual.jpg"
+            alt="Rafin consultants reviewing compliance and operations documents together"
+          />
+          <div className="relative z-10 -mt-10 md:-mt-12 mx-4 md:mx-8 rounded-2xl border border-slate-200 bg-white p-5 md:p-6 shadow-[0_20px_40px_-16px_rgba(15,23,42,0.18)]">
+            <p className="text-xs font-bold uppercase tracking-widest text-slate-500 mb-4">
               Regulatory jurisdictions covered
             </p>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
@@ -298,58 +349,64 @@ export const AboutSection = () => (
 
 /* ------------------------------------------------------------
    4. SERVICES GRID — 4-col grid of Rafin's
-   real services, each card = icon + title + desc + View Service.
+   real services, each card = photo + title + desc + View Service.
    ------------------------------------------------------------ */
 const HOME_SERVICES = [
   {
-    icon: <ShieldCheck className="w-5 h-5" />,
+    slug: "aml-cft-compliance",
     title: "AML/CFT Compliance",
     desc: "Build practical AML/CFT frameworks, risk assessments, monitoring controls and reporting processes tailored to your business model.",
     href: "/service/aml-cft-compliance",
   },
   {
-    icon: <Users className="w-5 h-5" />,
+    slug: "kyc-and-kyb",
     title: "KYC and KYB",
     desc: "Design reliable KYC and KYB onboarding workflows, verification rules, risk scoring and approval controls.",
     href: "/service/kyc-and-kyb",
   },
   {
-    icon: <MonitorSmartphone className="w-5 h-5" />,
+    slug: "transaction-monitoring",
     title: "Transaction Monitoring",
     desc: "Develop risk-based monitoring rules, alert investigation workflows, threshold tuning and management reporting.",
     href: "/service/transaction-monitoring",
   },
   {
-    icon: <Settings className="w-5 h-5" />,
+    slug: "payment-operations",
     title: "Payment Operations",
     desc: "Improve payment operations through clear workflows for settlements, exceptions, reconciliation and reporting.",
     href: "/service/payment-operations",
   },
   {
-    icon: <Landmark className="w-5 h-5" />,
+    slug: "transaction-processing",
     title: "Transaction Processing",
     desc: "Support accurate processing, status management, failed-payment handling, reprocessing and exception escalation.",
     href: "/service/transaction-processing",
   },
   {
-    icon: <Users className="w-5 h-5" />,
+    slug: "customer-support",
     title: "Customer Support",
     desc: "Build responsive support operations with clear SOPs, escalation paths, quality reviews and complaint handling.",
     href: "/service/customer-support",
   },
   {
-    icon: <Settings className="w-5 h-5" />,
+    slug: "technology-and-it-governance",
     title: "Technology and IT Governance",
     desc: "Strengthen technology governance with access controls, change management, incident processes and vendor oversight.",
     href: "/service/technology-and-it-governance",
   },
   {
-    icon: <Palette className="w-5 h-5" />,
+    slug: "meta-ads-for-fintech",
     title: "Meta Ads for Fintech",
     desc: "Plan compliant, structured Meta Ads activity, including messaging review, setup coordination and performance reporting.",
     href: "/service/meta-ads-for-fintech",
   },
 ];
+
+/* Single source of truth for the homepage photo: reuse the exact
+   photo each service shows on its own detail page. */
+const servicePhoto = (slug: string) =>
+  SERVICES_DATA.find((s) => s.slug === slug)?.photo ??
+  "/images/services/aml-cft-compliance.jpg";
 
 export const ServicesGridSection = () => (
   <section className="bg-white py-20 border-t border-slate-200">
@@ -365,19 +422,25 @@ export const ServicesGridSection = () => (
           <Link
             key={srv.title}
             href={srv.href}
-            className="group flex flex-col rounded-xl border border-slate-200 bg-white p-6 shadow-sm hover:border-yellow-400 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+            className="group flex flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm hover:border-yellow-400 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
           >
-            <IconTile dark>{srv.icon}</IconTile>
-            <h3 className="font-bold text-slate-900 leading-snug mb-2">
-              {srv.title}
-            </h3>
-            <p className="text-sm text-slate-600 leading-relaxed mb-5 flex-grow">
-              {srv.desc}
-            </p>
-            <span className="inline-flex items-center gap-1.5 text-sm font-bold text-yellow-600 mt-auto">
-              View Service
-              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-            </span>
+            <CardPhoto
+              src={servicePhoto(srv.slug)}
+              alt={srv.title}
+              aspect="aspect-[16/11]"
+            />
+            <div className="flex flex-col grow p-6 pt-5">
+              <h3 className="font-bold text-slate-900 leading-snug mb-2">
+                {srv.title}
+              </h3>
+              <p className="text-sm text-slate-600 leading-relaxed mb-5 flex-grow">
+                {srv.desc}
+              </p>
+              <span className="inline-flex items-center gap-1.5 text-sm font-bold text-yellow-600 mt-auto">
+                View Service
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              </span>
+            </div>
           </Link>
         ))}
         {/* Anchor card to the services overview */}
@@ -460,6 +523,10 @@ export const EngagementSection = () => (
           ))}
         </div>
       </div>
+
+      {/* Full-width framed photo below the process — mirrors FinCore's
+          virtual back-office visual in the flagship section. */}
+
     </div>
   </section>
 );
@@ -514,8 +581,12 @@ export const WhySection = () => (
             key={card.title}
             className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm hover:border-yellow-400 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
           >
-            <IconTile>{card.icon}</IconTile>
-            <h3 className="font-bold text-slate-900 mb-2">{card.title}</h3>
+            <h3 className="flex items-center gap-2.5 font-bold text-slate-900 mb-2">
+              <span className="w-8 h-8 rounded-lg bg-slate-100 text-slate-700 flex items-center justify-center shrink-0">
+                {card.icon}
+              </span>
+              {card.title}
+            </h3>
             <p className="text-sm text-slate-600 leading-relaxed m-0">
               {card.desc}
             </p>
@@ -531,15 +602,20 @@ export const WhySection = () => (
    Rafin's real industry pages.
    ------------------------------------------------------------ */
 const HOME_INDUSTRIES = [
-  { title: "Remittance Companies", href: "/industry/remittance-companies" },
-  { title: "Money Service Businesses", href: "/industry/money-service-businesses" },
-  { title: "Electronic Money Institutions", href: "/industry/electronic-money-institutions" },
-  { title: "Payment Institutions", href: "/industry/payment-institutions" },
-  { title: "Fintech Startups", href: "/industry/fintech-startups" },
-  { title: "Digital Wallets", href: "/industry/digital-wallets" },
-  { title: "Payment Service Providers", href: "/industry/payment-service-providers" },
-  { title: "Foreign Exchange Businesses", href: "/industry/foreign-exchange-businesses" },
+  { slug: "remittance-companies", title: "Remittance Companies", href: "/industry/remittance-companies" },
+  { slug: "money-service-businesses", title: "Money Service Businesses", href: "/industry/money-service-businesses" },
+  { slug: "electronic-money-institutions", title: "Electronic Money Institutions", href: "/industry/electronic-money-institutions" },
+  { slug: "payment-institutions", title: "Payment Institutions", href: "/industry/payment-institutions" },
+  { slug: "fintech-startups", title: "Fintech Startups", href: "/industry/fintech-startups" },
+  { slug: "digital-wallets", title: "Digital Wallets", href: "/industry/digital-wallets" },
+  { slug: "payment-service-providers", title: "Payment Service Providers", href: "/industry/payment-service-providers" },
+  { slug: "foreign-exchange-businesses", title: "Foreign Exchange Businesses", href: "/industry/foreign-exchange-businesses" },
 ];
+
+/* Reuse each industry's own page photo on the homepage card. */
+const industryPhoto = (slug: string) =>
+  INDUSTRIES_DATA.find((s) => s.slug === slug)?.photo ??
+  "/images/industries/remittance-companies.jpg";
 
 export const IndustriesSection = () => (
   <section className="bg-slate-50 py-20 border-t border-slate-200">
@@ -555,15 +631,22 @@ export const IndustriesSection = () => (
           <Link
             key={ind.title}
             href={ind.href}
-            className="group rounded-xl border border-slate-200 bg-white p-6 shadow-sm hover:border-yellow-400 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+            className="group flex flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm hover:border-yellow-400 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
           >
-            <h3 className="font-bold text-slate-900 leading-snug mb-2">
-              {ind.title}
-            </h3>
-            <span className="inline-flex items-center gap-1.5 text-sm font-bold text-yellow-600">
-              View Industry
-              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-            </span>
+            <CardPhoto
+              src={industryPhoto(ind.slug)}
+              alt={ind.title}
+              aspect="aspect-[16/11]"
+            />
+            <div className="flex flex-col grow p-6 pt-5">
+              <h3 className="font-bold text-slate-900 leading-snug mb-2">
+                {ind.title}
+              </h3>
+              <span className="inline-flex items-center gap-1.5 text-sm font-bold text-yellow-600 mt-auto">
+                View Industry
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              </span>
+            </div>
           </Link>
         ))}
       </div>
@@ -648,16 +731,19 @@ const CASE_STUDIES = [
     title: "UK Remittance Operations Review",
     desc: "An anonymised remittance team needed clearer onboarding, monitoring, reconciliation, and escalation workflows.",
     href: "/service/payment-operations",
+    photo: "/images/about-us/business-as-usual.jpg",
   },
   {
     title: "Payment Institution Back-Office Buildout",
     desc: "An anonymised payment institution required a practical structure for support queues, partner onboarding, and transaction operations.",
     href: "/service/customer-support",
+    photo: "/images/about-us/authorisation.jpg",
   },
   {
     title: "Fintech Startup Pre-Launch Control Pack",
     desc: "An anonymised fintech startup needed pre-launch compliance, governance, and operating documentation before scaling activity.",
     href: "/service/aml-cft-compliance",
+    photo: "/images/about-us/team-training.jpg",
   },
 ];
 
@@ -674,18 +760,21 @@ export const CaseStudiesSection = () => (
           <Link
             key={cs.title}
             href={cs.href}
-            className="group rounded-xl border border-slate-200 bg-white p-6 shadow-sm hover:border-yellow-400 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col"
+            className="group flex flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm hover:border-yellow-400 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
           >
-            <h3 className="font-bold text-slate-900 leading-snug mb-2">
-              {cs.title}
-            </h3>
-            <p className="text-sm text-slate-600 leading-relaxed mb-5 flex-grow">
-              {cs.desc}
-            </p>
-            <span className="inline-flex items-center gap-1.5 text-sm font-bold text-yellow-600">
-              Read Case Study
-              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-            </span>
+            <CardPhoto src={cs.photo} alt={cs.title} aspect="aspect-[16/10]" />
+            <div className="flex flex-col grow p-6">
+              <h3 className="font-bold text-slate-900 leading-snug mb-2">
+                {cs.title}
+              </h3>
+              <p className="text-sm text-slate-600 leading-relaxed mb-5 flex-grow">
+                {cs.desc}
+              </p>
+              <span className="inline-flex items-center gap-1.5 text-sm font-bold text-yellow-600 mt-auto">
+                Read Case Study
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              </span>
+            </div>
           </Link>
         ))}
       </div>
