@@ -149,10 +149,10 @@ export const HeroSection = () => {
           <div>
             <p className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-yellow-600 mb-5">
               <span className="w-8 h-0.5 bg-yellow-500 inline-block" />
-              Practical fintech operating support
+              Enabling Smarter Operations
             </p>
             <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight leading-[1.02] mb-6 text-slate-900 text-nowrap">
-              Your Fintech,<br />
+              Your Business,<br />
               <span className="text-transparent bg-clip-text bg-linear-to-r from-yellow-500 to-yellow-400">
                 Our Expertise
               </span>
@@ -180,9 +180,16 @@ export const HeroSection = () => {
    
           </div>
 
-          {/* Right column: ecosystem visual built with Rafin styling */}
-          <div className=" w-full lg:w-[600px] ">
-            <OpsEcosystemVisual />
+          {/* Right column: hero section image */}
+          <div className="w-full lg:w-[600px]">
+            <Image
+              src="/images/heosection.png"
+              alt="Rafin Solutions - Compliance and Operations"
+              width={600}
+              height={460}
+              className="w-full h-auto"
+              priority
+            />
           </div>
         </div>
       </div>
@@ -190,42 +197,8 @@ export const HeroSection = () => {
   );
 };
 
-/* Simplified visual panel of Rafin's operating ecosystem:
-   a glass panel with a central badge, rings, and capability nodes. */
-const OpsEcosystemVisual = () => {
-  const nodes = [
-    { label: "Compliance", sub: "AML/KYC", className: "left-5 md:left-10 xl:left-25 top-10" },
-    { label: "Payments", sub: "Operations", className: "right-5 md:right-10 xl:right-25 top-10" },
-    { label: "Support", sub: "Queues", className: "left-5 md:left-10 xl:left-25 bottom-20" },
-    { label: "Technology", sub: "Governance", className: "right-5 md:right-10 xl:right-25 bottom-20" },
-    { label: "Risk", sub: "Monitoring", className: "left-1/2 -translate-x-1/2 bottom-4" },
-  ];
-  return (
-    <div className="relative h-[460px] rounded-4xl overflow-hidden border border-slate-200 bg-white shadow-xl w-full">
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(15,23,42,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(15,23,42,0.04)_1px,transparent_1px)] [background-size:38px_38px]" />
-      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 rounded-full border border-yellow-400/50 flex flex-col items-center justify-center bg-linear-to-br from-yellow-400 to-yellow-300 text-slate-900 shadow-[0_0_60px_rgba(250,204,21,0.45)] z-10">
-        <strong className="text-xl font-extrabold">Rafin</strong>
-        <span className="text-[10px] font-bold uppercase tracking-widest -mt-1">
-          Solutions
-        </span>
-      </div>
-      {/* orbit rings */}
-      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[380px] h-[380px] rounded-full border border-slate-200" />
-      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] h-[280px] rounded-full border border-yellow-400/30" />
-      {nodes.map((node) => (
-        <div
-          key={node.label}
-          className={`absolute ${node.className} z-10 min-w-[120px] rounded-lg border border-slate-200 bg-white/90 px-3 py-2.5 backdrop-blur shadow-sm text-center`}
-        >
-          <strong className="block text-yellow-600 text-sm font-bold leading-tight">
-            {node.label}
-          </strong>
-          <span className="text-xs font-semibold text-slate-500">{node.sub}</span>
-        </div>
-      ))}
-    </div>
-  );
-};
+
+
 
 /* ------------------------------------------------------------
    2. CORE VALUE PROPOSITION — two-column value board:

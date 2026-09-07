@@ -11,13 +11,13 @@ import {
 } from "@/src/components/HelperComponent";
 import { expertiseData } from "@/src/Static Data/AboutUsData";
 import React from "react";
-import { buildMetadata, orgJsonLd, webpageJsonLd } from "@/src/lib/seo";
+import { buildMetadata, breadcrumbJsonLd, orgJsonLd, webpageJsonLd } from "@/src/lib/seo";
 import { JsonLd } from "@/src/lib/JsonLd";
 
 export const metadata: Metadata = buildMetadata({
   title: "About Us",
   description:
-    "Rafin Solutions is a specialist compliance consultancy and outsourced-operations firm built on hands-on experience inside regulated payment, remittance, EMI, MSB, and fintech environments.",
+    "Rafin Solutions is a specialist compliance consultancy built on hands-on experience inside regulated payment, remittance, EMI, MSB, and fintech environments.",
   path: "/about-us",
   keywords: [
     "about Rafin Solutions",
@@ -35,9 +35,15 @@ const page = () => {
         data={webpageJsonLd({
           title: "About Us | Rafin Solutions",
           description:
-            "Rafin Solutions is a specialist compliance consultancy and outsourced-operations firm built on hands-on experience inside regulated payment, remittance, EMI, MSB, and fintech environments.",
+            "Rafin Solutions is a specialist compliance consultancy built on hands-on experience inside regulated payment, remittance, EMI, MSB, and fintech environments.",
           path: "/about-us",
         })}
+      />
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "About Us", path: "/about-us" },
+        ])}
       />
       <div className="min-h-screen font-sans selection:bg-yellow-400 selection:text-slate-900 overflow-x-hidden bg-white">
         <AboutHero />

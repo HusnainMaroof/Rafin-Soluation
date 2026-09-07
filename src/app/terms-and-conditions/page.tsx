@@ -8,7 +8,7 @@ import { JsonLd } from "@/src/lib/JsonLd";
 export const metadata: Metadata = buildMetadata({
   title: "Terms & Conditions",
   description:
-    "Read the terms and conditions that govern your use of the Rafin Solutions website and services.",
+    "Read the terms and conditions governing your use of the Rafin Solutions website, services, and compliance consultancy engagements.",
   path: "/terms-and-conditions",
   keywords: [
     "Rafin Solutions terms",

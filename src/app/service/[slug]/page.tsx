@@ -7,6 +7,7 @@ import {
   breadcrumbJsonLd,
   buildMetadata,
   serviceJsonLd,
+  webpageJsonLd,
 } from "@/src/lib/seo";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -46,6 +47,13 @@ export default async function Page({ params }: Props) {
   return (
     <>
       <JsonLd
+        data={webpageJsonLd({
+          title: `${service.title} | Rafin Solutions`,
+          description: service.desc,
+          path: `/service/${service.slug}`,
+        })}
+      />
+      <JsonLd
         data={serviceJsonLd({
           slug: service.slug,
           title: service.title,
@@ -55,7 +63,7 @@ export default async function Page({ params }: Props) {
       <JsonLd
         data={breadcrumbJsonLd([
           { name: "Home", path: "/" },
-          { name: "Services", path: "/service/aml-cft-compliance" },
+          { name: "Services", path: "/" },
           { name: service.title, path: `/service/${service.slug}` },
         ])}
       />

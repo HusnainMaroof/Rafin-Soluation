@@ -8,6 +8,7 @@ import {
   buildMetadata,
   courseJsonLd,
   SITE_NAME_ACADEMY,
+  webpageJsonLd,
 } from "@/src/lib/seo";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -47,15 +48,22 @@ export default async function Page({ params }: Props) {
 
   return (
     <>
+      <JsonLd
+        data={webpageJsonLd({
+          title: `${trainingModule.title} | Rafin Solutions`,
+          description: trainingModule.description,
+          path: `/training/${trainingModule.slug}`,
+        })}
+      />
       <JsonLd data={courseJsonLd(trainingModule)} />
       <JsonLd
         data={breadcrumbJsonLd([
           { name: "Home", path: "/" },
-          { name: SITE_NAME_ACADEMY, path: "/training/aml-cft-training" },
+          { name: SITE_NAME_ACADEMY, path: "/" },
           { name: trainingModule.title, path: `/training/${trainingModule.slug}` },
         ])}
       />
-      <TrainingPage slug={trainingModule} />
+      <TrainingPage slug={trainingModule} trainingModule={trainingModule} />
     </>
   );
 }

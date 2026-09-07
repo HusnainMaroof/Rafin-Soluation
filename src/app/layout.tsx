@@ -63,13 +63,13 @@ export const metadata: Metadata = {
     description: SITE_DESCRIPTION,
     url: SITE_URL,
     locale: "en_GB",
-    images: [{ url: `${SITE_URL}/opengraph-image`, width: 1200, height: 630 }],
+    images: [{ url: `${SITE_URL}/opengraph-image.png`, width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
     title: SITE_NAME,
     description: SITE_DESCRIPTION,
-    images: [`${SITE_URL}/opengraph-image`],
+    images: [`${SITE_URL}/opengraph-image.png`],
   },
   robots: {
     index: true,
@@ -84,8 +84,7 @@ export const metadata: Metadata = {
   },
   manifest: "/manifest.webmanifest",
   icons: {
-    // Served from src/app/icon.png and src/app/apple-icon.png
-    icon: "/icon.png",
+    icon: ["/favicon.ico", "/icon.png"],
     apple: "/apple-icon.png",
   },
   // Paste your tokens after verifying the site in each console:
@@ -110,7 +109,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="en-GB"
       className={`${tronica.variable} ${inter.variable} ${manrope.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">

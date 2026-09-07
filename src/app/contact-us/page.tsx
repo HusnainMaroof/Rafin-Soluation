@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import ContactUS from "@/src/components/ContectUS";
 import { CTABandSection } from "@/src/components/SharedCTASection";
 import React from "react";
-import { buildMetadata, CONTACT, webpageJsonLd } from "@/src/lib/seo";
+import { buildMetadata, breadcrumbJsonLd, CONTACT, orgJsonLd, webpageJsonLd } from "@/src/lib/seo";
 import { JsonLd } from "@/src/lib/JsonLd";
 
 export const metadata: Metadata = buildMetadata({
@@ -21,6 +21,7 @@ export const metadata: Metadata = buildMetadata({
 const page = () => {
   return (
     <>
+      <JsonLd data={orgJsonLd()} />
       <JsonLd
         data={webpageJsonLd({
           title: "Contact Us | Rafin Solutions",
@@ -30,23 +31,23 @@ const page = () => {
         })}
       />
       <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Contact Us", path: "/contact-us" },
+        ])}
+      />
+      <JsonLd
         data={{
           "@context": "https://schema.org",
           "@type": "ContactPage",
           name: "Contact Rafin Solutions",
           url: "https://rafinsolutions.com/contact-us",
           mainEntity: {
-            "@type": "Organization",
-            name: "Rafin Solutions",
-            email: CONTACT.email,
+            "@type": "ContactPoint",
+            contactType: "customer support",
             telephone: CONTACT.phoneHref.replace("tel:", ""),
-            contactPoint: {
-              "@type": "ContactPoint",
-              contactType: "customer support",
-              telephone: CONTACT.phoneHref.replace("tel:", ""),
-              email: CONTACT.email,
-              availableLanguage: ["English"],
-            },
+            email: CONTACT.email,
+            availableLanguage: ["English"],
           },
         }}
       />

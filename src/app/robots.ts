@@ -7,24 +7,39 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        // API routes are for form submissions only — keep them out of indexes
-        disallow: ["/api/"],
+        disallow: ["/api/", "/admin/"],
       },
       {
-        // Explicit green light for all of Google's crawlers
-        userAgent: [
-          "Googlebot",
-          "Googlebot-Image",
-          "Googlebot-News",
-          "Googlebot-Video",
-          "Mediapartners-Google",
-          "AdsBot-Google",
-        ],
+        userAgent: "Googlebot",
         allow: "/",
-        disallow: ["/api/"],
+        disallow: ["/api/", "/admin/"],
+      },
+      {
+        userAgent: "Googlebot-Image",
+        allow: "/",
+        disallow: ["/api/", "/admin/"],
+      },
+      {
+        userAgent: "Googlebot-News",
+        allow: "/",
+        disallow: ["/api/", "/admin/"],
+      },
+      {
+        userAgent: "Googlebot-Video",
+        allow: "/",
+        disallow: ["/api/", "/admin/"],
+      },
+      {
+        userAgent: "Mediapartners-Google",
+        allow: "/",
+        disallow: ["/api/", "/admin/"],
+      },
+      {
+        userAgent: "AdsBot-Google",
+        allow: "/",
+        disallow: ["/api/", "/admin/"],
       },
     ],
     sitemap: `${SITE_URL}/sitemap.xml`,
-    host: SITE_URL,
   };
 }

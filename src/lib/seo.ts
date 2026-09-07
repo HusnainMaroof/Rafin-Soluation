@@ -38,7 +38,9 @@ export const CORE_KEYWORDS = [
  * "https://www.linkedin.com/company/rafinsolutions",
  * "https://x.com/rafinsolutions",
  */
-export const SOCIAL_PROFILES: string[] = [];
+export const SOCIAL_PROFILES: string[] = [
+  "https://www.linkedin.com/company/rafinsolutions",
+];
 
 export interface BuildMetadataArgs {
   title: string;
@@ -117,7 +119,9 @@ export function orgJsonLd(): JsonLdValue {
     address: {
       "@type": "PostalAddress",
       streetAddress: "Opposite to Bega Sanitary Store, Gulyana Road, Kharian",
+      addressLocality: "Kharian",
       addressRegion: "District Gujrat",
+      postalCode: "50080",
       addressCountry: "PK",
     },
     contactPoint: {
@@ -192,6 +196,7 @@ export function courseJsonLd(opts: {
     provider: {
       "@type": "Organization",
       name: SITE_NAME_ACADEMY,
+      url: SITE_URL,
       sameAs: SITE_URL,
     },
     inLanguage: "en-GB",

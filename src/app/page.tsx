@@ -17,6 +17,7 @@ import {
   buildMetadata,
   faqJsonLd,
   orgJsonLd,
+  webpageJsonLd,
   websiteJsonLd,
 } from "@/src/lib/seo";
 import { JsonLd } from "@/src/lib/JsonLd";
@@ -25,7 +26,7 @@ import { FAQ_ITEMS } from "@/src/Static Data/FaqData";
 export const metadata: Metadata = buildMetadata({
   title: "Compliance & Fintech Consultancy | Rafin Solutions",
   description:
-    "Rafin Solutions is a specialist compliance and fintech consultancy helping regulated financial businesses with licensing, AML/CFT, KYC/KYB, payments operations, training, and outsourced back-office support.",
+    "Rafin Solutions helps regulated financial businesses with AML/CFT compliance, KYC/KYB, payments operations, training, and outsourced back-office support.",
   path: "/",
   keywords: [
     "financial services compliance consultancy",
@@ -41,6 +42,14 @@ const page = () => {
     <>
       <JsonLd data={orgJsonLd()} />
       <JsonLd data={websiteJsonLd()} />
+      <JsonLd
+        data={webpageJsonLd({
+          title: "Rafin Solutions | Compliance & Fintech Consultancy",
+          description:
+            "Rafin Solutions helps regulated financial businesses with AML/CFT compliance, KYC/KYB, payments operations, training, and outsourced back-office support.",
+          path: "/",
+        })}
+      />
       <JsonLd data={faqJsonLd(FAQ_ITEMS)} />
       <div className="min-h-screen font-sans selection:bg-yellow-400 selection:text-slate-900 overflow-x-hidden bg-white">
         <HeroSection />

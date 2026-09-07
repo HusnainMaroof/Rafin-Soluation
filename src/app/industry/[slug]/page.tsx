@@ -55,7 +55,7 @@ export default async function Page({ params }: Props) {
       <JsonLd
         data={breadcrumbJsonLd([
           { name: "Home", path: "/" },
-          { name: "Industries", path: "/industry/money-service-businesses" },
+          { name: "Industries", path: "/" },
           { name: Data.title, path: `/industry/${Data.slug}` },
         ])}
       />

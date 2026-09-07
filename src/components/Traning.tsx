@@ -12,7 +12,14 @@ import { FadeIn, StaggerContainer, StaggerItem } from "./HelperComponent";
 import { trainingPages } from "../Static Data/traningData";
 import Link from "next/link";
 
-const TrainingHero = () => {
+const TrainingHero = ({ title }: { title?: string }) => {
+  const headingParts = title
+    ? title.split(" ").reduce<{ first: string; rest: string }>((acc, word, i) => {
+        if (i === 0) acc.first = word;
+        else acc.rest += (acc.rest ? " " : "") + word;
+        return acc;
+      }, { first: "", rest: "" })
+    : { first: "Professional", rest: "Compliance Training" };
 
   return (
     <section
@@ -41,10 +48,10 @@ const TrainingHero = () => {
             </StaggerItem>
 
             <h1 className="text-4xl sm:text-5xl lg:text-[5.5rem] font-extrabold text-slate-900 mb-6 leading-[1.05] tracking-tight">
-              <StaggerItem>Professional</StaggerItem>
+              <StaggerItem>{headingParts.first}</StaggerItem>
               <StaggerItem>
                 <span className="block text-transparent bg-clip-text bg-linear-to-r from-yellow-500 to-yellow-600">
-                  Compliance Training
+                  {headingParts.rest || "Compliance Training"}
                 </span>
               </StaggerItem>
             </h1>
@@ -286,9 +293,11 @@ export const CTASection = () => (
 export default function TrainingPage({
   slug,
   params,
+  trainingModule,
 }: {
   slug?: { slug: string };
   params?: { slug?: string };
+  trainingModule?: { title: string; slug: string };
 }) {
   // Safe, Robust DOM scroll handler
   useEffect(() => {
@@ -350,7 +359,7 @@ export default function TrainingPage({
   return (
     <>
       <div className="min-h-screen font-sans selection:bg-yellow-400 selection:text-slate-900 overflow-x-hidden bg-white">
-        <TrainingHero />
+        <TrainingHero title={trainingModule?.title} />
         {/* <GeneralOverview /> */}
 
         {/* Render Each Training Module using the requested Image/Text layout */}

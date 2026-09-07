@@ -37,7 +37,7 @@ export const INDUSTRIES_DATA: IndustryItem[] = [
     icon: <Repeat />,
     photo: "/images/industries/remittance-companies.jpg",
     title: "Remittance Companies",
-    desc: "Practical compliance, operations, and governance support for money transfer businesses.",
+    desc: "Rafin Solutions provides practical compliance, operations, and governance support for remittance and money transfer businesses across multiple corridors.",
     overviewText:
       "Rafin Solutions supports remittance companies with practical compliance, operations, payment workflow, customer support, documentation, and outsourced back-office services.",
     features: [
@@ -87,7 +87,7 @@ export const INDUSTRIES_DATA: IndustryItem[] = [
     icon: <Landmark />,
     photo: "/images/industries/money-service-businesses.jpg",
     title: "Money Service Businesses",
-    desc: "Practical compliance, operations, and governance support for MSB teams.",
+    desc: "Rafin Solutions provides practical compliance, AML/CFT controls, and operations support for money service businesses across single or multi-site operations.",
     overviewText:
       "Rafin Solutions supports Money Service Businesses with practical compliance, operations, payment workflow, customer support, documentation, and outsourced back-office services.",
     features: [
@@ -137,7 +137,7 @@ export const INDUSTRIES_DATA: IndustryItem[] = [
     icon: <Wallet />,
     photo: "/images/industries/electronic-money-institutions.jpg",
     title: "Electronic Money Institutions",
-    desc: "Practical compliance, operations, and governance support for EMI teams.",
+    desc: "Rafin Solutions provides practical compliance, safeguarding, and operations support for electronic money institutions and digital account issuance.",
     overviewText:
       "Rafin Solutions supports Electronic Money Institutions with practical compliance, operations, payment workflow, safeguarding, customer support, and documentation.",
     features: [
@@ -187,7 +187,7 @@ export const INDUSTRIES_DATA: IndustryItem[] = [
     icon: <Landmark />,
     photo: "/images/industries/payment-institutions.jpg",
     title: "Payment Institutions",
-    desc: "Practical compliance, operations, and governance support for payment firms.",
+    desc: "Rafin Solutions provides practical compliance, authorisation support, and operations guidance for payment institutions and payment firms.",
     overviewText:
       "Rafin Solutions supports Payment Institutions with practical compliance, operations, payment workflow, customer support, documentation, and outsourced back-office services.",
     features: [
@@ -237,7 +237,7 @@ export const INDUSTRIES_DATA: IndustryItem[] = [
     icon: <Cpu />,
     photo: "/images/industries/fintech-startups.jpg",
     title: "Fintech Startups",
-    desc: "Practical compliance, operations, and governance support for scaling fintech teams.",
+    desc: "Rafin Solutions provides practical compliance, governance, and operations support for fintech startups scaling their regulated financial operations.",
     overviewText:
       "Rafin Solutions supports Fintech Startups with practical compliance, operations, documentation, and outsourced back-office services as they scale.",
     features: [
@@ -287,7 +287,7 @@ export const INDUSTRIES_DATA: IndustryItem[] = [
     icon: <Smartphone />,
     photo: "/images/industries/digital-wallets.jpg",
     title: "Digital Wallets",
-    desc: "Practical compliance, operations, and governance support for wallet providers.",
+    desc: "Rafin Solutions provides practical compliance, onboarding, and operations support for digital wallet providers and mobile payment platforms.",
     overviewText:
       "Rafin Solutions supports Digital Wallet providers with practical compliance, operations, customer support, documentation, and outsourced back-office services.",
     features: [
@@ -337,7 +337,7 @@ export const INDUSTRIES_DATA: IndustryItem[] = [
     icon: <Zap />,
     photo: "/images/industries/payment-service-providers.jpg",
     title: "Payment Service Providers",
-    desc: "Practical compliance, operations, and governance support for PSPs.",
+    desc: "Rafin Solutions provides practical compliance, merchant onboarding, and operations support for payment service providers and acquiring firms.",
     overviewText:
       "Rafin Solutions supports Payment Service Providers with practical compliance, operations, merchant onboarding, customer support, documentation, and outsourced back-office services.",
     features: [
@@ -387,7 +387,7 @@ export const INDUSTRIES_DATA: IndustryItem[] = [
     icon: <RefreshCw />,
     photo: "/images/industries/foreign-exchange-businesses.jpg",
     title: "Foreign Exchange Businesses",
-    desc: "Practical compliance, operations, and governance support for FX firms.",
+    desc: "Rafin Solutions provides practical compliance, trade operations, and AML/CFT controls for foreign exchange businesses and FX brokers.",
     overviewText:
       "Rafin Solutions supports Foreign Exchange businesses with practical compliance, operations, trade workflows, customer support, documentation, and outsourced back-office services.",
     features: [
